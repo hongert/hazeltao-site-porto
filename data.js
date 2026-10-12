@@ -101,7 +101,7 @@ window.PROJECTS = [
 		cover: 'EdgeOfVisibility_Mockup_08.png',
 		thumb: 'EdgeOfVisibility_Mockup_14.png',
 		media: [
-			'EdgeOfVisibility_Motion_03.mp4', 'EdgeOfVisibility_Mockup_08.png', 'EdgeOfVisibility_Mockup_13.png',
+			'EdgeOfVisibility_Motion_03.mp4', 'EdgeOfVisibility_Mockup_13.png',
 			'EdgeOfVisibility_Mockup_14.png', 'EdgeOfVisibility_Mockup_02.png', 'EdgeOfVisibility_Mockup_01.png',
 		],
 		text: [
