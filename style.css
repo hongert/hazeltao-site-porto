@@ -353,8 +353,8 @@ a.card:hover,
 
 .prose p {
 	margin: 0 0 0.9em;
-	font-size: clamp(16px, 1.55vw, 22px);
-	line-height: 1.28;
+	font-size: 12px; /* 和项目信息（Year、Services）一样大 */
+	line-height: 1.5;
 }
 
 .prose p:last-child {
