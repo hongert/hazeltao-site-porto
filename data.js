@@ -182,6 +182,7 @@ window.PROJECTS = [
 		services: ['Branding', 'Spatial'],
 		format: '',
 		cover: 'FINALp1.jpeg',
+		thumb: 'Serenseek_cup_hand.png',
 		media: ['FINALp1.jpeg', 'FINALp4-2.jpg', 'FINALp3.jpg', 'FINALpg5.jpg'],
 		text: [
 			'<i>‘Serenseek’</i> is a branding project centered around the concept of seeking truth and inner peace. The teahouse offers a tranquil escape from the chaos of city life, inviting visitors to reconnect with themselves and embrace a simpler, more mindful way of living. From the visual identity to the spatial atmosphere, every design element aims to transport guests into a serene, calming environment that nurtures introspection and authenticity.',
@@ -211,6 +212,7 @@ window.PROJECTS = [
 		services: ['Editorial Design', 'Typography'],
 		format: '22×11”',
 		cover: 'Interconnection.png',
+		thumb: 'FindYourVoice_square.jpg',
 		media: [
 			'Interconnection.png',
 			'1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_3.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_4.jpg',
