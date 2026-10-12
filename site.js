@@ -203,8 +203,8 @@
 			for (let k = 0; k < rest.length; k += 2) {
 				const a = rest[k];
 				const b = rest[k + 1];
-				const same = b && Math.abs(ratio(a) / ratio(b) - 1) < 0.25;
-				blocks.push(`<div class="two grid2">${same ? media(a, ratio(a)) + media(b, ratio(a)) : media(a, ratio(a)) + (b ? media(b, ratio(b)) : '')}</div>`);
+				// 统一裁成 4:3，排得整齐
+				blocks.push(`<div class="two grid2">${media(a, 4 / 3)}${b ? media(b, 4 / 3) : ''}</div>`);
 			}
 			rest.length = 0;
 		}
@@ -227,7 +227,7 @@
 		const [t1, t2] = p.text;
 		content.innerHTML = `
 			${mobileTop()}
-			${media(p.media[0])}
+			${media(p.media[0], p.grid === 2 && SIZES[p.media[0]] ? ratio(p.media[0]) : undefined)}
 			<div class="card p-title"><h1>${esc(p.title)}</h1><p>${esc(p.subtitle)}</p></div>
 			${t2
 				? `<div class="two prose-pair">
