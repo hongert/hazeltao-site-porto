@@ -56,8 +56,8 @@ window.PROJECTS = [
 		cover: 'Taohe_social_3.jpg',
 		thumb: 'Taohe_Stationary_Mockup.jpg',
 		media: [
-			'Taohe_logo_motion_FIN.mp4', 'taohe_social2.jpg', 'Taohe_lookbook_cover_mockup.jpg',
-			'Taohe_lookbook_mockup2.jpg', 'Taohe_social_3.jpg', 'Taohe_product_web-copy.jpg',
+			'Taohe_logo_motion_FIN.mp4', 'taohe_social2.jpg',
+			'Taohe_social_3.jpg', 'Taohe_product_web-copy.jpg',
 			'Taohe_pencil_mockup.jpg', 'Taohe_Stationary_Mockup.jpg', 'Taohe_File_envelope.jpg',
 			'taohe_boxes.jpg', 'Taohe_tape_mockup.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg',
 		],
