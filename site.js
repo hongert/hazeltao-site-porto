@@ -203,6 +203,12 @@
 			for (let k = 0; k < rest.length; k += 2) {
 				const a = rest[k];
 				const b = rest[k + 1];
+				// 竖版 reel：左边保持原比例不裁，右边上下叠两张填满同样高度
+				if (SIZES[a] && ratio(a) < 1 && b && rest[k + 2]) {
+					blocks.push(`<div class="two grid2 reel">${media(a, ratio(a))}<div class="stack">${media(b)}${media(rest[k + 2])}</div></div>`);
+					k++;
+					continue;
+				}
 				// 统一裁成 4:3，排得整齐
 				blocks.push(`<div class="two grid2">${media(a, 4 / 3)}${b ? media(b, 4 / 3) : ''}</div>`);
 			}

@@ -110,7 +110,7 @@ window.PROJECTS = [
 		cover: 'GS3_FA25_HazelTao_Website4.jpg',
 		grid: 2,
 		media: [
-			'Arboretum-Motion-Long-Final.mp4', 'J-A-Long-LED-Motion.mp4', 'GS3_FA25_-HazelTao_Promo3.mp4', 'GS3_FA25_-HazelTao_Promo2.mp4',
+			'Arboretum-Motion-Long-Final.mp4', 'GS3_FA25_-HazelTao_Promo3.mp4', 'J-A-Long-LED-Motion.mp4',
 			'GS3_FA25_HazelTao_swag4.jpg', 'GS3_FA25_HazelTao_Website4.jpg', 'GS3_FA25_HazelTao_Website3.jpg',
 			'GS3_FA25_HazelTao_Website2.jpg', 'GS3_FA25_HazelTao_Swag2.jpg', 'GS3_FA25_HazelTao_3D-Application1.jpg',
 			'GS3_FA25_-HazelTao_Spatial1.jpg',

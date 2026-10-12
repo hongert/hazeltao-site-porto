@@ -247,6 +247,32 @@ a.card:hover,
 	align-items: start;
 }
 
+.two.grid2.reel {
+	align-items: stretch;
+}
+
+.reel .stack {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	gap: var(--gap);
+}
+
+.reel .stack .media,
+.reel .stack .media.video {
+	position: relative;
+	min-height: 0;
+	aspect-ratio: auto;
+}
+
+.reel .stack .media img,
+.reel .stack .media video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 /* ===== 右栏 ===== */
 .content {
 	margin-left: var(--side);
