@@ -16,7 +16,8 @@ window.SITE = {
 	// 左上角时钟显示的城市和时区
 	city: 'Los Angeles',
 	timezone: 'America/Los_Angeles',
-	about: 'Graphic designer working across branding, typography, editorial and print. MFA Graphic Design candidate at ArtCenter College of Design.',
+	// 左栏 About 小卡片下面的一句话；留空就只显示 About
+	about: '',
 };
 
 window.PROJECTS = [

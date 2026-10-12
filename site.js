@@ -83,7 +83,7 @@
 				<div class="clock"><span class="d"></span><br><span class="c"></span></div>
 			</div>
 			<div class="cards">
-				<a class="card text${page === 'about' ? ' active' : ''}" href="about.html">About<p>${esc(S.about)}</p></a>
+				<a class="card text${page === 'about' ? ' active' : ''}" href="about.html">About${S.about ? `<p>${esc(S.about)}</p>` : ''}</a>
 				${P.map((p) => `
 				<div class="stack-item">
 					<a class="card row${p.slug === current ? ' active' : ''}" href="${link(p)}">
