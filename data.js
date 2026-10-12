@@ -86,7 +86,7 @@ window.PROJECTS = [
 		tags: ['Identity', 'Packaging', 'Digital', 'Motion'],
 		services: ['Brand Strategy', 'Identity System', 'Packaging', 'E-commerce', 'Social'],
 		format: '',
-		cover: 'Taohe_lookbook_cover_mockup.jpg',
+		cover: 'Taohe_social_3.jpg',
 		media: [
 			'Taohe_logo_motion_FIN.mp4', 'taohe_social2.jpg', 'Taohe_lookbook_cover_mockup.jpg',
 			'Taohe_lookbook_mockup2.jpg', 'Taohe_social_3.jpg', 'Taohe_product_web-copy.jpg',
@@ -137,21 +137,6 @@ window.PROJECTS = [
 		],
 		text: [
 			'Inspired by the screening of <i>Paper and Glue</i> by JR, I explored how art can shape and influence communities. I chose Biomorphism as my focus—a movement emphasizing organic forms, natural growth patterns, and fluid, living aesthetics. I reimagined these principles into a dynamic, immersive pop-up installation that uses typography and visual language to tell a flexible, evolving, and contemporary narrative. The installation features 10 black-and-yellow posters, where typographic forms echo biomorphic shapes, creating a cohesive and adaptable visual system that engages audiences across diverse indoor and outdoor environments.',
-		],
-	},
-	{
-		slug: 'utopia',
-		title: 'Utopia',
-		subtitle: 'Posters for a short film screening',
-		year: 2025,
-		tags: ['Print'],
-		services: ['Poster'],
-		format: '24×36”',
-		cover: 'Utopia-Poster--for-Print-24x36-01.jpg',
-		media: ['Utopia-Poster--for-Print-24x36-01.jpg', 'Utopia-Poster--for-Print-24x36-04.jpg'],
-		text: [
-			'<i>Utopia</i> was a collaborative short film project. We developed a narrative in which each participant begins in their own personal space: apartment rooms, commuting to work, and so on—and through a series of minor inconveniences, such as missing the bus, getting stuck in traffic, or running late, all characters eventually converge at an elevator, a portal leading to their individual utopias.',
-			'Inspired by one particular utopia, filmed at the Spiral Lawn in Los Angeles, I took on the role of designer for the project’s promotional materials. I created a series of posters for the film screening event, translating the film’s dreamlike and euphoria qualities into a visual identity.',
 		],
 	},
 	{
