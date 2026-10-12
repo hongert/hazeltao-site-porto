@@ -47,7 +47,7 @@ window.PROJECTS = [
 		tags: ['Print', 'Risograph'],
 		services: ['Print Design', 'Risograph', 'Calendar'],
 		format: '',
-		cover: 'Riso_calander_display.jpg',
+		cover: 'IMG_5826.jpg',
 		media: [
 			'IMG_5826.jpg', 'Riso_calander_display.jpg', 'Riso_calander_display2.jpg',
 			'Riso_calander_display3.jpg', 'Riso_calander_display4.jpg', 'Riso_calander_display5.jpg',
