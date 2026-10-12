@@ -30,6 +30,7 @@ window.PROJECTS = [
 		services: ['Typeface Design'],
 		format: '',
 		cover: 'SU26_solserif_display2.JPG',
+		thumb: 'Solserif_beige.jpg',
 		media: [
 			'SU26_solserif_display2.JPG', 'SU26_solserif_display3.JPG', 'SU26_solserif_display4.JPG',
 			'SU26_solserif_display6.JPG', 'SU26_solserif_display8.JPG', 'SU26_solserif_display9.JPG',
@@ -48,6 +49,7 @@ window.PROJECTS = [
 		services: ['Print Design', 'Risograph', 'Calendar'],
 		format: '',
 		cover: 'IMG_5826.jpg',
+		thumbPos: '61% 50%',
 		media: [
 			'IMG_5826.jpg', 'Riso_calander_display.jpg', 'Riso_calander_display2.jpg',
 			'Riso_calander_display3.jpg', 'Riso_calander_display4.jpg', 'Riso_calander_display5.jpg',

@@ -87,7 +87,7 @@
 				${P.map((p) => `
 				<div class="stack-item">
 					<a class="card row${p.slug === current ? ' active' : ''}" href="${link(p)}">
-						<img src="${thumb(p.thumb || p.cover)}" alt="" loading="lazy">
+						<img src="${thumb(p.thumb || p.cover)}" alt="" loading="lazy"${p.thumbPos ? ` style="object-position:${p.thumbPos}"` : ''}>
 						<span><span class="t">${esc(p.title)}</span><span class="s">${esc(p.subtitle)}</span></span>
 					</a>
 				</div>`).join('')}
