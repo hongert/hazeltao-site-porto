@@ -83,7 +83,6 @@ window.PROJECTS = [
 			'Heldstill_display_4.jpg', 'Heldstill_display_6.jpg',
 			'HeldStill_FlipThrough-copy.mp4', 'HeldStill_FlipThrough-copy-2.mp4', 'HeldStill_FlipThrough-copy-3.mp4',
 			'HeldStill_FlipThrough-copy-4.mp4', 'HeldStill_FlipThrough-copy-5.mp4', 'HeldStill_FlipThrough-copy-6.mp4',
-			'SP26_Type4_FIN.jpg', 'HeldStill_Juice.jpg', 'HeldStill_Tote.jpg',
 		],
 		text: [
 			'Held Still: When Time Becomes Visible is a curated exhibition featuring the works of eight artists: Sarah Ball, Eska Marsh, Irving Penn, Paula Siebra, Nicolas Party, Lucas Blalock, Rachel Ruysch, and Michaël Borremans. The collection is united by the enduring genre of still life. My interest in this medium stems from its inherent tension; while these compositions appear frozen to the viewer, they represent a past reality that was once alive. Whether featuring elegant flowers, distorted pears, or a posed model, the objects within these frames were all once part of a living world.',
