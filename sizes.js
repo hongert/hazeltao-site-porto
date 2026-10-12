@@ -1,6 +1,6 @@
 // 图片尺寸（宽/高），用于网格排版。新加图片可以不写，会按横图处理
 window.SIZES = {
-	'Wuzhen_main.png': [4950, 2850],
+	'Wuzhen_main_cropped.png': [4804, 2684],
 	'Serenseek_main.png': [3000, 2001],
 	'PiedPiper_vinyl_set.png': [3750, 2500],
 	'Huaying_main.png': [6000, 4000],
