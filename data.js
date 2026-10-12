@@ -109,6 +109,7 @@ window.PROJECTS = [
 		format: '',
 		cover: 'GS3_FA25_HazelTao_Website4.jpg',
 		grid: 2,
+		thumb: 'Screenshot-2026-02-13-at-11.32.01AM.png',
 		media: [
 			'Arboretum-Motion-Long-Final.mp4', 'GS3_FA25_-HazelTao_Promo3.mp4', 'J-A-Long-LED-Motion.mp4',
 			'GS3_FA25_HazelTao_swag4.jpg', 'GS3_FA25_HazelTao_Website4.jpg', 'GS3_FA25_HazelTao_Website3.jpg',
