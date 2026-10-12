@@ -9,10 +9,29 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap">
-	<link rel="stylesheet" href="style.css?v=202610112345">
+	<link rel="stylesheet" href="style.css?v=202610112350">
 	<script>
-		// 记住黑/白背景
-		try { document.documentElement.dataset.theme = localStorage.getItem('theme') || 'light'; } catch (e) {}
+		// 黑/白背景跟着访客本地时间：晚上 7 点到凌晨 5 点是黑色，其余时间白色
+		// 手动点开关只在当前这一段时间内有效，到下一个 7 点 / 5 点就恢复自动
+		(function () {
+			function auto() { var h = new Date().getHours(); return h >= 19 || h < 5 ? 'dark' : 'light'; }
+			function nextSwitch() {
+				var n = new Date(), h = n.getHours();
+				if (h >= 19) n.setDate(n.getDate() + 1);
+				n.setHours(h >= 5 && h < 19 ? 19 : 5, 0, 0, 0);
+				return n.getTime();
+			}
+			function pick() {
+				var t = auto();
+				try { var o = JSON.parse(localStorage.getItem('themeOverride')); if (o && o.until > Date.now()) t = o.theme; } catch (e) {}
+				document.documentElement.dataset.theme = t;
+			}
+			window.siteTheme = { pick: pick, nextSwitch: nextSwitch };
+			try { localStorage.removeItem('theme'); } catch (e) {}
+			pick();
+			setInterval(pick, 60000);
+			document.addEventListener('visibilitychange', function () { if (!document.hidden) pick(); });
+		})();
 	</script>
 </head>
 <body data-page="about">
@@ -61,8 +80,8 @@
 
 </main>
 
-<script src="data.js?v=202610112345"></script>
-<script src="sizes.js?v=202610112345"></script>
-<script src="site.js?v=202610112345"></script>
+<script src="data.js?v=202610112350"></script>
+<script src="sizes.js?v=202610112350"></script>
+<script src="site.js?v=202610112350"></script>
 </body>
 </html>

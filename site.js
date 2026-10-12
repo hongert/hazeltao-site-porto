@@ -35,7 +35,7 @@
 		if (!e.target.closest('.switch')) return;
 		const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
 		document.documentElement.dataset.theme = next;
-		store.set('theme', next);
+		store.set('themeOverride', JSON.stringify({ theme: next, until: window.siteTheme ? window.siteTheme.nextSwitch() : 0 }));
 	});
 
 	// ---------- 图片和视频 ----------
