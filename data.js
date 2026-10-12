@@ -155,7 +155,7 @@ window.PROJECTS = [
 		format: '',
 		cover: 'FINALp1.jpg',
 		thumb: 'Huaying_calendar_unfolded.png',
-		media: ['FINALp1.jpg', 'FINALp2-03.png', 'FINALp2-04.png'],
+		media: ['Huaying_main.png', 'FINALp2-03.png', 'FINALp2-04.png'],
 		text: [
 			'<i>Huaying’s Recipe</i> is a project that deeply personal tribute to my grandmother and the cherished memories of cooking with her throughout my childhood. Inspired by the calendar she kept on her living room wall, I created a functional and decorative gift that reflects both my love for her and my growth as a designer. Each month features a dish from her recipes, thoughtfully paired with seasonal ingredients or traditional celebrations. The calendar is accordion-bound to enhance display and accessibility, with each month spanning two pages: one showcasing a stylized serving dish illustration, and the other presenting the month’s dates and festivals.',
 		],
@@ -170,7 +170,7 @@ window.PROJECTS = [
 		format: '',
 		cover: 'FINALp1-copy.png',
 		thumb: 'PiedPiper_CD_cover.jpg',
-		media: ['FINALp1-copy.png', 'FINALp3.png', 'FINALp4.jpg', 'FINALp5-copy.png'],
+		media: ['PiedPiper_vinyl_set.png', 'FINALp3.png', 'FINALp4.jpg', 'FINALp5-copy.png'],
 		text: [
 			'<i>Pied Piper</i> creates a cohesive visual system for a Red Velvet-inspired album by illustrating a storyline based on key lyrics from five selected songs: “Cosmic,” “Peek-A-Boo,” “Bad Boy,” “Russian Roulette,” and “Feel My Rhythm.” Drawing from a personal concept of two contrasting realms—the gray, numbing Old World and the vibrant, dreamlike New World—the five illustrations visually narrate a transformation. Through symbolic imagery and evolving color palettes, the project shows Red Velvet’s members breaking through the bleakness, seducing the inhabitants into a utopia, and ultimately blending the two worlds into one cohesive vision.',
 		],
@@ -185,7 +185,7 @@ window.PROJECTS = [
 		format: '',
 		cover: 'FINALp1.jpeg',
 		thumb: 'Serenseek_cup_hand.png',
-		media: ['FINALp1.jpeg', 'FINALp4-2.jpg', 'FINALp3.jpg', 'FINALpg5.jpg'],
+		media: ['Serenseek_main.png', 'FINALp4-2.jpg', 'FINALp3.jpg', 'FINALpg5.jpg'],
 		text: [
 			'<i>‘Serenseek’</i> is a branding project centered around the concept of seeking truth and inner peace. The teahouse offers a tranquil escape from the chaos of city life, inviting visitors to reconnect with themselves and embrace a simpler, more mindful way of living. From the visual identity to the spatial atmosphere, every design element aims to transport guests into a serene, calming environment that nurtures introspection and authenticity.',
 		],
@@ -200,7 +200,7 @@ window.PROJECTS = [
 		format: '',
 		cover: 'FINALp1-2.jpeg',
 		thumb: 'Wuzhen_flag_display.png',
-		media: ['FINALp1-2.jpeg', 'FINALp3-2.jpg', 'FINALp4.jpeg'],
+		media: ['Wuzhen_main.png', 'FINALp3-2.jpg', 'FINALp4.jpeg'],
 		text: [
 			'This branding project reimagines the visual identity of the Wuzhen Theatre Festival, an international celebration of performance and art held in the rapidly modernizing city of Wuzhen, China. As a native of the region, I was inspired to create a design system that reflects the city’s growing global presence and cultural vibrancy. Moving away from the outdated water-ink textures and muddled logo of past years, my new design embraces bold colors, simplified shapes, and theatrical motifs to capture the festival’s spirit of joy, openness, and creativity.',
 		],
