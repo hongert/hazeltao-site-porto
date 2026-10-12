@@ -243,6 +243,10 @@ a.card:hover,
 	gap: var(--gap);
 }
 
+.two.grid2 {
+	align-items: start;
+}
+
 /* ===== 右栏 ===== */
 .content {
 	margin-left: var(--side);

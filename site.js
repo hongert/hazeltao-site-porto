@@ -198,6 +198,16 @@
 		const extraText = p.text.slice(2);
 		const blocks = [];
 		let count = 0;
+		// grid: 2 的项目：文字下面的图片/视频一律两列并排
+		if (p.grid === 2) {
+			for (let k = 0; k < rest.length; k += 2) {
+				const a = rest[k];
+				const b = rest[k + 1];
+				const same = b && Math.abs(ratio(a) / ratio(b) - 1) < 0.25;
+				blocks.push(`<div class="two grid2">${same ? media(a, ratio(a)) + media(b, ratio(a)) : media(a, ratio(a)) + (b ? media(b, ratio(b)) : '')}</div>`);
+			}
+			rest.length = 0;
+		}
 		for (let k = 0; k < rest.length; k++) {
 			const a = rest[k];
 			const b = rest[k + 1];
