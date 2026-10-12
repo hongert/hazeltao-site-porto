@@ -134,7 +134,7 @@ window.PROJECTS = [
 		tags: ['Illustration'],
 		services: ['Illustration', 'Album Art'],
 		format: '',
-		cover: 'FINALp1-copy.png',
+		cover: 'PiedPiper_vinyl_set.png',
 		thumb: 'PiedPiper_CD_cover.jpg',
 		media: ['PiedPiper_vinyl_set.png', 'FINALp3.png', 'FINALp4.jpg', 'FINALp5-copy.png'],
 		text: [
@@ -149,7 +149,7 @@ window.PROJECTS = [
 		tags: ['Identity', 'Spatial'],
 		services: ['Branding', 'Spatial'],
 		format: '',
-		cover: 'FINALp1.jpeg',
+		cover: 'Serenseek_main.png',
 		thumb: 'Serenseek_cup_hand.png',
 		media: ['Serenseek_main.png', 'FINALp4-2.jpg', 'FINALp3.jpg', 'FINALpg5.jpg'],
 		text: [
@@ -164,7 +164,7 @@ window.PROJECTS = [
 		tags: ['Identity'],
 		services: ['Branding', 'Identity System'],
 		format: '',
-		cover: 'FINALp1-2.jpeg',
+		cover: 'Wuzhen_main.png',
 		thumb: 'Wuzhen_flag_display.png',
 		media: ['Wuzhen_main.png', 'FINALp3-2.jpg', 'FINALp4.jpeg'],
 		text: [
@@ -179,7 +179,7 @@ window.PROJECTS = [
 		tags: ['Print', 'Illustration'],
 		services: ['Calendar', 'Illustration', 'Print Design'],
 		format: '',
-		cover: 'FINALp1.jpg',
+		cover: 'Huaying_main.png',
 		thumb: 'Huaying_calendar_unfolded.png',
 		media: ['Huaying_main.png', 'FINALp2-03.png', 'FINALp2-04.png'],
 		text: [
