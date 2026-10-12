@@ -78,7 +78,7 @@ window.PROJECTS = [
 		cover: 'Heldstill_display3.JPG',
 		thumb: 'HeldStill_Poster.jpg',
 		media: [
-			'Heldstill_display3.JPG', 'HeldStill_BigFlag.jpg', 'HeldStill_Flag.jpg', 'HeldStill_Poster.jpg',
+			'HeldStill_Flag.jpg', 'HeldStill_BigFlag.jpg', 'Heldstill_display3.JPG', 'HeldStill_Poster.jpg',
 			'HeldStill_Ticket.jpg', 'HeldStill_IDCard.jpg', 'Heldstill_display_5.jpg', 'Heldstill_display_3.jpg',
 			'Heldstill_display_4.jpg', 'Heldstill_display_6.jpg',
 			'HeldStill_FlipThrough-copy.mp4', 'HeldStill_FlipThrough-copy-2.mp4', 'HeldStill_FlipThrough-copy-3.mp4',
