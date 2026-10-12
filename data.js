@@ -24,7 +24,7 @@ window.PROJECTS = [
 	{
 		slug: 'solserif',
 		title: 'Solserif',
-		subtitle: 'Expressive serif typeface',
+		subtitle: 'Serif Typeface Design',
 		year: 2026,
 		tags: ['Typography'],
 		services: ['Typeface Design'],
@@ -42,7 +42,7 @@ window.PROJECTS = [
 	{
 		slug: 'sweetness-in-four-seasons',
 		title: 'Sweetness in Four Seasons',
-		subtitle: 'Limited-edition Risograph calendar',
+		subtitle: 'Risograph Design',
 		year: 2026,
 		tags: ['Print', 'Risograph'],
 		services: ['Print Design', 'Risograph', 'Calendar'],
@@ -59,7 +59,7 @@ window.PROJECTS = [
 	{
 		slug: 'held-still',
 		title: 'Held Still',
-		subtitle: 'When Time Becomes Visible',
+		subtitle: 'Exhibition Identity',
 		year: 2026,
 		tags: ['Identity', 'Exhibition', 'Motion'],
 		services: ['Exhibition Identity', 'Poster', 'Merchandise', 'Motion'],
@@ -81,7 +81,7 @@ window.PROJECTS = [
 	{
 		slug: 'taohe',
 		title: 'TAOHE',
-		subtitle: 'Yak wool brand, built from the ground up',
+		subtitle: 'Brand Identity',
 		year: 2026,
 		tags: ['Identity', 'Packaging', 'Digital', 'Motion'],
 		services: ['Brand Strategy', 'Identity System', 'Packaging', 'E-commerce', 'Social'],
@@ -103,7 +103,7 @@ window.PROJECTS = [
 	{
 		slug: 'arboretum',
 		title: 'Arboretum Rebrand Proposal',
-		subtitle: 'LA Arboretum & Botanical Garden',
+		subtitle: 'Rebrand Proposal',
 		year: 2025,
 		tags: ['Identity', 'Motion', 'Spatial', 'Digital'],
 		services: ['Rebrand Proposal', 'Motion', 'Merchandise', 'Spatial', 'Website'],
@@ -125,7 +125,7 @@ window.PROJECTS = [
 	{
 		slug: 'edge-of-visibility',
 		title: 'Edge of Visibility',
-		subtitle: 'Biomorphism pop-up installation',
+		subtitle: 'Manifesto Proposal',
 		year: 2025,
 		tags: ['Typography', 'Exhibition', 'Motion', 'Print'],
 		services: ['Installation', 'Poster Series', 'Typography', 'Motion'],
@@ -142,7 +142,7 @@ window.PROJECTS = [
 	{
 		slug: 'huayings-recipe',
 		title: 'Huaying’s Recipe',
-		subtitle: 'An accordion-bound calendar',
+		subtitle: 'Print Design',
 		year: 2025,
 		tags: ['Print', 'Illustration'],
 		services: ['Calendar', 'Illustration', 'Print Design'],
@@ -156,7 +156,7 @@ window.PROJECTS = [
 	{
 		slug: 'pied-piper',
 		title: 'Pied Piper',
-		subtitle: 'Album visual system',
+		subtitle: 'Album Design',
 		year: 2024,
 		tags: ['Illustration'],
 		services: ['Illustration', 'Album Art'],
@@ -170,7 +170,7 @@ window.PROJECTS = [
 	{
 		slug: 'serenseek',
 		title: '‘Serenseek’ 寻真',
-		subtitle: 'Teahouse branding',
+		subtitle: 'Branding / Visual Identity',
 		year: 2024,
 		tags: ['Identity', 'Spatial'],
 		services: ['Branding', 'Spatial'],
@@ -184,7 +184,7 @@ window.PROJECTS = [
 	{
 		slug: 'wuzhen-theater-festival',
 		title: 'Wuzhen Theater Festival',
-		subtitle: 'Festival identity redesign',
+		subtitle: 'Branding / Visual Identity',
 		year: 2024,
 		tags: ['Identity'],
 		services: ['Branding', 'Identity System'],
@@ -198,7 +198,7 @@ window.PROJECTS = [
 	{
 		slug: 'find-your-voice',
 		title: 'Find Your Voice',
-		subtitle: 'Interconnection — editorial typography',
+		subtitle: 'Editorial Design',
 		year: 2024,
 		tags: ['Typography', 'Editorial'],
 		services: ['Editorial Design', 'Typography'],
@@ -219,7 +219,7 @@ window.PROJECTS = [
 	{
 		slug: 'lume',
 		title: 'Lume',
-		subtitle: 'Identity for pet funeral services',
+		subtitle: 'Brand Identity',
 		year: 2024,
 		tags: ['Identity', 'Editorial'],
 		services: ['Branding', 'Editorial Design', 'Stationery'],
