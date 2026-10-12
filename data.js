@@ -87,6 +87,7 @@ window.PROJECTS = [
 		services: ['Brand Strategy', 'Identity System', 'Packaging', 'E-commerce', 'Social'],
 		format: '',
 		cover: 'Taohe_social_3.jpg',
+		thumb: 'Taohe_Stationary_Mockup.jpg',
 		media: [
 			'Taohe_logo_motion_FIN.mp4', 'taohe_social2.jpg', 'Taohe_lookbook_cover_mockup.jpg',
 			'Taohe_lookbook_mockup2.jpg', 'Taohe_social_3.jpg', 'Taohe_product_web-copy.jpg',
@@ -226,6 +227,7 @@ window.PROJECTS = [
 		services: ['Branding', 'Editorial Design', 'Stationery'],
 		format: '',
 		cover: 'Lume-Front-Cover-Mockuo.jpg',
+		thumb: 'Lume-Busniess-Card-Mockup.jpg',
 		media: [
 			'SP25-Lume-Statement-Page.jpg', 'Lume-Busniess-Card-Mockup.jpg', 'Lume-Busniess-Card-Mockup-2.jpg',
 			'Lume-Front-Cover-Mockuo.jpg', 'Lume-Inner-Spread-Mockup.jpg', 'Lume-Spread-Mockuop.jpg',
