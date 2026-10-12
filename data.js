@@ -65,6 +65,7 @@ window.PROJECTS = [
 		services: ['Exhibition Identity', 'Poster', 'Merchandise', 'Motion'],
 		format: '',
 		cover: 'Heldstill_display3.JPG',
+		thumb: 'HeldStill_Poster.jpg',
 		media: [
 			'Heldstill_display3.JPG', 'HeldStill_Ticket.jpg', 'HeldStill_IDCard.jpg', 'HeldStill_BigFlag.jpg',
 			'HeldStill_Poster.jpg', 'HeldStill_Flag.jpg', 'Heldstill_display_5.jpg', 'Heldstill_display_3.jpg',
@@ -133,6 +134,7 @@ window.PROJECTS = [
 		services: ['Installation', 'Poster Series', 'Typography', 'Motion'],
 		format: '',
 		cover: 'EdgeOfVisibility_Mockup_08.png',
+		thumb: 'EdgeOfVisibility_Mockup_14.png',
 		media: [
 			'EdgeOfVisibility_Motion_03.mp4', 'EdgeOfVisibility_Mockup_08.png', 'EdgeOfVisibility_Mockup_13.png',
 			'EdgeOfVisibility_Mockup_14.png', 'EdgeOfVisibility_Mockup_02.png', 'EdgeOfVisibility_Mockup_01.png',
@@ -150,6 +152,7 @@ window.PROJECTS = [
 		services: ['Calendar', 'Illustration', 'Print Design'],
 		format: '',
 		cover: 'FINALp1.jpg',
+		thumb: 'Huaying_calendar_unfolded.png',
 		media: ['FINALp1.jpg', 'FINALp2-03.png', 'FINALp2-04.png'],
 		text: [
 			'<i>Huaying’s Recipe</i> is a project that deeply personal tribute to my grandmother and the cherished memories of cooking with her throughout my childhood. Inspired by the calendar she kept on her living room wall, I created a functional and decorative gift that reflects both my love for her and my growth as a designer. Each month features a dish from her recipes, thoughtfully paired with seasonal ingredients or traditional celebrations. The calendar is accordion-bound to enhance display and accessibility, with each month spanning two pages: one showcasing a stylized serving dish illustration, and the other presenting the month’s dates and festivals.',
@@ -164,6 +167,7 @@ window.PROJECTS = [
 		services: ['Illustration', 'Album Art'],
 		format: '',
 		cover: 'FINALp1-copy.png',
+		thumb: 'PiedPiper_CD_cover.jpg',
 		media: ['FINALp1-copy.png', 'FINALp3.png', 'FINALp4.jpg', 'FINALp5-copy.png'],
 		text: [
 			'<i>Pied Piper</i> creates a cohesive visual system for a Red Velvet-inspired album by illustrating a storyline based on key lyrics from five selected songs: “Cosmic,” “Peek-A-Boo,” “Bad Boy,” “Russian Roulette,” and “Feel My Rhythm.” Drawing from a personal concept of two contrasting realms—the gray, numbing Old World and the vibrant, dreamlike New World—the five illustrations visually narrate a transformation. Through symbolic imagery and evolving color palettes, the project shows Red Velvet’s members breaking through the bleakness, seducing the inhabitants into a utopia, and ultimately blending the two worlds into one cohesive vision.',
@@ -192,6 +196,7 @@ window.PROJECTS = [
 		services: ['Branding', 'Identity System'],
 		format: '',
 		cover: 'FINALp1-2.jpeg',
+		thumb: 'Wuzhen_flag_display.png',
 		media: ['FINALp1-2.jpeg', 'FINALp3-2.jpg', 'FINALp4.jpeg'],
 		text: [
 			'This branding project reimagines the visual identity of the Wuzhen Theatre Festival, an international celebration of performance and art held in the rapidly modernizing city of Wuzhen, China. As a native of the region, I was inspired to create a design system that reflects the city’s growing global presence and cultural vibrancy. Moving away from the outdated water-ink textures and muddled logo of past years, my new design embraces bold colors, simplified shapes, and theatrical motifs to capture the festival’s spirit of joy, openness, and creativity.',
