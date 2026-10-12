@@ -219,7 +219,8 @@
 			const a = rest[k];
 			const b = rest[k + 1];
 			const solo = p.solo || [];
-			if (b && !solo.includes(a) && !solo.includes(b) && Math.abs(ratio(a) / ratio(b) - 1) < 0.25 && ratio(a) < 1.6) {
+			const twoVideos = b && isVideo(a) && isVideo(b);
+			if (b && !solo.includes(a) && !solo.includes(b) && (twoVideos || (Math.abs(ratio(a) / ratio(b) - 1) < 0.25 && ratio(a) < 1.6))) {
 				blocks.push(`<div class="two">${media(a, ratio(a))}${media(b, ratio(a))}</div>`);
 				k++;
 			} else {
