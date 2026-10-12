@@ -215,6 +215,8 @@ window.PROJECTS = [
 		format: '22×11”',
 		cover: 'Interconnection.png',
 		thumb: 'FindYourVoice_square.jpg',
+		grid: 2,
+		gridRatio: 2,
 		media: [
 			'Interconnection.png',
 			'1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_3.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_4.jpg',
@@ -237,9 +239,11 @@ window.PROJECTS = [
 		format: '',
 		cover: 'Lume-Front-Cover-Mockuo.jpg',
 		thumb: 'Lume-Busniess-Card-Mockup.jpg',
+		solo: ['Lume-Spread-Mockuop.jpg'],
 		media: [
-			'SP25-Lume-Statement-Page.jpg', 'Lume-Busniess-Card-Mockup.jpg', 'Lume-Busniess-Card-Mockup-2.jpg',
+			'SP25-Lume-Statement-Page.jpg',
 			'Lume-Front-Cover-Mockuo.jpg', 'Lume-Inner-Spread-Mockup.jpg', 'Lume-Spread-Mockuop.jpg',
+			'Lume-Busniess-Card-Mockup.jpg', 'Lume-Busniess-Card-Mockup-2.jpg',
 		],
 		text: [
 			'Lume is a semi-branding project designed to provide thoughtful services for pet funerals. Although I am not a pet owner myself, being surrounded by friends and family who are has made me aware of the need for aftercare services that are visible, dignified, and well-established.',

@@ -209,15 +209,17 @@
 					k++;
 					continue;
 				}
-				// 统一裁成 4:3，排得整齐
-				blocks.push(`<div class="two grid2">${media(a, 4 / 3)}${b ? media(b, 4 / 3) : ''}</div>`);
+				// 统一裁成同一比例（默认 4:3），排得整齐
+				const r = p.gridRatio || 4 / 3;
+				blocks.push(`<div class="two grid2">${media(a, r)}${b ? media(b, r) : ''}</div>`);
 			}
 			rest.length = 0;
 		}
 		for (let k = 0; k < rest.length; k++) {
 			const a = rest[k];
 			const b = rest[k + 1];
-			if (b && Math.abs(ratio(a) / ratio(b) - 1) < 0.25 && ratio(a) < 1.6) {
+			const solo = p.solo || [];
+			if (b && !solo.includes(a) && !solo.includes(b) && Math.abs(ratio(a) / ratio(b) - 1) < 0.25 && ratio(a) < 1.6) {
 				blocks.push(`<div class="two">${media(a, ratio(a))}${media(b, ratio(a))}</div>`);
 				k++;
 			} else {
