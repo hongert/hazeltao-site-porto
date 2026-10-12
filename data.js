@@ -76,6 +76,7 @@ window.PROJECTS = [
 		services: ['Exhibition Identity', 'Poster', 'Merchandise', 'Motion'],
 		format: '',
 		cover: 'Heldstill_display3.JPG',
+		syncVideos: true,
 		thumb: 'HeldStill_Poster.jpg',
 		media: [
 			'HeldStill_Flag.jpg', 'HeldStill_BigFlag.jpg', 'HeldStill_Poster.jpg', 'Heldstill_display3.JPG',

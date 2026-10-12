@@ -42,6 +42,10 @@
 	const videoWatcher = new IntersectionObserver((entries) => {
 		entries.forEach(({ target: v, isIntersecting }) => {
 			v.dataset.visible = isIntersecting ? '1' : '';
+			if (v.dataset.sync !== undefined) {
+				if (isIntersecting) startSyncGroup();
+				return;
+			}
 			if (isIntersecting) {
 				if (!v.src) {
 					v.muted = true;
@@ -54,6 +58,39 @@
 			}
 		});
 	}, { rootMargin: '200px' });
+
+	// 同一组视频（data-sync）：任何一个进入画面时，整组一起加载、一起从头播放，之后各自循环
+	let syncStart = 0;
+	function startSyncGroup() {
+		if (syncStart) return;
+		syncStart = -1;
+		const vs = [...document.querySelectorAll('video[data-sync]')];
+		const ready = Promise.all(vs.map((v) => new Promise((ok) => {
+			v.muted = true;
+			v.preload = 'auto';
+			if (!v.src) v.src = v.dataset.src;
+			if (v.readyState >= 3) ok();
+			else v.addEventListener('canplay', ok, { once: true });
+		})));
+		// 网络慢时最多等 6 秒，之后照样一起开始
+		Promise.race([ready, new Promise((ok) => setTimeout(ok, 6000))]).then(() => {
+			vs.forEach((v) => { v.pause(); v.currentTime = 0; });
+			syncStart = performance.now();
+			vs.forEach((v) => v.play().catch(() => {}));
+		});
+	}
+	// 不跳转（跳转在这些视频里会卡回开头），而是微调播放速度追上共同时钟
+	setInterval(() => {
+		if (syncStart <= 0) return;
+		const now = (performance.now() - syncStart) / 1000;
+		document.querySelectorAll('video[data-sync]').forEach((v) => {
+			if (!v.duration || v.paused) return;
+			let diff = (now % v.duration) - v.currentTime;
+			if (diff > v.duration / 2) diff -= v.duration;
+			if (diff < -v.duration / 2) diff += v.duration;
+			v.playbackRate = Math.abs(diff) < 0.04 ? 1 : 1 + Math.max(-0.15, Math.min(0.15, diff * 0.5));
+		});
+	}, 250);
 
 	function mediaTag(name, small) {
 		if (isVideo(name)) {
@@ -252,6 +289,7 @@
 			</dl>
 			${blocks.join('')}
 			<a class="card next" href="${link(next)}"><span><span class="muted">Next project</span><br>${esc(next.title)}</span>${'<span class="pill round">' + icons.arrow + '</span>'}</a>`;
+		if (p.syncVideos) content.querySelectorAll('video').forEach((v) => (v.dataset.sync = ''));
 		watchVideos(content);
 		content.querySelectorAll('.zoomable').forEach((el) => {
 			el.addEventListener('click', () => openLightbox(p.media, +el.dataset.i));
