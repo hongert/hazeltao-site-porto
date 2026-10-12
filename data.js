@@ -223,8 +223,8 @@ window.PROJECTS = [
 		solo: ['Lume-Spread-Mockuop.jpg'],
 		media: [
 			'SP25-Lume-Statement-Page.jpg',
-			'Lume-Front-Cover-Mockuo.jpg', 'Lume-Inner-Spread-Mockup.jpg', 'Lume-Spread-Mockuop.jpg',
 			'Lume-Busniess-Card-Mockup.jpg', 'Lume-Busniess-Card-Mockup-2.jpg',
+			'Lume-Front-Cover-Mockuo.jpg', 'Lume-Inner-Spread-Mockup.jpg', 'Lume-Spread-Mockuop.jpg',
 		],
 		text: [
 			'Lume is a semi-branding project designed to provide thoughtful services for pet funerals. Although I am not a pet owner myself, being surrounded by friends and family who are has made me aware of the need for aftercare services that are visible, dignified, and well-established.',
