@@ -284,7 +284,6 @@
 			<dl class="card info">
 				<div><dt>Year</dt><dd>${p.year}</dd></div>
 				<div><dt>Deliverables</dt><dd>${p.services.join('<br>')}</dd></div>
-				<div><dt>Discipline</dt><dd>${p.tags.join('<br>')}</dd></div>
 				<div>${p.format ? `<dt>Format</dt><dd>${p.format}</dd>` : ''}${p.credits ? `<dt>Credits</dt><dd>${esc(p.credits)}</dd>` : ''}</div>
 			</dl>
 			${blocks.join('')}
