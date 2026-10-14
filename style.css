@@ -6,6 +6,7 @@
 	--text: #111111;
 	--muted: #8a8a8a;
 	--font: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace; /* 和旧站一样 */
+	--font-latin: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace;
 	--gap: 6px;          /* 卡片之间的缝 */
 	--radius: 8px;       /* 卡片圆角 */
 	--side: 37.5%;       /* 左栏宽度 */
@@ -83,6 +84,28 @@ button {
 	width: 34px;
 	padding: 0;
 	justify-content: center;
+}
+
+/* EN / CN 语言切换：当前语言是正常颜色，另一个是灰色 */
+.toggles {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.pill.lang {
+	gap: 4px;
+	color: var(--muted);
+	font-family: var(--font-latin);
+}
+
+.pill.lang .on {
+	color: var(--text);
+}
+
+/* 中文模式：英文和数字照旧用等宽字体，汉字用中文字体 */
+:root:lang(zh-Hans) {
+	--font: "Monument Grotesk Mono", "DM Mono", "Clara Sans SC", "Noto Sans SC", "PingFang SC", sans-serif;
 }
 
 .pill svg {

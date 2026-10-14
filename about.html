@@ -9,7 +9,13 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap">
-	<link rel="stylesheet" href="style.css?v=202610141425">
+	<!-- 中文字体（切换到 CN 时用）：先用免费的 Noto Sans SC，确认授权后可换成 Clara Sans -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500&display=swap">
+	<script>
+		// 记住访客选的语言（EN / CN）
+		try { if (localStorage.getItem('lang') === 'zh') document.documentElement.lang = 'zh-Hans'; } catch (e) {}
+	</script>
+	<link rel="stylesheet" href="style.css?v=202610141500">
 	<script>
 		// 黑/白背景跟着访客本地时间：晚上 7 点到凌晨 5 点是黑色，其余时间白色
 		// 手动点开关只在当前这一段时间内有效，到下一个 7 点 / 5 点就恢复自动
@@ -41,47 +47,48 @@
 
 <div class="card p-title">
 	<h1>Honger (Hazel) Tao</h1>
-	<p>MFA Graphic Design | Student at ArtCenter College of Design</p>
+	<p data-zh="艺术中心设计学院（ArtCenter College of Design）平面设计 MFA 在读">MFA Graphic Design | Student at ArtCenter College of Design</p>
 </div>
 
 <div class="two prose-pair">
 	<div class="card prose cv">
-		<div class="label">Contact</div>
+		<div class="label" data-zh="联系方式">Contact</div>
 		<p><a href="mailto:heizedesign@gmail.com">heizedesign@gmail.com</a><br>
 		<a href="https://www.instagram.com/sol.studioooo/" target="_blank" rel="noopener">@sol.studioooo</a></p>
 	</div>
 	<div class="card prose cv">
-		<div class="label">Education</div>
-		<p>ArtCenter College of Design<br><span class="muted">MFA Graphic Design, May 2027</span></p>
-		<p>Washington University in St. Louis<br><span class="muted">BA Design, May 2025</span></p>
+		<div class="label" data-zh="教育背景">Education</div>
+		<p data-zh="艺术中心设计学院（ArtCenter College of Design）&lt;br&gt;&lt;span class=&quot;muted&quot;&gt;平面设计 MFA，2027 年 5 月&lt;/span&gt;">ArtCenter College of Design<br><span class="muted">MFA Graphic Design, May 2027</span></p>
+		<p data-zh="圣路易斯华盛顿大学（Washington University in St. Louis）&lt;br&gt;&lt;span class=&quot;muted&quot;&gt;设计学士，2025 年 5 月&lt;/span&gt;">Washington University in St. Louis<br><span class="muted">BA Design, May 2025</span></p>
 	</div>
 </div>
 
 <div class="two prose-pair">
 	<div class="card prose cv">
-		<div class="label">Skills</div>
-		<p>Adobe Creative Suites<br>Branding &amp; Identity<br>Editorial Design<br>Squarespace<br>Risograph<br>Cargo<br>Figma</p>
+		<div class="label" data-zh="技能">Skills</div>
+		<p data-zh="Adobe Creative Suites&lt;br&gt;品牌与视觉识别&lt;br&gt;编辑设计&lt;br&gt;Squarespace&lt;br&gt;孔版印刷（Risograph）&lt;br&gt;Cargo&lt;br&gt;Figma">Adobe Creative Suites<br>Branding &amp; Identity<br>Editorial Design<br>Squarespace<br>Risograph<br>Cargo<br>Figma</p>
 	</div>
 	<div class="card prose cv">
-		<div class="label">Fine Art Skills</div>
-		<p>Painting (oil, acrylic)<br>Printmaking<br>Cyanotype<br>Ceramic</p>
+		<div class="label" data-zh="纯艺术技能">Fine Art Skills</div>
+		<p data-zh="绘画（油画、丙烯）&lt;br&gt;版画&lt;br&gt;蓝晒&lt;br&gt;陶艺">Painting (oil, acrylic)<br>Printmaking<br>Cyanotype<br>Ceramic</p>
 	</div>
 </div>
 
 <div class="card prose cv">
-	<div class="label">Exhibition</div>
-	<p><a href="https://www.northarlington.org/News/View/5242/bergen-county-celebrates-asian-american-native-hawaiian-pacific-islander-heritage-month">2023 Asian American, Native Hawaiian &amp; Pacific Islander (AANHPI) Heritage Month</a></p>
+	<div class="label" data-zh="展览">Exhibition</div>
+	<p><a href="https://www.northarlington.org/News/View/5242/bergen-county-celebrates-asian-american-native-hawaiian-pacific-islander-heritage-month"><span data-zh="2023 年亚裔美国人、夏威夷原住民及太平洋岛民（AANHPI）传统月">2023 Asian American, Native Hawaiian &amp; Pacific Islander (AANHPI) Heritage Month</span></a></p>
 </div>
 
 <div class="card prose cv">
-	<div class="label">Last Updated</div>
+	<div class="label" data-zh="最后更新">Last Updated</div>
 	<p class="muted">03.20.2026</p>
 </div>
 
 </main>
 
-<script src="data.js?v=202610141425"></script>
-<script src="sizes.js?v=202610141425"></script>
-<script src="site.js?v=202610141425"></script>
+<script src="data.js?v=202610141500"></script>
+<script src="data.zh.js?v=202610141500"></script>
+<script src="sizes.js?v=202610141500"></script>
+<script src="site.js?v=202610141500"></script>
 </body>
 </html>

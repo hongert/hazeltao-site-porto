@@ -3,10 +3,30 @@
 
 (() => {
 	const S = window.SITE;
-	const P = window.PROJECTS;
+	const params = new URLSearchParams(location.search);
+
+	// ---------- 中英切换（中文内容在 data.zh.js） ----------
+	const ZH = window.ZH;
+	const lang = document.documentElement.lang === 'zh-Hans' && ZH ? 'zh' : 'en';
+	const T = (en) => (lang === 'zh' && ZH.ui[en]) || en;
+	const term = (en) => (lang === 'zh' && ZH.terms[en]) || en;
+	const localize = (p) => {
+		if (lang !== 'zh') return p;
+		const z = ZH.projects[p.slug] || {};
+		return {
+			...p,
+			en: p,
+			title: z.title || p.title,
+			subtitle: z.subtitle || p.subtitle,
+			text: z.text || p.text,
+			credits: z.credits || p.credits,
+			tags: p.tags.map(term),
+			services: p.services.map(term),
+		};
+	};
+	const P = window.PROJECTS.map(localize);
 	const SIZES = window.SIZES || {};
 	const page = document.body.dataset.page; // home | project | all | about
-	const params = new URLSearchParams(location.search);
 
 	// ---------- 小工具 ----------
 	const $ = (sel, root = document) => root.querySelector(sel);
@@ -29,8 +49,14 @@
 
 	// ---------- 黑白背景开关 ----------
 	function switchHTML() {
-		return '<button class="switch" aria-label="Switch black / white background"></button>';
+		const langBtn = `<button class="pill lang" aria-label="Switch language / 切换语言"><span${lang === 'en' ? ' class="on"' : ''}>EN</span> / <span${lang === 'zh' ? ' class="on"' : ''}>CN</span></button>`;
+		return `<span class="toggles">${langBtn}<button class="switch" aria-label="Switch black / white background"></button></span>`;
 	}
+	document.addEventListener('click', (e) => {
+		if (!e.target.closest('.lang')) return;
+		store.set('lang', lang === 'zh' ? 'en' : 'zh');
+		location.reload();
+	});
 	document.addEventListener('click', (e) => {
 		if (!e.target.closest('.switch')) return;
 		const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
@@ -112,7 +138,7 @@
 		side.className = 'side';
 		side.innerHTML = `
 			<div class="topline">
-				<a class="pill" href="all.html">Show all projects</a>
+				<a class="pill" href="all.html">${T('Show all projects')}</a>
 				${switchHTML()}
 			</div>
 			<div class="masthead">
@@ -120,7 +146,7 @@
 				<div class="clock"><span class="d"></span><br><span class="c"></span></div>
 			</div>
 			<div class="cards">
-				<a class="card text${page === 'about' ? ' active' : ''}" href="about.html">About${S.about ? `<p>${esc(S.about)}</p>` : ''}</a>
+				<a class="card text${page === 'about' ? ' active' : ''}" href="about.html">${T('About')}${S.about ? `<p>${esc(S.about)}</p>` : ''}</a>
 				${P.map((p) => `
 				<div class="stack-item">
 					<a class="card row${p.slug === current ? ' active' : ''}" href="${link(p)}">
@@ -142,12 +168,12 @@
 	function startClock(root) {
 		const d = $('.d', root);
 		const c = $('.c', root);
-		const dateFmt = new Intl.DateTimeFormat('en-US', { timeZone: S.timezone, weekday: 'long', month: 'long', day: 'numeric' });
+		const dateFmt = new Intl.DateTimeFormat(lang === 'zh' ? 'zh-CN' : 'en-US', { timeZone: S.timezone, weekday: 'long', month: 'long', day: 'numeric' });
 		const timeFmt = new Intl.DateTimeFormat('en-GB', { timeZone: S.timezone, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
 		const tick = () => {
 			const now = new Date();
 			d.textContent = dateFmt.format(now);
-			c.textContent = `${S.city}, ${timeFmt.format(now)}`;
+			c.textContent = `${(lang === 'zh' && ZH.site.city) || S.city}, ${timeFmt.format(now)}`;
 		};
 		tick();
 		setInterval(tick, 1000);
@@ -220,7 +246,7 @@
 	function renderProject() {
 		const i = P.findIndex((p) => p.slug === current);
 		if (i < 0) {
-			content.innerHTML = mobileTop() + '<div class="card prose"><p>Project not found.</p></div>';
+			content.innerHTML = mobileTop() + `<div class="card prose"><p>${T('Project not found.')}</p></div>`;
 			return;
 		}
 		const p = P[i];
@@ -277,17 +303,17 @@
 			<div class="card p-title"><h1>${esc(p.title)}</h1><p>${esc(p.subtitle)}</p></div>
 			${t2
 				? `<div class="two prose-pair">
-					<div class="card prose"><div class="label">About the project</div><p>${t1}</p></div>
+					<div class="card prose"><div class="label">${T('About the project')}</div><p>${t1}</p></div>
 					<div class="card prose"><div class="label">&nbsp;</div><p>${t2}</p></div>
 				</div>`
-				: `<div class="card prose"><div class="label">About the project</div><p>${t1}</p></div>`}
+				: `<div class="card prose"><div class="label">${T('About the project')}</div><p>${t1}</p></div>`}
 			<dl class="card info">
-				<div><dt>Year</dt><dd>${p.year}</dd></div>
-				<div><dt>Deliverables</dt><dd>${p.services.join('<br>')}</dd></div>
-				<div>${p.format ? `<dt>Format</dt><dd>${p.format}</dd>` : ''}${p.credits ? `<dt>Credits</dt><dd>${esc(p.credits)}</dd>` : ''}</div>
+				<div><dt>${T('Year')}</dt><dd>${p.year}</dd></div>
+				<div><dt>${T('Deliverables')}</dt><dd>${p.services.join('<br>')}</dd></div>
+				<div>${p.format ? `<dt>${T('Format')}</dt><dd>${p.format}</dd>` : ''}${p.credits ? `<dt>${T('Credits')}</dt><dd>${esc(p.credits)}</dd>` : ''}</div>
 			</dl>
 			${blocks.join('')}
-			<a class="card next" href="${link(next)}"><span><span class="muted">Next project</span><br>${esc(next.title)}</span>${'<span class="pill round">' + icons.arrow + '</span>'}</a>`;
+			<a class="card next" href="${link(next)}"><span><span class="muted">${T('Next project')}</span><br>${esc(next.title)}</span>${'<span class="pill round">' + icons.arrow + '</span>'}</a>`;
 		if (p.syncVideos) content.querySelectorAll('video').forEach((v) => (v.dataset.sync = ''));
 		watchVideos(content);
 		content.querySelectorAll('.zoomable').forEach((el) => {
@@ -299,7 +325,7 @@
 	function renderAll() {
 		document.body.insertAdjacentHTML('afterbegin', `
 			<div class="all-top">
-				<label class="search"><input type="search" placeholder="I want to see..." aria-label="Search projects">${icons.arrow}</label>
+				<label class="search"><input type="search" placeholder="${T('I want to see...')}" aria-label="Search projects">${icons.arrow}</label>
 				<div class="topline">
 					${switchHTML()}
 					<a class="pill round" href="index.html" aria-label="Close">${icons.close}</a>
@@ -309,7 +335,8 @@
 		input.value = params.get('q') || '';
 		const draw = () => {
 			const q = input.value.trim().toLowerCase();
-			const list = P.filter((p) => !q || (p.title + ' ' + p.subtitle + ' ' + p.tags.join(' ') + ' ' + p.services.join(' ') + ' ' + p.year).toLowerCase().includes(q));
+			const hay = (p) => [p, p.en || p].map((x) => x.title + ' ' + x.subtitle + ' ' + x.tags.join(' ') + ' ' + x.services.join(' ')).join(' ') + ' ' + p.year;
+			const list = P.filter((p) => !q || hay(p).toLowerCase().includes(q));
 			// 按顺序从左到右放进最短的一列
 			const n = innerWidth <= 760 ? 2 : 3;
 			const cols = Array.from({ length: n }, () => ({ h: 0, html: '' }));
@@ -325,7 +352,7 @@
 			});
 			content.innerHTML = list.length
 				? `<div class="masonry">${cols.map((c) => `<div class="col">${c.html}</div>`).join('')}</div>`
-				: '<div class="empty">Nothing matches that yet.</div>';
+				: `<div class="empty">${T('Nothing matches that yet.')}</div>`;
 		};
 		input.addEventListener('input', draw);
 		let wasMobile = innerWidth <= 760;
@@ -344,8 +371,8 @@
 	lb.innerHTML = `
 		<div class="stage"></div>
 		<button class="pill round close" aria-label="Close">${icons.close}</button>
-		<button class="pill prev">Prev</button>
-		<button class="pill next">Next</button>
+		<button class="pill prev">${T('Prev')}</button>
+		<button class="pill next">${T('Next')}</button>
 		<div class="count"></div>`;
 	document.body.append(lb);
 	let lbList = [];
@@ -389,5 +416,8 @@
 	if (page === 'home') renderHome();
 	if (page === 'project') renderProject();
 	if (page === 'all') renderAll();
-	if (page === 'about') content.insertAdjacentHTML('afterbegin', mobileTop());
+	if (page === 'about') {
+		if (lang === 'zh') document.querySelectorAll('[data-zh]').forEach((el) => (el.innerHTML = el.dataset.zh));
+		content.insertAdjacentHTML('afterbegin', mobileTop());
+	}
 })();
