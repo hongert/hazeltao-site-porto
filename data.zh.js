@@ -59,6 +59,7 @@ window.ZH = {
 	// 每个项目的中文：title 不写就沿用英文名
 	projects: {
 		'arboretum': {
+			title: '植物园',
 			subtitle: '品牌重塑提案',
 			text: [
 				'为<a href="https://arboretum.org/">洛杉矶植物园（LA Arboretum &amp; Botanical Garden）</a>所做的品牌提案。拉伸的字体模仿植物生长的节奏与动态；放大的近景特写带来更沉浸的体验，仿佛眼前的清新气息触手可及。周边产品样机与空间设计，则构想了洛杉矶植物园与艺术家 Jennifer Steinkamp 的一次概念合作。',
@@ -73,9 +74,10 @@ window.ZH = {
 			credits: '摄影：Kin Codel。创意总监：Zaul Ocana',
 		},
 		'held-still': {
+			title: '保持静止',
 			subtitle: '展览视觉设计',
 			text: [
-				'《Held Still：当时间变得可见》是一个策展型展览，展出八位艺术家的作品：Sarah Ball、Eska Marsh、Irving Penn、Paula Siebra、Nicolas Party、Lucas Blalock、Rachel Ruysch 和 Michaël Borremans。这些作品都属于静物这一历久弥新的题材。我对静物的兴趣来自它内在的张力：这些画面在观者眼中仿佛凝固，却代表着一个曾经鲜活的过去。无论是优雅的花朵、变形的梨，还是摆好姿势的模特，画框中的一切都曾属于一个有生命的世界。',
+				'《保持静止：当时间变得可见》（Held Still: When Time Becomes Visible）是一个策展型展览，展出八位艺术家的作品：Sarah Ball、Eska Marsh、Irving Penn、Paula Siebra、Nicolas Party、Lucas Blalock、Rachel Ruysch 和 Michaël Borremans。这些作品都属于静物这一历久弥新的题材。我对静物的兴趣来自它内在的张力：这些画面在观者眼中仿佛凝固，却代表着一个曾经鲜活的过去。无论是优雅的花朵、变形的梨，还是摆好姿势的模特，画框中的一切都曾属于一个有生命的世界。',
 				'在一个节奏飞快、一切都匆匆模糊而过的时代，这个展览是对现代生活惯性的一次刻意介入。它安静地邀请观众暂时跳出日常习惯，走进一个精心策划的空间，让无生命之物终于有机会开口说话。为了在视觉上表达这一主题，我以“画框”为基础设计了一个“超级符号”。这个图形可以灵活适配海报、横幅、门票和周边产品等不同载体，为展览建立起统一的视觉形象。',
 			],
 		},
@@ -92,9 +94,10 @@ window.ZH = {
 			],
 		},
 		'pied-piper': {
+			title: '吹笛人',
 			subtitle: '专辑设计',
 			text: [
-				'<i>Pied Piper</i> 为一张以 Red Velvet 为灵感的专辑打造了一套完整的视觉系统，根据五首歌曲《Cosmic》《Peek-A-Boo》《Bad Boy》《Russian Roulette》和《Feel My Rhythm》中的关键歌词，用插画讲述一个故事。故事源自我构想的两个对立世界：灰暗、麻木的旧世界，和鲜艳、梦幻的新世界。五幅插画讲述了一场转变：通过象征性的意象和不断变化的色彩，Red Velvet 的成员们冲破沉闷，把居民引向乌托邦，最终让两个世界融为一体。',
+				'《吹笛人》（Pied Piper）为一张以 Red Velvet 为灵感的专辑打造了一套完整的视觉系统，根据五首歌曲《Cosmic》《Peek-A-Boo》《Bad Boy》《Russian Roulette》和《Feel My Rhythm》中的关键歌词，用插画讲述一个故事。故事源自我构想的两个对立世界：灰暗、麻木的旧世界，和鲜艳、梦幻的新世界。五幅插画讲述了一场转变：通过象征性的意象和不断变化的色彩，Red Velvet 的成员们冲破沉闷，把居民引向乌托邦，最终让两个世界融为一体。',
 			],
 		},
 		'serenseek': {
@@ -111,15 +114,17 @@ window.ZH = {
 			],
 		},
 		'huayings-recipe': {
+			title: '花英的食谱',
 			subtitle: '印刷设计',
 			text: [
-				'<i>Huaying’s Recipe</i> 是一份献给我祖母的私人致敬，纪念童年时和她一起做饭的珍贵回忆。灵感来自她挂在客厅墙上的日历，我做了一份既实用又有装饰性的礼物，既表达我对她的爱，也记录了我作为设计师的成长。每个月都收录她的一道拿手菜，并搭配时令食材或传统节日。日历采用经折装，便于展示和翻阅，每个月占两页：一页是风格化的菜肴插画，另一页是当月的日期和节日。',
+				'《花英的食谱》（Huaying’s Recipe）是一份献给我祖母的私人致敬，纪念童年时和她一起做饭的珍贵回忆。灵感来自她挂在客厅墙上的日历，我做了一份既实用又有装饰性的礼物，既表达我对她的爱，也记录了我作为设计师的成长。每个月都收录她的一道拿手菜，并搭配时令食材或传统节日。日历采用经折装，便于展示和翻阅，每个月占两页：一页是风格化的菜肴插画，另一页是当月的日期和节日。',
 			],
 		},
 		'find-your-voice': {
+			title: '寻找你的声音',
 			subtitle: '编辑设计',
 			text: [
-				'“Find Your Voice”是我在“Typography II”课程中完成的一个长篇幅编辑排版设计，项目名为“Interconnection”。项目的目标是为文字和图像内容建立有序的结构，同时保留主题与变化的空间，让读者始终保持兴趣。',
+				'《寻找你的声音》（Find Your Voice）是我在“Typography II”课程中完成的一个长篇幅编辑排版设计，项目名为“Interconnection”。项目的目标是为文字和图像内容建立有序的结构，同时保留主题与变化的空间，让读者始终保持兴趣。',
 			],
 		},
 		'lume': {
