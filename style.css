@@ -103,9 +103,10 @@ button {
 	color: var(--text);
 }
 
-/* 中文模式：英文和数字照旧用等宽字体，汉字用中文字体 */
+/* 中文模式：中文、英文、数字全部用同一个中文字体，不混用 */
 :root:lang(zh-Hans) {
-	--font: "Monument Grotesk Mono", "DM Mono", "Clara Sans SC", "Noto Sans SC", "PingFang SC", sans-serif;
+	--font: "MiSans", "PingFang SC", "Microsoft YaHei", sans-serif;
+	--font-latin: var(--font);
 }
 
 .pill svg {
