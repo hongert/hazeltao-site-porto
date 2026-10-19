@@ -105,8 +105,12 @@ button {
 
 /* 中文模式：中文、英文、数字全部用同一个中文字体，不混用 */
 :root:lang(zh-Hans) {
-	--font: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+	--font: "MiSans", "PingFang SC", "Microsoft YaHei", sans-serif;
 	--font-latin: var(--font);
+}
+
+:root:lang(zh-Hans) body {
+	font-weight: 500;
 }
 
 .pill svg {
