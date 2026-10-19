@@ -242,7 +242,9 @@
 			`<div class="media zoomable${isVideo(m) && !half ? ' video' : ''}" data-i="${p.media.indexOf(m)}"${half ? ` style="aspect-ratio:${half.toFixed(3)}"` : ''}>${mediaTag(m, false)}</div>`;
 
 		// 比例相近的两张图并排，其余通栏；多出来的文字段落插在图片之间
-		const rest = p.media.slice(1);
+		// extraRows 里的图片单独排在最后，不参与上面的自动排版
+		const extra = (p.extraRows || []).flat().flatMap((r) => (typeof r === 'string' ? [r] : [r.big, ...r.stack]));
+		const rest = p.media.slice(1).filter((m) => !extra.includes(m));
 		const extraText = p.text.slice(2);
 		const blocks = [];
 		let count = 0;
@@ -264,8 +266,9 @@
 			rest.length = 0;
 		}
 		// rows：自己指定每一排放哪几张；同一排的图等高、按原比例分配宽度，不裁切
-		if (p.rows) {
-			p.rows.forEach((r) => {
+		const allRows = (p.rows || []).concat(p.extraRows || []);
+		if (allRows.length) {
+			allRows.forEach((r) => {
 				// { big, stack: [b, c] }：左边一张大图，右边上下叠两张小图
 				if (!Array.isArray(r)) {
 					blocks.push(`<div class="two grid2 reel">${media(r.big, ratio(r.big))}<div class="stack">${media(r.stack[0])}${media(r.stack[1])}</div></div>`);

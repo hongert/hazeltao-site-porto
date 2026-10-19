@@ -41,6 +41,15 @@ window.PROJECTS = [
 			'Screenshot-2026-02-13-at-11.32.12AM.png', 'Screenshot-2026-02-13-at-11.32.01AM.png',
 			'Arboretum-Instagram-Mockup.png', 'GS3_FA25_HazelTao_Website6.jpg', 'GS3_FA25_HazelTao_Website5.jpg',
 			'GS3_FA25_HazelTao_Website7.jpg', 'GS3_FA25_-HazelTao_Swag1.jpg',
+			'Arboretum_BrandBible_20-21.jpg', 'Arboretum_BrandBible_26-27.jpg', 'Arboretum_BrandBible_24-25.jpg',
+			'Arboretum_BrandBible_32-33.jpg', 'Arboretum_BrandBible_50-51.jpg', 'Arboretum_BrandBible_40-41.jpg',
+		],
+		// Brand Bible 跨页排在最后：并排和大图交替
+		extraRows: [
+			['Arboretum_BrandBible_20-21.jpg', 'Arboretum_BrandBible_26-27.jpg'],
+			['Arboretum_BrandBible_24-25.jpg'],
+			['Arboretum_BrandBible_32-33.jpg', 'Arboretum_BrandBible_50-51.jpg'],
+			['Arboretum_BrandBible_40-41.jpg'],
 		],
 		text: [
 			'Proposal for the <a href="https://arboretum.org/">LA Arboretum &amp; Botanical Garden</a>. Stretched typography mimics the rhythm and motion of plant growth. Zoomed-in, close-up imagery creates a more immersive experience-almost letting you smell the freshness right in front of you. Marchandise mockups and spatial for a conceptual collaboration between the LA Arboretum &amp; Botanical Garden and Jennifer Steinkamp.',
@@ -186,8 +195,7 @@ window.PROJECTS = [
 			'Serenseek_scene9.png', 'Serenseek_scene11.jpg',
 		],
 		rows: [
-			['Serenseek_scene1.png'],
-			['Serenseek_scene5_v2.png'],
+			['Serenseek_scene1.png', 'Serenseek_scene5_v2.png'],
 			['Serenseek_scene10.png', 'Serenseek_cup_hand.png'],
 			['Serenseek_flatlay.png'],
 			{ big: 'Serenseek_scene8.png', stack: ['Serenseek_scene9.png', 'Serenseek_scene11.jpg'] },

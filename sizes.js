@@ -1,5 +1,11 @@
 // 图片尺寸（宽/高），用于网格排版。新加图片可以不写，会按横图处理
 window.SIZES = {
+	'Arboretum_BrandBible_20-21.jpg': [4608, 2880],
+	'Arboretum_BrandBible_24-25.jpg': [4608, 2880],
+	'Arboretum_BrandBible_26-27.jpg': [4608, 2880],
+	'Arboretum_BrandBible_32-33.jpg': [4608, 2880],
+	'Arboretum_BrandBible_40-41.jpg': [4608, 2880],
+	'Arboretum_BrandBible_50-51.jpg': [4608, 2880],
 	'Serenseek_scene5_v2.png': [4928, 3264],
 	'Serenseek_scene11.jpg': [1500, 1000],
 	'Serenseek_flatlay.png': [6738, 4968],
