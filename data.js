@@ -97,7 +97,7 @@ window.PROJECTS = [
 		format: '',
 		cover: 'Heldstill_display3.JPG',
 		syncVideos: true,
-		thumb: 'HeldStill_Poster.jpg',
+		thumb: 'HeldStill_Flag.jpg',
 		media: [
 			'HeldStill_Flag.jpg', 'HeldStill_BigFlag.jpg', 'HeldStill_Poster.jpg', 'Heldstill_display3.JPG',
 			'HeldStill_Ticket.jpg', 'HeldStill_IDCard.jpg', 'Heldstill_display_5.jpg', 'Heldstill_display_3.jpg',
