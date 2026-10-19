@@ -1,5 +1,9 @@
 // 图片尺寸（宽/高），用于网格排版。新加图片可以不写，会按横图处理
 window.SIZES = {
+	'Serenseek_scene8.png': [3000, 4500],
+	'Serenseek_scene9.png': [4200, 2800],
+	'Serenseek_scene10.png': [3300, 4530],
+	'Serenseek_scene12.jpg': [4500, 3000],
 	'Serenseek_cup_hand.png': [3000, 4500],
 	'Serenseek_scene1.png': [4500, 3200],
 	'Serenseek_scene5.png': [4928, 3264],
