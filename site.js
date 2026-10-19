@@ -271,7 +271,10 @@
 			allRows.forEach((r) => {
 				// { big, stack: [b, c] }：左边一张大图，右边上下叠两张小图
 				if (!Array.isArray(r)) {
-					blocks.push(`<div class="two grid2 reel">${media(r.big, ratio(r.big))}<div class="stack">${media(r.stack[0])}${media(r.stack[1])}</div></div>`);
+					const big = media(r.big, ratio(r.big));
+					const stack = `<div class="stack">${media(r.stack[0])}${media(r.stack[1])}</div>`;
+					// bigRight: true 时小图在左、大图在右
+					blocks.push(`<div class="two grid2 reel">${r.bigRight ? stack + big : big + stack}</div>`);
 					return;
 				}
 				const mat = p.mat ? ' matted' : '';

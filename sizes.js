@@ -18,7 +18,7 @@ window.SIZES = {
 	'Riso_scan_01.jpg': [4249, 1931],
 	'Riso_scan_02.jpg': [4282, 1936],
 	'Riso_scan_03.jpg': [4272, 1943],
-	'Riso_scan_04.jpg': [4124, 1897],
+	'Riso_scan_04_straight.jpg': [4084, 1815],
 	'Riso_scan_05.jpg': [4219, 1904],
 	'Riso_scan_06.jpg': [4296, 1897],
 	'Riso_scan_07.jpg': [4291, 1966],

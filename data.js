@@ -142,23 +142,21 @@ window.PROJECTS = [
 		media: [
 			'IMG_5826.jpg',
 			'Riso_scan_00.jpg', 'Riso_scan_01.jpg', 'Riso_scan_02.jpg',
-			'Riso_scan_03.jpg', 'Riso_scan_04.jpg', 'Riso_scan_05.jpg',
+			'Riso_scan_03.jpg', 'Riso_scan_04_straight.jpg', 'Riso_scan_05.jpg',
 			'Riso_scan_06.jpg', 'Riso_scan_07.jpg', 'Riso_scan_08.jpg',
 			'Riso_scan_09.jpg', 'Riso_scan_10.jpg', 'Riso_scan_11.jpg',
 			'Riso_scan_12.jpg',
 		],
 		mat: true,
-		// 封面整行，然后按月份：两张一排和单张一整行交替
+		// 两张一排，只有 6 月是整行大图
 		rows: [
-			['Riso_scan_00.jpg'],
-			['Riso_scan_01.jpg', 'Riso_scan_02.jpg'],
-			['Riso_scan_03.jpg'],
-			['Riso_scan_04.jpg', 'Riso_scan_05.jpg'],
+			['Riso_scan_00.jpg', 'Riso_scan_01.jpg'],
+			['Riso_scan_02.jpg', 'Riso_scan_03.jpg'],
+			['Riso_scan_04_straight.jpg', 'Riso_scan_05.jpg'],
 			['Riso_scan_06.jpg'],
 			['Riso_scan_07.jpg', 'Riso_scan_08.jpg'],
-			['Riso_scan_09.jpg'],
-			['Riso_scan_10.jpg', 'Riso_scan_11.jpg'],
-			['Riso_scan_12.jpg'],
+			['Riso_scan_09.jpg', 'Riso_scan_10.jpg'],
+			['Riso_scan_11.jpg', 'Riso_scan_12.jpg'],
 		],
 		text: [
 			'Sweetness In Four Season is a limited-edition desktop calendar project exploring the intersections of time, nature, and print craftsmanship. Centered around the concept of "phenological slices of time," the project translates the unique weather patterns, seasonal fruits, and emotional resonance of each month into abstract geometric compositions and distinct RISO spot-color overlays.',
@@ -194,11 +192,12 @@ window.PROJECTS = [
 			'Serenseek_flatlay.png', 'Serenseek_scene8.png', 'Serenseek_scene10.png',
 			'Serenseek_scene9.png', 'Serenseek_scene11.jpg',
 		],
+		// 小小 → 大 → 小大 → 小小
 		rows: [
+			['Serenseek_scene10.png', 'Serenseek_cup_hand.png'],
 			['Serenseek_scene1.png'],
-			['Serenseek_scene5_v2.png', 'Serenseek_scene10.png', 'Serenseek_cup_hand.png'],
-			['Serenseek_flatlay.png'],
-			{ big: 'Serenseek_scene8.png', stack: ['Serenseek_scene9.png', 'Serenseek_scene11.jpg'] },
+			{ big: 'Serenseek_scene8.png', stack: ['Serenseek_scene9.png', 'Serenseek_scene11.jpg'], bigRight: true },
+			['Serenseek_scene5_v2.png', 'Serenseek_flatlay.png'],
 		],
 		text: [
 			'<i>‘Serenseek’</i> is a branding project centered around the concept of seeking truth and inner peace. The teahouse offers a tranquil escape from the chaos of city life, inviting visitors to reconnect with themselves and embrace a simpler, more mindful way of living. From the visual identity to the spatial atmosphere, every design element aims to transport guests into a serene, calming environment that nurtures introspection and authenticity.',
