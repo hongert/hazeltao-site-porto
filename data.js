@@ -195,8 +195,8 @@ window.PROJECTS = [
 			'Serenseek_scene9.png', 'Serenseek_scene11.jpg',
 		],
 		rows: [
-			['Serenseek_scene1.png', 'Serenseek_scene5_v2.png'],
-			['Serenseek_scene10.png', 'Serenseek_cup_hand.png'],
+			['Serenseek_scene1.png'],
+			['Serenseek_scene5_v2.png', 'Serenseek_scene10.png', 'Serenseek_cup_hand.png'],
 			['Serenseek_flatlay.png'],
 			{ big: 'Serenseek_scene8.png', stack: ['Serenseek_scene9.png', 'Serenseek_scene11.jpg'] },
 		],
