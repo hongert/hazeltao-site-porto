@@ -266,6 +266,11 @@
 		// rows：自己指定每一排放哪几张；同一排的图等高、按原比例分配宽度，不裁切
 		if (p.rows) {
 			p.rows.forEach((r) => {
+				// { big, stack: [b, c] }：左边一张大图，右边上下叠两张小图
+				if (!Array.isArray(r)) {
+					blocks.push(`<div class="two grid2 reel">${media(r.big, ratio(r.big))}<div class="stack">${media(r.stack[0])}${media(r.stack[1])}</div></div>`);
+					return;
+				}
 				const mat = p.mat ? ' matted' : '';
 				blocks.push(r.length === 1
 					? (p.mat ? `<div class="matted">${media(r[0])}</div>` : media(r[0]))

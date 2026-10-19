@@ -63,6 +63,16 @@ window.PROJECTS = [
 			'Taohe_pencil_mockup.jpg', 'Taohe_Stationary_Mockup.jpg', 'Taohe_File_envelope.jpg',
 			'taohe_boxes.jpg', 'Taohe_tape_mockup.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg',
 		],
+		// 整行和并排交替
+		rows: [
+			['taohe_social2.jpg'],
+			['Taohe_social_3.jpg', 'Taohe_product_web-copy.jpg'],
+			['Taohe_pencil_mockup.jpg'],
+			['Taohe_Stationary_Mockup.jpg', 'Taohe_File_envelope.jpg'],
+			['taohe_boxes.jpg'],
+			['Taohe_tape_mockup.jpg', 'taohe-hm_envelope.jpg'],
+			['taohe-hm_shoppingbag.jpg'],
+		],
 		text: [
 			'TAOHE is a brand proposal built from the ground up, rooted in the heritage of my family’s business. Recognizing a significant gap in the U.S. market for premium yak wool, I developed TAOHE to bridge the divide between traditional Tibetan materials and contemporary retail. The project began with deep strategic research—including competitive auditing, brand positioning, and persona development—resulting in a business model centered on 100% yak wool apparel that prioritizes both quality and heritage.',
 			'The name TAOHE is a reflection of this personal connection: "Tao" represents my family name, while "He" (和) signifies togetherness in Mandarin. Visually, the brand intentionally breaks away from the delicate, thin-line aesthetics common in luxury cashmere. Instead, the logo and typography embrace a sense of boldness and weight, designed to evoke the warmth and heavy weight of the wool itself. The visual language is defined by juxtaposition, with type treatments inspired by the rugged, natural "ups and downs" of the Tibetan mountain ranges.',
@@ -177,10 +187,10 @@ window.PROJECTS = [
 		],
 		rows: [
 			['Serenseek_scene1.png'],
-			['Serenseek_scene5_v2.png', 'Serenseek_cup_hand.png'],
+			['Serenseek_scene5_v2.png'],
+			['Serenseek_scene10.png', 'Serenseek_cup_hand.png'],
 			['Serenseek_flatlay.png'],
-			['Serenseek_scene8.png', 'Serenseek_scene10.png'],
-			['Serenseek_scene9.png', 'Serenseek_scene11.jpg'],
+			{ big: 'Serenseek_scene8.png', stack: ['Serenseek_scene9.png', 'Serenseek_scene11.jpg'] },
 		],
 		text: [
 			'<i>‘Serenseek’</i> is a branding project centered around the concept of seeking truth and inner peace. The teahouse offers a tranquil escape from the chaos of city life, inviting visitors to reconnect with themselves and embrace a simpler, more mindful way of living. From the visual identity to the spatial atmosphere, every design element aims to transport guests into a serene, calming environment that nurtures introspection and authenticity.',
