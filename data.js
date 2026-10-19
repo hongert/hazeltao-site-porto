@@ -76,11 +76,10 @@ window.PROJECTS = [
 		rows: [
 			['taohe_social2.jpg'],
 			['Taohe_social_3.jpg', 'Taohe_product_web-copy.jpg'],
-			['Taohe_pencil_mockup.jpg'],
-			['Taohe_Stationary_Mockup.jpg', 'Taohe_File_envelope.jpg'],
+			['Taohe_Stationary_Mockup.jpg'],
+			['Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg'],
 			['taohe_boxes.jpg'],
-			['Taohe_tape_mockup.jpg', 'taohe-hm_envelope.jpg'],
-			['taohe-hm_shoppingbag.jpg'],
+			['Taohe_tape_mockup.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg'],
 		],
 		text: [
 			'TAOHE is a brand proposal built from the ground up, rooted in the heritage of my family’s business. Recognizing a significant gap in the U.S. market for premium yak wool, I developed TAOHE to bridge the divide between traditional Tibetan materials and contemporary retail. The project began with deep strategic research—including competitive auditing, brand positioning, and persona development—resulting in a business model centered on 100% yak wool apparel that prioritizes both quality and heritage.',

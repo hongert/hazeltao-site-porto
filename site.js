@@ -223,8 +223,10 @@
 				<div class="date">${p.year} · ${p.tags.join(', ')}</div>
 				<h2>${esc(p.title)}</h2>
 				<p class="lede">${esc(plain(p.text[0]))}</p>
-				<div class="media">${mediaTag(p.cover, false)}</div>
+				<div class="media">${mediaTag(p.media[0], false)}</div>
 			</a>`).join('');
+		// 首页卡片和项目页顶部用同一张（可能是视频）
+		watchVideos(content);
 	}
 
 	// 项目页：大图、标题、两张文字卡、信息、其余图片
