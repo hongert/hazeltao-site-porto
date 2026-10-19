@@ -206,7 +206,9 @@ button {
 	text-transform: uppercase;
 }
 
+/* 名字在中英文界面都用英文字体 */
 .masthead .name {
+	font-family: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace;
 	margin: 12px 0 0;
 	font-size: 15px;
 	font-weight: 500;
