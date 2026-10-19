@@ -9,7 +9,7 @@
 	--font-latin: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace;
 	--gap: 6px;          /* 卡片之间的缝 */
 	--radius: 8px;       /* 卡片圆角 */
-	--side: 37.5%;       /* 左栏宽度 */
+	--side: 30%;       /* 左栏宽度 */
 }
 
 /* 黑色背景（右上角开关） */
