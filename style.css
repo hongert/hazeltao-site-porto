@@ -178,7 +178,7 @@ button {
 
 
 .masthead {
-	padding: 24px 10px 26px;
+	padding: 24px 10px 36px;
 	text-align: center;
 }
 
@@ -640,7 +640,7 @@ a.card:hover,
 	}
 
 	.masthead {
-		padding: 18px 10px 20px;
+		padding: 18px 10px 28px;
 	}
 
 	.masthead .logo svg {
