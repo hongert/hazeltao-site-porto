@@ -10,7 +10,8 @@ window.SITE = {
 	instagram: 'sol.studioooo',
 	now: [
 		'MFA Graphic Design, ArtCenter College of Design (May 2027)',
-		'BA Design, Washington University in St. Louis (May 2025)',
+		'BA Design, Washington University in St. Louis (Sept 2023 – May 2025)',
+		'BFA Graphic Design, Boston University (Jan 2022 – May 2025)',
 	],
 	updated: '03.20.2026',
 	// 左上角时钟显示的城市和时区

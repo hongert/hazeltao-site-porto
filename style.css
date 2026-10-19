@@ -178,17 +178,16 @@ button {
 	text-align: center;
 }
 
-.masthead .name {
-	margin: 0 0 30px;
-	font-size: 15px;
-	font-weight: 500;
-	letter-spacing: 0.02em;
-	text-transform: uppercase;
+.masthead .logo {
+	display: inline-block;
+	color: var(--text);
 }
 
-.masthead .clock {
-	font-size: clamp(17px, 1.6vw, 22px);
-	line-height: 1.25;
+.masthead .logo svg {
+	display: block;
+	width: 84px;
+	height: auto;
+	fill: currentColor;
 }
 
 .cards {
@@ -632,8 +631,8 @@ a.card:hover,
 		padding: 40px 10px 46px;
 	}
 
-	.masthead .clock {
-		font-size: 21px;
+	.masthead .logo svg {
+		width: 72px;
 	}
 
 	.card.row {
