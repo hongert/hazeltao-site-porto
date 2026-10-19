@@ -145,6 +145,7 @@
 			<div class="masthead">
 				<a class="logo" href="index.html">${LOGO}</a>
 				<div class="name">${esc(S.fullName)}</div>
+				<div class="role">${lang === 'zh' ? '平面设计师' : 'Graphic Designer'}</div>
 			</div>
 			<div class="cards">
 				<a class="card text${page === 'about' ? ' active' : ''}" href="about.html">${T('About')}${S.about ? `<p>${esc(S.about)}</p>` : ''}</a>
