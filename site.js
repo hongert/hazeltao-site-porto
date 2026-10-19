@@ -266,9 +266,10 @@
 		// rows：自己指定每一排放哪几张；同一排的图等高、按原比例分配宽度，不裁切
 		if (p.rows) {
 			p.rows.forEach((r) => {
+				const mat = p.mat ? ' matted' : '';
 				blocks.push(r.length === 1
-					? media(r[0])
-					: `<div class="jrow">${r.map((m) => `<div style="flex:${ratio(m).toFixed(3)}">${media(m, ratio(m))}</div>`).join('')}</div>`);
+					? (p.mat ? `<div class="matted">${media(r[0])}</div>` : media(r[0]))
+					: `<div class="jrow">${r.map((m) => `<div class="${mat.trim()}" style="flex:${ratio(m).toFixed(3)}">${media(m, ratio(m))}</div>`).join('')}</div>`);
 			});
 			rest.length = 0;
 		}
@@ -307,7 +308,7 @@
 				<div>${p.format ? `<dt>${T('Format')}</dt><dd>${p.format}</dd>` : ''}${p.credits ? `<dt>${T('Credits')}</dt><dd>${esc(p.credits)}</dd>` : ''}</div>
 			</dl>
 			${blocks.join('')}
-			<a class="card next" href="${link(next)}"><span><span class="muted">${T('Next project')}</span><br>${esc(next.title)}</span>${'<span class="pill round">' + icons.arrow + '</span>'}</a>`;
+			<a class="card next" href="${link(next)}"><span><span class="muted">${T('Next project')}</span><br><span class="nt">${esc(next.title)}</span></span>${'<span class="pill round">' + icons.arrow + '</span>'}</a>`;
 		if (p.syncVideos) content.querySelectorAll('video').forEach((v) => (v.dataset.sync = ''));
 		watchVideos(content);
 		content.querySelectorAll('.zoomable').forEach((el) => {

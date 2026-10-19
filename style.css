@@ -282,6 +282,37 @@ a.card:hover,
 	align-items: start;
 }
 
+/* 所有项目名大写 */
+.card.row .t,
+.feature h2,
+.p-title h1,
+.tile .t,
+.card.next .nt {
+	text-transform: uppercase;
+}
+
+/* mat：图片放在黑色底板上，四周留同样比例的黑边 */
+.matted {
+	display: flex;
+	align-items: center;
+	padding: 3.5%;
+	border-radius: var(--radius);
+	background: #000;
+}
+
+.matted .media {
+	width: 100%;
+	border-radius: 0;
+}
+
+.matted .media img {
+	display: block;
+}
+
+.jrow > .matted {
+	padding: 3.5%;
+}
+
 /* 自定义排：同一排等高，宽度按图片比例分 */
 .jrow {
 	display: flex;

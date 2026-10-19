@@ -127,6 +127,7 @@ window.PROJECTS = [
 			'Riso_month_07.jpg', 'Riso_month_09.jpg', 'Riso_month_10.jpg',
 			'Riso_month_11.jpg', 'Riso_month_12.jpg',
 		],
+		mat: true,
 		// 按月份顺序：两张一排和单张一整行交替
 		rows: [
 			['Riso_month_01.jpg', 'Riso_month_02.jpg'],
