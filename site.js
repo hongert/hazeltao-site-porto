@@ -220,7 +220,7 @@
 	function renderHome() {
 		content.innerHTML = P.map((p) => `
 			<a class="card feature" href="${link(p)}">
-				<div class="feat-head"><h2>${esc(p.title)}</h2><span class="deliv">${p.services.map(esc).join(', ')}</span></div>
+				<div class="feat-head"><h2>${esc(p.title)}</h2><span class="deliv">${p.tags.map(esc).join(', ')}</span></div>
 				<div class="media">${mediaTag(p.media[0], false)}</div>
 			</a>`).join('');
 		// 首页卡片和项目页顶部用同一张（可能是视频）

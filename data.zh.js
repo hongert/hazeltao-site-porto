@@ -52,6 +52,7 @@ window.ZH = {
 		'Calendar': '日历',
 		'Album Art': '专辑美术',
 		'Branding': '品牌设计',
+		'Environmental': '环境设计',
 		'Editorial Design': '编辑设计',
 		'Stationery': '文具',
 	},
