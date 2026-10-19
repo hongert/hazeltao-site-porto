@@ -198,6 +198,12 @@ button {
 	fill: currentColor;
 }
 
+/* 视觉微调：英文 GRAPHIC DESIGNER 往左 1.5 像素（中文本来就对齐，不挪） */
+:root:not(:lang(zh-Hans)) .masthead .role {
+	position: relative;
+	left: -1.5px;
+}
+
 .masthead .role {
 	margin: 5px 0 0;
 	font-size: 11px;
