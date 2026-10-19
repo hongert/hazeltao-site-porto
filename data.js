@@ -171,15 +171,16 @@ window.PROJECTS = [
 		cover: 'Serenseek_main.png',
 		thumb: 'Serenseek_cup_hand.png',
 		media: [
-			'Serenseek_main.png', 'Serenseek_scene1.png', 'Serenseek_scene5.png', 'Serenseek_cup_hand.png',
-			'Serenseek_scene9.png', 'Serenseek_scene8.png', 'Serenseek_scene10.png', 'Serenseek_scene12.jpg',
+			'Serenseek_main.png', 'Serenseek_scene1.png', 'Serenseek_scene5_v2.png', 'Serenseek_cup_hand.png',
+			'Serenseek_flatlay.png', 'Serenseek_scene8.png', 'Serenseek_scene10.png',
+			'Serenseek_scene9.png', 'Serenseek_scene11.jpg',
 		],
 		rows: [
 			['Serenseek_scene1.png'],
-			['Serenseek_scene5.png', 'Serenseek_cup_hand.png'],
-			['Serenseek_scene9.png'],
+			['Serenseek_scene5_v2.png', 'Serenseek_cup_hand.png'],
+			['Serenseek_flatlay.png'],
 			['Serenseek_scene8.png', 'Serenseek_scene10.png'],
-			['Serenseek_scene12.jpg'],
+			['Serenseek_scene9.png', 'Serenseek_scene11.jpg'],
 		],
 		text: [
 			'<i>‘Serenseek’</i> is a branding project centered around the concept of seeking truth and inner peace. The teahouse offers a tranquil escape from the chaos of city life, inviting visitors to reconnect with themselves and embrace a simpler, more mindful way of living. From the visual identity to the spatial atmosphere, every design element aims to transport guests into a serene, calming environment that nurtures introspection and authenticity.',
