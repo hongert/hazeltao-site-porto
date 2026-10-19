@@ -156,6 +156,10 @@ button {
 	gap: var(--gap);
 }
 
+.topline.end {
+	justify-content: flex-end;
+}
+
 /* ===== 左栏：名字、时钟、项目卡片 ===== */
 .side {
 	position: fixed;
@@ -188,6 +192,14 @@ button {
 	width: 84px;
 	height: auto;
 	fill: currentColor;
+}
+
+.masthead .name {
+	margin: 22px 0 0;
+	font-size: 15px;
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
 }
 
 .cards {
