@@ -65,7 +65,7 @@ window.PROJECTS = [
 		services: ['Brand Strategy', 'Identity System', 'Packaging', 'E-commerce', 'Social'],
 		format: '',
 		cover: 'Taohe_social_3.jpg',
-		thumb: 'Taohe_Stationary_Mockup.jpg',
+		thumb: 'Taohe_logo_motion_frame.jpg',
 		media: [
 			'Taohe_logo_motion_FIN.mp4', 'taohe_social2.jpg',
 			'Taohe_social_3.jpg', 'Taohe_product_web-copy.jpg',
@@ -185,7 +185,7 @@ window.PROJECTS = [
 		services: ['Branding', 'Spatial', 'Packaging', 'Stationery'],
 		format: '',
 		cover: 'Serenseek_main.png',
-		thumb: 'Serenseek_cup_hand.png',
+		thumb: 'Serenseek_main.png',
 		media: [
 			'Serenseek_main.png', 'Serenseek_scene1.png', 'Serenseek_scene5_v2.png', 'Serenseek_cup_hand.png',
 			'Serenseek_flatlay.png', 'Serenseek_scene8.png', 'Serenseek_scene10.png',
@@ -241,7 +241,7 @@ window.PROJECTS = [
 		services: ['Editorial Design', 'Typography'],
 		format: '22×11”',
 		cover: 'Interconnection.png',
-		thumb: 'FindYourVoice_square.jpg',
+		thumb: 'Interconnection.png',
 		grid: 2,
 		gridRatio: 2,
 		media: [
