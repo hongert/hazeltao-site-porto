@@ -1,10 +1,10 @@
 // 图片尺寸（宽/高），用于网格排版。新加图片可以不写，会按横图处理
 window.SIZES = {
-	'Riso_calander_display_crop.jpg': [1121, 1103],
-	'Riso_calander_display2_crop.jpg': [1120, 1112],
-	'Riso_calander_display3_crop.jpg': [1809, 908],
-	'Riso_calander_display4_crop.jpg': [1120, 1112],
-	'Riso_calander_display5_crop.jpg': [1827, 1398],
+	'Riso_calander_display_trim.jpg': [2000, 1200],
+	'Riso_calander_display2_trim.jpg': [2000, 1200],
+	'Riso_calander_display3_trim.jpg': [2000, 1200],
+	'Riso_calander_display4_trim.jpg': [2000, 1200],
+	'Riso_calander_display5_trim.jpg': [2000, 1360],
 	'Wuzhen_main_cropped.png': [4804, 2684],
 	'Serenseek_main.png': [3000, 2001],
 	'PiedPiper_vinyl_set.png': [3750, 2500],
