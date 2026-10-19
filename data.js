@@ -124,6 +124,8 @@ window.PROJECTS = [
 			'IMG_5826.jpg',
 			'Riso_month_01.jpg', 'Riso_month_02.jpg', 'Riso_month_03.jpg',
 			'Riso_month_04.jpg', 'Riso_month_05.jpg', 'Riso_month_06.jpg',
+			'Riso_month_07.jpg', 'Riso_month_09.jpg', 'Riso_month_10.jpg',
+			'Riso_month_11.jpg', 'Riso_month_12.jpg',
 		],
 		// 按月份顺序：两张一排和单张一整行交替
 		rows: [
@@ -131,6 +133,9 @@ window.PROJECTS = [
 			['Riso_month_03.jpg'],
 			['Riso_month_04.jpg', 'Riso_month_05.jpg'],
 			['Riso_month_06.jpg'],
+			['Riso_month_07.jpg', 'Riso_month_09.jpg'],
+			['Riso_month_10.jpg'],
+			['Riso_month_11.jpg', 'Riso_month_12.jpg'],
 		],
 		text: [
 			'Sweetness In Four Season is a limited-edition desktop calendar project exploring the intersections of time, nature, and print craftsmanship. Centered around the concept of "phenological slices of time," the project translates the unique weather patterns, seasonal fruits, and emotional resonance of each month into abstract geometric compositions and distinct RISO spot-color overlays.',
