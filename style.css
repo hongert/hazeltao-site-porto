@@ -282,6 +282,23 @@ a.card:hover,
 	align-items: start;
 }
 
+/* 自定义排：同一排等高，宽度按图片比例分 */
+.jrow {
+	display: flex;
+	gap: var(--gap);
+}
+
+.jrow > div {
+	min-width: 0;
+}
+
+.jrow .media img,
+.jrow .media video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 .two.grid2.reel {
 	align-items: stretch;
 }

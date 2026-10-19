@@ -120,10 +120,15 @@ window.PROJECTS = [
 		format: '',
 		cover: 'IMG_5826.jpg',
 		thumbPos: '61% 50%',
-		solo: ['Riso_calander_display3.jpg'],
 		media: [
-			'IMG_5826.jpg', 'Riso_calander_display.jpg', 'Riso_calander_display2.jpg',
-			'Riso_calander_display3.jpg', 'Riso_calander_display4.jpg', 'Riso_calander_display5.jpg',
+			'IMG_5826.jpg', 'Riso_calander_display_crop.jpg', 'Riso_calander_display2_crop.jpg',
+			'Riso_calander_display3_crop.jpg', 'Riso_calander_display4_crop.jpg', 'Riso_calander_display5_crop.jpg',
+		],
+		// 每排放哪几张（黑边已裁成一样宽）
+		rows: [
+			['Riso_calander_display_crop.jpg', 'Riso_calander_display2_crop.jpg'],
+			['Riso_calander_display3_crop.jpg'],
+			['Riso_calander_display4_crop.jpg', 'Riso_calander_display5_crop.jpg'],
 		],
 		text: [
 			'Sweetness In Four Season is a limited-edition desktop calendar project exploring the intersections of time, nature, and print craftsmanship. Centered around the concept of "phenological slices of time," the project translates the unique weather patterns, seasonal fruits, and emotional resonance of each month into abstract geometric compositions and distinct RISO spot-color overlays.',

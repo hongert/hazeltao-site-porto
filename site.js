@@ -263,6 +263,15 @@
 			}
 			rest.length = 0;
 		}
+		// rows：自己指定每一排放哪几张；同一排的图等高、按原比例分配宽度，不裁切
+		if (p.rows) {
+			p.rows.forEach((r) => {
+				blocks.push(r.length === 1
+					? media(r[0])
+					: `<div class="jrow">${r.map((m) => `<div style="flex:${ratio(m).toFixed(3)}">${media(m, ratio(m))}</div>`).join('')}</div>`);
+			});
+			rest.length = 0;
+		}
 		for (let k = 0; k < rest.length; k++) {
 			const a = rest[k];
 			const b = rest[k + 1];
