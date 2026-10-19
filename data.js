@@ -24,7 +24,7 @@ window.SITE = {
 window.PROJECTS = [
 	{
 		slug: 'arboretum',
-		title: 'Arboretum Rebrand Proposal',
+		title: 'Arboretum',
 		subtitle: 'Rebrand Proposal',
 		year: 2025,
 		tags: ['Identity', 'Motion', 'Spatial', 'Digital'],
@@ -48,7 +48,7 @@ window.PROJECTS = [
 	},
 	{
 		slug: 'taohe',
-		title: 'TAOHE',
+		title: 'Taohe',
 		subtitle: 'Brand Identity',
 		year: 2026,
 		tags: ['Identity', 'Packaging', 'Digital', 'Motion'],
