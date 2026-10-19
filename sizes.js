@@ -1,5 +1,8 @@
 // 图片尺寸（宽/高），用于网格排版。新加图片可以不写，会按横图处理
 window.SIZES = {
+	'Serenseek_cup_hand.png': [3000, 4500],
+	'Serenseek_scene1.png': [4500, 3200],
+	'Serenseek_scene5.png': [4928, 3264],
 	'Riso_scan_00.jpg': [4289, 1908],
 	'Riso_scan_01.jpg': [4249, 1931],
 	'Riso_scan_02.jpg': [4282, 1936],
@@ -38,13 +41,10 @@ window.SIZES = {
 	'FINALp2-03.png': [2000, 1125],
 	'FINALp2-04.png': [2000, 1125],
 	'FINALp3-2.jpg': [2000, 1125],
-	'FINALp3.jpg': [2000, 1125],
 	'FINALp3.png': [2000, 1125],
-	'FINALp4-2.jpg': [2000, 1125],
 	'FINALp4.jpeg': [2000, 1125],
 	'FINALp4.jpg': [2000, 1125],
 	'FINALp5-copy.png': [2000, 1125],
-	'FINALpg5.jpg': [2000, 1125],
 	'GS3_FA25_-HazelTao_Spatial1.jpg': [2000, 1495],
 	'GS3_FA25_-HazelTao_Swag1.jpg': [2000, 1333],
 	'GS3_FA25_HazelTao_3D-Application1.jpg': [2000, 3000],
