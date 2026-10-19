@@ -189,7 +189,7 @@ button {
 
 .masthead .logo svg {
 	display: block;
-	width: 84px;
+	width: 59px;
 	height: auto;
 	fill: currentColor;
 }
@@ -644,7 +644,7 @@ a.card:hover,
 	}
 
 	.masthead .logo svg {
-		width: 72px;
+		width: 50px;
 	}
 
 	.card.row {
