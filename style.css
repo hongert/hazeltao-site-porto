@@ -401,6 +401,24 @@ a.card:hover,
 	padding: 14px 14px 14px;
 }
 
+.feature .feat-head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 16px;
+	margin: 2px 0 12px;
+}
+
+.feature .feat-head h2 {
+	margin: 0;
+}
+
+.feature .deliv {
+	color: var(--muted);
+	font-size: 12px;
+	text-align: right;
+}
+
 .feature .date {
 	color: var(--muted);
 	font-size: 12px;
