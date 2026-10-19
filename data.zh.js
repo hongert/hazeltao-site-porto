@@ -61,6 +61,7 @@ window.ZH = {
 		'arboretum': {
 			title: '植物园',
 			subtitle: '品牌重塑提案',
+			credits: '摄影：Yizhang Ding、@Bleachfeel、Jennifer Steinkamp',
 			text: [
 				'为<a href="https://arboretum.org/">洛杉矶植物园（LA Arboretum &amp; Botanical Garden）</a>所做的品牌提案。拉伸的字体模仿植物生长的节奏与动态；放大的近景特写带来更沉浸的体验，仿佛眼前的清新气息触手可及。周边产品样机与空间设计，则构想了洛杉矶植物园与艺术家 Jennifer Steinkamp 的一次概念合作。',
 			],

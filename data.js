@@ -45,6 +45,7 @@ window.PROJECTS = [
 		text: [
 			'Proposal for the <a href="https://arboretum.org/">LA Arboretum &amp; Botanical Garden</a>. Stretched typography mimics the rhythm and motion of plant growth. Zoomed-in, close-up imagery creates a more immersive experience-almost letting you smell the freshness right in front of you. Marchandise mockups and spatial for a conceptual collaboration between the LA Arboretum &amp; Botanical Garden and Jennifer Steinkamp.',
 		],
+		credits: 'Photography Credits: Yizhang Ding, @Bleachfeel, Jennifer Steinkamp',
 	},
 	{
 		slug: 'taohe',
