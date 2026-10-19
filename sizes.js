@@ -62,7 +62,7 @@ window.SIZES = {
 	'GS3_FA25_HazelTao_Swag2.jpg': [2000, 3000],
 	'GS3_FA25_HazelTao_Website2.jpg': [2000, 1589],
 	'GS3_FA25_HazelTao_Website3.jpg': [2000, 1589],
-	'GS3_FA25_HazelTao_Website4.jpg': [2000, 1500],
+	'GS3_FA25_HazelTao_Website4_v2.jpg': [2000, 1500],
 	'GS3_FA25_HazelTao_Website5.jpg': [2000, 1589],
 	'GS3_FA25_HazelTao_Website6.jpg': [2000, 1500],
 	'GS3_FA25_HazelTao_Website7.jpg': [2000, 1589],
