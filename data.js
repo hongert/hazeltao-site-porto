@@ -99,11 +99,22 @@ window.PROJECTS = [
 		syncVideos: true,
 		thumb: 'HeldStill_Flag.jpg',
 		media: [
-			'HeldStill_Flag.jpg', 'HeldStill_BigFlag.jpg', 'HeldStill_Poster.jpg', 'Heldstill_display3.JPG',
-			'HeldStill_Ticket.jpg', 'HeldStill_IDCard.jpg', 'Heldstill_display_5.jpg', 'Heldstill_display_3.jpg',
-			'Heldstill_display_4.jpg', 'Heldstill_display_6.jpg',
+			'HeldStill_Flag.jpg', 'HeldStill_BigFlag.jpg', 'Heldstill_display3.JPG', 'HeldStill_Ticket.jpg',
+			'HeldStill_IDCard.jpg', 'Heldstill_display_3.jpg', 'Heldstill_display_5.jpg', 'Heldstill_display_4.jpg',
+			'Heldstill_display_6.jpg',
 			'HeldStill_FlipThrough-copy.mp4', 'HeldStill_FlipThrough-copy-2.mp4', 'HeldStill_FlipThrough-copy-3.mp4',
 			'HeldStill_FlipThrough-copy-4.mp4', 'HeldStill_FlipThrough-copy-5.mp4', 'HeldStill_FlipThrough-copy-6.mp4',
+		],
+		// 大 → 小小 → 大 → 小小 → 小小，最后是视频
+		rows: [
+			['HeldStill_BigFlag.jpg'],
+			['Heldstill_display3.JPG', 'HeldStill_Ticket.jpg'],
+			['Heldstill_display_3.jpg'],
+			['HeldStill_IDCard.jpg', 'Heldstill_display_5.jpg'],
+			['Heldstill_display_4.jpg', 'Heldstill_display_6.jpg'],
+			['HeldStill_FlipThrough-copy.mp4', 'HeldStill_FlipThrough-copy-2.mp4'],
+			['HeldStill_FlipThrough-copy-3.mp4', 'HeldStill_FlipThrough-copy-4.mp4'],
+			['HeldStill_FlipThrough-copy-5.mp4', 'HeldStill_FlipThrough-copy-6.mp4'],
 		],
 		text: [
 			'Held Still: When Time Becomes Visible is a curated exhibition featuring the works of eight artists: Sarah Ball, Eska Marsh, Irving Penn, Paula Siebra, Nicolas Party, Lucas Blalock, Rachel Ruysch, and Michaël Borremans. The collection is united by the enduring genre of still life. My interest in this medium stems from its inherent tension; while these compositions appear frozen to the viewer, they represent a past reality that was once alive. Whether featuring elegant flowers, distorted pears, or a posed model, the objects within these frames were all once part of a living world.',

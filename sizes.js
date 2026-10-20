@@ -1,5 +1,11 @@
 // 图片尺寸（宽/高），用于网格排版。新加图片可以不写，会按横图处理
 window.SIZES = {
+	'HeldStill_FlipThrough-copy.mp4': [1920, 1080],
+	'HeldStill_FlipThrough-copy-2.mp4': [1920, 1080],
+	'HeldStill_FlipThrough-copy-3.mp4': [1920, 1080],
+	'HeldStill_FlipThrough-copy-4.mp4': [1920, 1080],
+	'HeldStill_FlipThrough-copy-5.mp4': [1920, 1080],
+	'HeldStill_FlipThrough-copy-6.mp4': [1920, 1080],
 	'Arboretum_BrandBible_20-21.jpg': [4608, 2880],
 	'Arboretum_BrandBible_24-25.jpg': [4608, 2880],
 	'Arboretum_BrandBible_26-27.jpg': [4608, 2880],
@@ -71,7 +77,6 @@ window.SIZES = {
 	'HeldStill_Flag.jpg': [2000, 1333],
 	'HeldStill_IDCard.jpg': [2000, 1165],
 	'HeldStill_Juice.jpg': [2000, 2999],
-	'HeldStill_Poster.jpg': [2000, 1333],
 	'HeldStill_Ticket.jpg': [2000, 1295],
 	'HeldStill_Tote.jpg': [2000, 2996],
 	'Heldstill_display3.JPG': [2000, 1500],
