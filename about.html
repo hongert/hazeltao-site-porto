@@ -16,7 +16,7 @@
 		// 记住访客选的语言（EN / CN）
 		try { if (localStorage.getItem('lang') === 'zh') document.documentElement.lang = 'zh-Hans'; } catch (e) {}
 	</script>
-	<link rel="stylesheet" href="style.css?v=202610191400">
+	<link rel="stylesheet" href="style.css?v=202610251900">
 	<script>
 		// 黑/白背景跟着访客本地时间：晚上 7 点到凌晨 5 点是黑色，其余时间白色
 		// 手动点开关只在当前这一段时间内有效，到下一个 7 点 / 5 点就恢复自动
@@ -64,12 +64,17 @@
 <div class="two prose-pair">
 	<div class="card prose cv">
 		<div class="label" data-zh="技能">Skills</div>
-		<p data-zh="Adobe Creative Suites&lt;br&gt;品牌与视觉识别&lt;br&gt;编辑设计&lt;br&gt;Squarespace&lt;br&gt;孔版印刷（Risograph）&lt;br&gt;Cargo&lt;br&gt;Figma">Adobe Creative Suites<br>Branding &amp; Identity<br>Editorial Design<br>Squarespace<br>Risograph<br>Cargo<br>Figma</p>
+		<p data-zh="编辑设计&lt;br&gt;品牌与视觉识别&lt;br&gt;孔版印刷（Risograph）">Editorial Design<br>Branding &amp; Identity<br>Risograph</p>
 	</div>
 	<div class="card prose cv">
-		<div class="label" data-zh="纯艺术技能">Fine Art Skills</div>
-		<p data-zh="绘画（油画、丙烯）&lt;br&gt;版画&lt;br&gt;蓝晒&lt;br&gt;陶艺">Painting (oil, acrylic)<br>Printmaking<br>Cyanotype<br>Ceramic</p>
+		<div class="label" data-zh="工具">Tools</div>
+		<p>InDesign<br>Illustrator<br>Photoshop<br>Figma<br>Canva<br>Claude<br>Gemini<br>Basecamp</p>
 	</div>
+</div>
+
+<div class="card prose cv">
+	<div class="label" data-zh="语言">Language</div>
+	<p data-zh="中文（流利）&lt;br&gt;英语（流利）">Mandarin (Fluent)<br>English (Fluent)</p>
 </div>
 
 <div class="card prose cv">
@@ -79,9 +84,9 @@
 
 </main>
 
-<script src="data.js?v=202610191400"></script>
-<script src="data.zh.js?v=202610191400"></script>
-<script src="sizes.js?v=202610191400"></script>
-<script src="site.js?v=202610191400"></script>
+<script src="data.js?v=202610251900"></script>
+<script src="data.zh.js?v=202610251900"></script>
+<script src="sizes.js?v=202610251900"></script>
+<script src="site.js?v=202610251900"></script>
 </body>
 </html>
