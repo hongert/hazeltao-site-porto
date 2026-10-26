@@ -123,7 +123,8 @@
 
 	function mediaTag(name, small) {
 		if (isVideo(name)) {
-			return `<video data-src="${src(name)}" muted loop playsinline preload="none"></video>`;
+			// poster：视频还没加载或被手机省电模式拦住自动播放时，先显示第一帧
+			return `<video data-src="${src(name)}" poster="thumbs/${name}.jpg" muted loop playsinline autoplay preload="none"></video>`;
 		}
 		const [w, h] = SIZES[name] || ['', ''];
 		return `<img src="${small ? thumb(name) : src(name)}" width="${w}" height="${h}" loading="lazy" alt="">`;
@@ -501,6 +502,9 @@
 	// ---------- 开始 ----------
 	// 手机版首页排版预览：grid | mix | swipe（只在 alt 副本里用）
 	if (window.MOBILE_LAYOUT) document.body.classList.add('m-' + window.MOBILE_LAYOUT);
+	// 预览不同导航样式：?nav=a|b|c
+	const NAVSTYLE = new URLSearchParams(location.search).get('nav');
+	if (NAVSTYLE) document.body.classList.add('nav-' + NAVSTYLE);
 	if (page !== 'all') renderSide();
 	if (page === 'home') renderHome();
 	if (page === 'project') renderProject();

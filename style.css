@@ -1063,3 +1063,41 @@ body[data-page="all"] .content {
 	body.m-nav:not([data-page="home"]) .content { display: flex; }
 	body.m-nav .mobile-top { display: none !important; }
 }
+
+/* ===== 手机导航样式预览 ===== */
+@media (max-width: 760px) {
+	/* A：通栏细线 —— 不要圆角框，整条贴边，上下各一条细线 */
+	body.nav-a .mnav { padding-top: 0; }
+	body.nav-a .mnav-bar {
+		top: 0; margin: 0 calc(var(--gap) * -1);
+		border: 0; border-radius: 0; border-bottom: 1px solid var(--muted);
+		padding: 12px var(--gap) 10px;
+	}
+	body.nav-a .mnav-links { border-top-color: var(--muted); justify-content: flex-start; gap: 22px; }
+	body.nav-a .mnav-cta {
+		display: flex; justify-content: space-between; margin: 0 0 6px;
+		padding: 14px 0; border: 0; border-radius: 0; border-bottom: 1px solid var(--muted);
+	}
+
+	/* B：极简文字 —— 没有线框，菜单是带编号的小字，View work 变成下划线文字链接 */
+	body.nav-b .mnav-bar { border: 0; border-radius: 0; padding: 10px 0; top: 0; }
+	body.nav-b .mnav-links { border-top: 0; margin-top: 8px; padding-top: 0; justify-content: flex-start; gap: 20px; }
+	body.nav-b .mnav-links a { color: var(--muted); }
+	body.nav-b .mnav-links a:nth-child(1)::before { content: "01 "; }
+	body.nav-b .mnav-links a:nth-child(2)::before { content: "02 "; }
+	body.nav-b .mnav-links a:nth-child(3)::before { content: "03 "; }
+	body.nav-b .mnav-links a:active,
+	body.nav-b .mnav-links a:hover { color: var(--text); }
+	body.nav-b .mnav-cta {
+		display: inline-block; margin: 14px 0 18px; padding: 0 0 2px;
+		border: 0; border-radius: 0; border-bottom: 1px solid currentColor;
+	}
+
+	/* C：实色块 —— 导航是一整块和卡片同色的方角底板，View work 是满宽的方角色块按钮 */
+	body.nav-c .mnav-bar { border: 0; border-radius: 0; background: var(--card); top: 0; margin: 0 calc(var(--gap) * -1); padding: 12px var(--gap) 10px; }
+	body.nav-c .mnav-links { border-top-color: var(--bg); }
+	body.nav-c .mnav-cta {
+		display: block; margin: 10px 0 18px; padding: 16px; text-align: center;
+		border: 0; border-radius: 0; background: var(--text); color: var(--bg);
+	}
+}
