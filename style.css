@@ -778,3 +778,9 @@ body[data-page="all"] .content {
 	fill: none;
 	stroke-width: 1.4;
 }
+
+/* About 页的个人介绍：长段落，行宽和行距更适合阅读 */
+.about-me p {
+	max-width: 68ch;
+	line-height: 1.55;
+}
