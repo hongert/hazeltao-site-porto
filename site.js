@@ -35,6 +35,8 @@
 	const thumb = (name) => (isVideo(name) ? src(name) : 'thumbs/' + name + '.jpg');
 	const ratio = (name) => (SIZES[name] ? SIZES[name][0] / SIZES[name][1] : 16 / 9);
 	const ALT = window.SITE_ALT ? 'alt/' : '';
+	// 左栏只放 About me（正式网站和 alt 副本都是）
+	const ABOUT_SIDE = true;
 	const link = (p) => ALT + 'project.html?p=' + p.slug;
 	const plain = (html) => html.replace(/<[^>]+>/g, '');
 	const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
@@ -158,8 +160,8 @@
 					</a>
 				</div>`).join('')}
 			</div>`;
-		if (ALT) {
-			// 副本：左栏只放 About me（内容直接取自 about.html，只维护一份）
+		if (ABOUT_SIDE) {
+			// 左栏只放 About me（内容直接取自 about.html，只维护一份）
 			const cards = $('.cards', side);
 			cards.innerHTML = '';
 			cards.classList.add('side-about');
@@ -172,7 +174,7 @@
 			});
 		}
 		document.body.prepend(side);
-		if (!ALT) startStack(side);
+		if (!ABOUT_SIDE) startStack(side);
 		const active = $('.card.active', side);
 		if (active && getComputedStyle(side).position === 'fixed') {
 			side.scrollTop = Math.max(0, active.parentElement.offsetTop - side.clientHeight / 2);

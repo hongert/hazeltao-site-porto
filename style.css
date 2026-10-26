@@ -787,7 +787,7 @@ body[data-page="all"] .content {
 	line-height: 1.5;
 }
 
-/* ===== alt 副本：左栏只放 About me ===== */
+/* ===== 左栏只放 About me ===== */
 .side-about .two.prose-pair {
 	grid-template-columns: 1fr;
 }
