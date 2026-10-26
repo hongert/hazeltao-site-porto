@@ -3,3 +3,4 @@ Disallow: /alt/
 Sitemap: https://hazeltao.design/sitemap.xml
 Disallow: /intro-preview.html
 Disallow: /intro-preview-b.html
+Disallow: /introb/
