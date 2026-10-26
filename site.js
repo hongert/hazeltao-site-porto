@@ -503,7 +503,7 @@
 	// 手机版首页排版预览：grid | mix | swipe（只在 alt 副本里用）
 	if (window.MOBILE_LAYOUT) document.body.classList.add('m-' + window.MOBILE_LAYOUT);
 	// 预览不同导航样式：?nav=a|b|c
-	const NAVSTYLE = new URLSearchParams(location.search).get('nav');
+	const NAVSTYLE = new URLSearchParams(location.search).get('nav') || (window.MOBILE_LAYOUT === 'nav' ? 'd' : '');
 	if (NAVSTYLE) document.body.classList.add('nav-' + NAVSTYLE);
 	if (page !== 'all') renderSide();
 	if (page === 'home') renderHome();

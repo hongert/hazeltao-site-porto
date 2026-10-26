@@ -1101,3 +1101,25 @@ body[data-page="all"] .content {
 		border: 0; border-radius: 0; background: var(--text); color: var(--bg);
 	}
 }
+
+/* D：A 的通栏细线 + B 的文字处理；logo 在上、名字在下，全部居中，菜单居中、不带编号 */
+@media (max-width: 760px) {
+	body.nav-d .mnav { padding-top: 0; }
+	body.nav-d .mnav-bar {
+		top: 0; margin: 0 calc(var(--gap) * -1);
+		border: 0; border-radius: 0; border-bottom: 1px solid var(--muted);
+		padding: 14px var(--gap) 10px;
+	}
+	body.nav-d .mnav-row { position: relative; justify-content: center; }
+	body.nav-d .mnav-brand { flex-direction: column; gap: 6px; }
+	body.nav-d .mnav-brand svg { width: 26px; }
+	body.nav-d .mnav-row .toggles { position: absolute; right: 0; top: 0; }
+	body.nav-d .mnav-links {
+		justify-content: center; gap: 28px;
+		border-top: 1px solid var(--muted); margin-top: 12px; padding-top: 10px;
+	}
+	body.nav-d .mnav-cta {
+		display: table; margin: 16px auto 20px; padding: 0 0 2px;
+		border: 0; border-radius: 0; border-bottom: 1px solid currentColor;
+	}
+}
