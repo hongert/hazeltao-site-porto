@@ -780,7 +780,9 @@ body[data-page="all"] .content {
 }
 
 /* About 页的个人介绍：长段落，行宽和行距更适合阅读 */
+/* 和项目详情页的介绍文字一样大 */
 .about-me p {
-	max-width: 68ch;
-	line-height: 1.55;
+	margin: 0 0 0.9em;
+	font-size: 12px;
+	line-height: 1.5;
 }
