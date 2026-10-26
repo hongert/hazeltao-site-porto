@@ -817,7 +817,13 @@ body[data-page="all"] .content {
 		display: none;
 	}
 
-	body.about-side .about-toggle {
+	/* 手机上先不放 About me：按钮和内容都隐藏 */
+	body.about-side .about-toggle,
+	body.about-side .side.about-open .side-about {
+		display: none !important;
+	}
+
+	body.about-side .about-toggle-unused {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
