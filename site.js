@@ -34,7 +34,7 @@
 	const src = (name) => (isVideo(name) ? 'videos/' : 'images/') + name;
 	const thumb = (name) => (isVideo(name) ? src(name) : 'thumbs/' + name + '.jpg');
 	const ratio = (name) => (SIZES[name] ? SIZES[name][0] / SIZES[name][1] : 16 / 9);
-	const ALT = window.SITE_ALT ? 'alt/' : '';
+	const ALT = window.SITE_ALT ? (typeof window.SITE_ALT === 'string' ? window.SITE_ALT : 'alt/') : '';
 	// 左栏只放 About me（正式网站和 alt 副本都是）
 	const ABOUT_SIDE = true;
 	const link = (p) => ALT + 'project.html?p=' + p.slug;
@@ -253,6 +253,59 @@
 			</a>`).join('');
 		// 首页卡片和项目页顶部用同一张（可能是视频）
 		watchVideos(content);
+		if (window.MOBILE_LAYOUT === 'nav') renderMobileNav();
+	}
+
+	// 手机版（预览）：顶部导航卡片 + 大图 + 作品索引 + About me + Contact
+	function renderMobileNav(barOnly) {
+		const hero = P[0];
+		const nav = document.createElement('div');
+		nav.className = 'mnav';
+		nav.innerHTML = `
+			<header class="mnav-bar" id="top">
+				<div class="mnav-row">
+					<a class="mnav-brand" href="${ALT}index.html">${LOGO}<span>${esc(S.fullName)}</span></a>
+					${switchHTML()}
+				</div>
+				<nav class="mnav-links">
+					<a href="${barOnly ? ALT + 'index.html' : ''}#work">${lang === 'zh' ? '作品' : 'Work'}</a>
+					<a href="${barOnly ? ALT + 'index.html' : ''}#about">${T('About me')}</a>
+					<a href="${barOnly ? ALT + 'index.html' : ''}#contact">${lang === 'zh' ? '联系' : 'Contact'}</a>
+				</nav>
+			</header>
+			<a class="mnav-hero" href="${link(hero)}">${mediaTag(hero.media[0], false)}</a>
+			<a class="mnav-cta" href="#work">${lang === 'zh' ? '查看作品' : 'View work'} →</a>
+			<section class="mnav-work" id="work">
+				<div class="mnav-head"><span>${lang === 'zh' ? '作品' : 'Work'}</span><span>${String(P.length).padStart(2, '0')} ${lang === 'zh' ? '个项目' : 'projects'}</span></div>
+				${P.map((p, i) => `
+				<a class="mnav-item" href="${link(p)}">
+					<div class="mnav-txt">
+						<div class="num">${String(i + 1).padStart(2, '0')}</div>
+						<div class="t">${esc(p.title)}</div>
+						<div class="s">${esc(p.subtitle)}</div>
+					</div>
+					<div class="mnav-thumb"><img src="${thumb(p.thumb || p.cover)}" alt="" loading="lazy"></div>
+				</a>`).join('')}
+			</section>
+			<section class="mnav-about" id="about"></section>
+			<a class="mnav-cta" href="#top">${lang === 'zh' ? '回到顶部' : 'Back to top'} ↑</a>`;
+		if (barOnly) {
+			nav.innerHTML = $('.mnav-bar', nav).outerHTML;
+			nav.classList.add('bar-only');
+			document.body.prepend(nav);
+			return;
+		}
+		document.body.prepend(nav);
+		watchVideos(nav);
+		// About me 和 Contact 直接取自 about.html
+		fetch('about.html').then((r) => r.text()).then((h) => {
+			const main = new DOMParser().parseFromString(h, 'text/html').querySelector('main.content');
+			if (!main) return;
+			if (lang === 'zh') main.querySelectorAll('[data-zh]').forEach((el) => (el.innerHTML = el.dataset.zh));
+			$('.mnav-about', nav).innerHTML = main.innerHTML;
+			const c = [...nav.querySelectorAll('.mnav-about .cv')].find((el) => /Contact|联系方式/.test(el.textContent));
+			if (c) c.id = 'contact';
+		});
 	}
 
 	// 项目页：大图、标题、两张文字卡、信息、其余图片
@@ -451,6 +504,7 @@
 	if (page !== 'all') renderSide();
 	if (page === 'home') renderHome();
 	if (page === 'project') renderProject();
+	if (page === 'project' && window.MOBILE_LAYOUT === 'nav') renderMobileNav(true);
 	if (page === 'all') renderAll();
 	if (page === 'about') {
 		if (lang === 'zh') document.querySelectorAll('[data-zh]').forEach((el) => (el.innerHTML = el.dataset.zh));

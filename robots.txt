@@ -10,3 +10,4 @@ Disallow: /introe/
 Disallow: /mgrid/
 Disallow: /mmix/
 Disallow: /mswipe/
+Disallow: /mnav/

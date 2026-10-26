@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<base href="../">
+	<meta name="robots" content="noindex">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hazel Tao Design</title>
+	<meta name="description" content="Honger (Hazel) Tao — graphic designer.">
+	<link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
+	<link rel="icon" href="favicon-192.png?v=3" sizes="192x192" type="image/png">
+	<link rel="icon" href="favicon.ico?v=3" sizes="32x32">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap">
+	<!-- 中文界面字体：MiSans（小米，免费商用）。中文、英文、数字全部用它，正文用 Medium 500 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSans-Regular.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSans-Medium.min.css">
+	<script>
+		// 记住访客选的语言（EN / CN）
+		try { if (localStorage.getItem('lang') === 'zh') document.documentElement.lang = 'zh-Hans'; } catch (e) {}
+	</script>
+	<link rel="stylesheet" href="style.css?v=202610252110">
+	<script>
+		// 黑/白背景跟着访客本地时间：晚上 7 点到凌晨 5 点是黑色，其余时间白色
+		// 手动点开关只在当前这一段时间内有效，到下一个 7 点 / 5 点就恢复自动
+		(function () {
+			function auto() { var h = new Date().getHours(); return h >= 19 || h < 5 ? 'dark' : 'light'; }
+			function nextSwitch() {
+				var n = new Date(), h = n.getHours();
+				if (h >= 19) n.setDate(n.getDate() + 1);
+				n.setHours(h >= 5 && h < 19 ? 19 : 5, 0, 0, 0);
+				return n.getTime();
+			}
+			function pick() {
+				var t = auto();
+				try { var o = JSON.parse(localStorage.getItem('themeOverride')); if (o && o.until > Date.now()) t = o.theme; } catch (e) {}
+				document.documentElement.dataset.theme = t;
+			}
+			window.siteTheme = { pick: pick, nextSwitch: nextSwitch };
+			try { localStorage.removeItem('theme'); } catch (e) {}
+			pick();
+			setInterval(pick, 60000);
+			document.addEventListener('visibilitychange', function () { if (!document.hidden) pick(); });
+		})();
+	</script>
+</head>
+<body data-page="home">
+
+<main class="content"></main>
+
+<script>window.SITE_ALT = 'mnav/'; window.MOBILE_LAYOUT = 'nav';</script>
+<script src="data.js?v=202610252110"></script>
+<script src="data.zh.js?v=202610252110"></script>
+<script src="sizes.js?v=202610252110"></script>
+<script src="site.js?v=202610252110"></script>
+<!-- 开场幕布（方案 E：冰可乐气泡往上冒，再从中间圆形扩开）预览 -->
+<style>
+.intro { position: fixed; inset: 0; z-index: 9999; cursor: pointer; overflow: hidden;
+	background: var(--bg, #fff); color: var(--text, #000); }
+.intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .4s ease; text-align: center; white-space: nowrap; }
+.intro .lockup { font-family: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace; font-weight: 500; text-transform: uppercase; letter-spacing: .02em; }
+.intro .lockup .ln { font-size: 15px; }
+.intro .lockup .lr { margin-top: 5px; font-size: 11px; }
+.intro .logo svg { width: 100%; height: auto; fill: currentColor; display: block; }
+.intro.show .logo { opacity: 1; }
+.intro .b { position: absolute; bottom: -40px; border-radius: 50%; border: 1.5px solid currentColor; opacity: .0;
+	animation: rise var(--d) cubic-bezier(.3,.1,.6,1) var(--delay) forwards; }
+@keyframes rise {
+	0% { transform: translate(0, 0) scale(.6); opacity: 0; }
+	12% { opacity: .9; }
+	100% { transform: translate(var(--x), calc(-100vh - 80px)) scale(1); opacity: .9; }
+}
+.intro-replay { position: fixed; right: 14px; bottom: 14px; z-index: 10000; font: 12px "DM Mono", monospace; padding: 8px 14px; border-radius: 999px; border: 0; background: #ff5a1f; color: #fff; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .intro { display: none; } }
+</style>
+<div class="intro" id="intro"><div class="logo lockup"><div class="ln">HONGER (HAZEL) TAO</div><div class="lr">GRAPHIC DESIGNER</div></div></div>
+<button class="intro-replay" id="replay">再播一次 ↻</button>
+<script>
+(function () {
+	const el = document.getElementById('intro');
+	let timers = [];
+	const at = (ms, fn) => timers.push(setTimeout(fn, ms));
+	function bubbles() {
+		el.querySelectorAll('.b').forEach((b) => b.remove());
+		const n = innerWidth < 600 ? 22 : 38;
+		for (let i = 0; i < n; i++) {
+			const b = document.createElement('span'); b.className = 'b';
+			const size = 4 + Math.random() * 18;
+			b.style.width = b.style.height = size + 'px';
+			b.style.left = Math.random() * 100 + '%';
+			b.style.setProperty('--d', (1.1 + Math.random() * 0.9) + 's');
+			b.style.setProperty('--delay', (Math.random() * 0.7) + 's');
+			b.style.setProperty('--x', (Math.random() * 40 - 20) + 'px');
+			el.appendChild(b);
+		}
+	}
+	function play() {
+		timers.forEach(clearTimeout); timers = [];
+		cancelAnimationFrame(raf); el.style.webkitMaskImage = el.style.maskImage = ''; el.classList.remove('show'); el.style.display = 'block';
+		void el.offsetWidth;
+		bubbles();
+		requestAnimationFrame(() => el.classList.add('show'));
+		// 气泡冒约 1.4 秒后，幕布从中间开一个圆洞并扩大到整屏
+		at(1400, reveal);
+	}
+	// 从屏幕中间开一个圆洞，圆越扩越大，露出下面的网站
+	let raf;
+	function reveal() {
+		timers.forEach(clearTimeout); cancelAnimationFrame(raf);
+		const max = Math.hypot(innerWidth, innerHeight) / 2 + 20, t0 = performance.now(), D = 1000;
+		const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+		(function step(now) {
+			const p = Math.min(1, (now - t0) / D), r = max * ease(p);
+			const m = `radial-gradient(circle at 50% 50%, transparent ${r}px, #000 ${r + 1}px)`;
+			el.style.webkitMaskImage = el.style.maskImage = m;
+			if (p < 1) raf = requestAnimationFrame(step); else el.style.display = 'none';
+		})(t0);
+	}
+	el.onclick = reveal; document.addEventListener('keydown', reveal);
+	document.getElementById('replay').onclick = play;
+	play();
+})();
+</script>
+</body>
+</html>
