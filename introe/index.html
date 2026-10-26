@@ -70,6 +70,10 @@
 <style>
 .intro { position: fixed; inset: 0; z-index: 9999; cursor: pointer; overflow: hidden;
 	background: var(--bg, #fff); color: var(--text, #000); }
+.intro .dot { position: absolute; left: 50%; top: 50%; width: 0; height: 0; border-radius: 50%; background: #000; transform: translate(-50%, -50%); z-index: 2; }
+/* 深色模式时幕布用深灰，让纯黑圆看得见 */
+:root[data-theme="dark"] .intro { background: #1a1a1a; }
+.intro.bursting .logo { opacity: 0; transition: opacity .3s ease; }
 .intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .4s ease; text-align: center; white-space: nowrap; }
 .intro .lockup { font-family: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace; font-weight: 500; text-transform: uppercase; letter-spacing: .02em; }
 .intro .lockup .ln { font-size: 15px; }
@@ -109,7 +113,7 @@
 	}
 	function play() {
 		timers.forEach(clearTimeout); timers = [];
-		cancelAnimationFrame(raf); el.style.webkitMaskImage = el.style.maskImage = ''; el.classList.remove('show'); el.style.display = 'block';
+		cancelAnimationFrame(raf); const od = el.querySelector('.dot'); if (od) od.remove(); el.classList.remove('show', 'bursting'); el.style.opacity = ''; el.style.display = 'block';
 		void el.offsetWidth;
 		bubbles();
 		requestAnimationFrame(() => el.classList.add('show'));
@@ -118,15 +122,20 @@
 	}
 	// 从屏幕中间开一个圆洞，圆越扩越大，露出下面的网站
 	let raf;
+	// 气泡之后：中间一个纯黑实心圆扩大到铺满整屏，然后整块淡出，露出网站
 	function reveal() {
 		timers.forEach(clearTimeout); cancelAnimationFrame(raf);
-		const max = Math.hypot(innerWidth, innerHeight) / 2 + 20, t0 = performance.now(), D = 1000;
+		let dot = el.querySelector('.dot');
+		if (!dot) { dot = document.createElement('div'); dot.className = 'dot'; el.appendChild(dot); }
+		el.classList.add('bursting');
+		const max = Math.hypot(innerWidth, innerHeight) + 40, t0 = performance.now(), D = 900;
 		const ease = (t) => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 		(function step(now) {
-			const p = Math.min(1, (now - t0) / D), r = max * ease(p);
-			const m = `radial-gradient(circle at 50% 50%, transparent ${r}px, #000 ${r + 1}px)`;
-			el.style.webkitMaskImage = el.style.maskImage = m;
-			if (p < 1) raf = requestAnimationFrame(step); else el.style.display = 'none';
+			const p = Math.min(1, (now - t0) / D), d = max * ease(p);
+			dot.style.width = dot.style.height = d + 'px';
+			if (p < 1) { raf = requestAnimationFrame(step); return; }
+			el.style.transition = 'opacity .5s ease'; el.style.opacity = '0';
+			setTimeout(() => { el.style.display = 'none'; el.style.transition = ''; el.style.opacity = ''; }, 520);
 		})(t0);
 	}
 	el.onclick = reveal; document.addEventListener('keydown', reveal);
