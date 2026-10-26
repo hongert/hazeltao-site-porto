@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /alt/
+Sitemap: https://hazeltao.design/sitemap.xml
