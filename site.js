@@ -259,7 +259,9 @@
 
 	// 手机版（预览）：顶部导航卡片 + 大图 + 作品索引 + About me + Contact
 	function renderMobileNav(barOnly) {
-		const hero = P[0];
+		// 手机首页大图：竖条形状，取 Serenseek 的玻璃立牌
+		const hero = P.find((p) => p.slug === 'serenseek') || P[0];
+		const heroImg = 'Serenseek_scene8.png';
 		const nav = document.createElement('div');
 		nav.className = 'mnav';
 		nav.innerHTML = `
@@ -274,7 +276,7 @@
 					<a href="${barOnly ? ALT + 'index.html' : ''}#contact">${lang === 'zh' ? '联系' : 'Contact'}</a>
 				</nav>
 			</header>
-			<a class="mnav-hero" href="${link(hero)}">${mediaTag(hero.media[0], false)}</a>
+			<a class="mnav-hero" href="${link(hero)}">${mediaTag(heroImg, false)}</a>
 			<a class="mnav-cta" href="#work">${lang === 'zh' ? '查看作品' : 'View work'} →</a>
 			<section class="mnav-work" id="work">
 				<div class="mnav-head"><span>${lang === 'zh' ? '作品' : 'Work'}</span><span>${String(P.length).padStart(2, '0')} ${lang === 'zh' ? '个项目' : 'projects'}</span></div>
