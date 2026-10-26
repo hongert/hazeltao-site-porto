@@ -11,6 +11,7 @@ window.ZH = {
 	ui: {
 		'Show all projects': '全部项目',
 		'About': '关于',
+		'About me': '关于我',
 		'About the project': '关于项目',
 		'Year': '年份',
 		'Deliverables': '交付内容',

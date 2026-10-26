@@ -797,3 +797,47 @@ body[data-page="all"] .content {
 	font-size: 12px;
 	line-height: 1.5;
 }
+
+/* About 在左栏时的手机版：先看到项目，About 收起成一个按钮 */
+.about-toggle {
+	display: none;
+}
+
+@media (max-width: 760px) {
+	body.about-side[data-page="home"] .content {
+		display: flex;
+		padding-top: 0;
+	}
+
+	body.about-side:not([data-page="home"]) .side {
+		display: block;
+	}
+
+	body.about-side:not([data-page="home"]) .mobile-top {
+		display: none;
+	}
+
+	body.about-side .about-toggle {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin: 0 0 var(--gap);
+		padding: 14px 16px;
+		border: 0;
+		border-radius: var(--radius);
+		background: var(--card);
+		color: var(--text);
+		font: inherit;
+		font-size: 12px;
+		cursor: pointer;
+	}
+
+	body.about-side .side .side-about {
+		display: none;
+	}
+
+	body.about-side .side.about-open .side-about {
+		display: flex;
+	}
+}

@@ -165,6 +165,17 @@
 			const cards = $('.cards', side);
 			cards.innerHTML = '';
 			cards.classList.add('side-about');
+			// 手机上：About 默认收起，点按钮展开（先看到项目）
+			if (ALT) {
+				document.body.classList.add('about-side');
+				cards.insertAdjacentHTML('beforebegin', `<button class="about-toggle" aria-expanded="false">${T('About me')} <span>+</span></button>`);
+				const btn = $('.about-toggle', side);
+				btn.onclick = () => {
+					const open = side.classList.toggle('about-open');
+					btn.setAttribute('aria-expanded', open);
+					$('span', btn).textContent = open ? '−' : '+';
+				};
+			}
 			fetch('about.html').then((r) => r.text()).then((h) => {
 				const doc = new DOMParser().parseFromString(h, 'text/html');
 				const main = doc.querySelector('main.content');
