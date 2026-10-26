@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<base href="../">
+	<meta name="robots" content="noindex">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hazel Tao</title>
+	<meta name="description" content="Honger (Hazel) Tao — graphic designer.">
+	<link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
+	<link rel="icon" href="favicon-192.png?v=3" sizes="192x192" type="image/png">
+	<link rel="icon" href="favicon.ico?v=3" sizes="32x32">
+	<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap">
+	<!-- 中文界面字体：MiSans（小米，免费商用）。中文、英文、数字全部用它，正文用 Medium 500 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSans-Regular.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/misans@5.0.0/lib/Normal/MiSans-Medium.min.css">
+	<script>
+		// 记住访客选的语言（EN / CN）
+		try { if (localStorage.getItem('lang') === 'zh') document.documentElement.lang = 'zh-Hans'; } catch (e) {}
+	</script>
+	<link rel="stylesheet" href="style.css?v=202610252020">
+	<script>
+		// 黑/白背景跟着访客本地时间：晚上 7 点到凌晨 5 点是黑色，其余时间白色
+		// 手动点开关只在当前这一段时间内有效，到下一个 7 点 / 5 点就恢复自动
+		(function () {
+			function auto() { var h = new Date().getHours(); return h >= 19 || h < 5 ? 'dark' : 'light'; }
+			function nextSwitch() {
+				var n = new Date(), h = n.getHours();
+				if (h >= 19) n.setDate(n.getDate() + 1);
+				n.setHours(h >= 5 && h < 19 ? 19 : 5, 0, 0, 0);
+				return n.getTime();
+			}
+			function pick() {
+				var t = auto();
+				try { var o = JSON.parse(localStorage.getItem('themeOverride')); if (o && o.until > Date.now()) t = o.theme; } catch (e) {}
+				document.documentElement.dataset.theme = t;
+			}
+			window.siteTheme = { pick: pick, nextSwitch: nextSwitch };
+			try { localStorage.removeItem('theme'); } catch (e) {}
+			pick();
+			setInterval(pick, 60000);
+			document.addEventListener('visibilitychange', function () { if (!document.hidden) pick(); });
+		})();
+	</script>
+</head>
+<body data-page="project">
+
+<main class="content"></main>
+
+<script>window.SITE_ALT = true; window.MOBILE_LAYOUT = 'mix';</script>
+<script src="data.js?v=202610252020"></script>
+<script src="data.zh.js?v=202610252020"></script>
+<script src="sizes.js?v=202610252020"></script>
+<script src="site.js?v=202610252020"></script>
+</body>
+</html>

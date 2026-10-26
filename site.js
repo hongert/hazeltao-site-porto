@@ -446,6 +446,8 @@
 	});
 
 	// ---------- 开始 ----------
+	// 手机版首页排版预览：grid | mix | swipe（只在 alt 副本里用）
+	if (window.MOBILE_LAYOUT) document.body.classList.add('m-' + window.MOBILE_LAYOUT);
 	if (page !== 'all') renderSide();
 	if (page === 'home') renderHome();
 	if (page === 'project') renderProject();

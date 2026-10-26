@@ -847,3 +847,160 @@ body[data-page="all"] .content {
 		display: flex;
 	}
 }
+
+/* ===== 手机版首页排版预览（m-grid / m-mix / m-swipe），顶部统一用细固定顶栏 ===== */
+@media (max-width: 760px) {
+	body[class*="m-"] .side {
+		position: sticky;
+		top: 0;
+		z-index: 20;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 10px var(--gap);
+		background: var(--bg);
+		border-bottom: 1px solid var(--card);
+	}
+
+	body[class*="m-"] .side .topline {
+		order: 2;
+	}
+
+	body[class*="m-"] .masthead {
+		order: 1;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 0;
+		text-align: left;
+	}
+
+	body[class*="m-"] .masthead .logo svg {
+		width: 22px;
+	}
+
+	body[class*="m-"] .masthead .name {
+		margin: 0;
+		font-size: 11px;
+	}
+
+	body[class*="m-"] .masthead .role {
+		display: none;
+	}
+
+	body[class*="m-"] .side .cards,
+	body[class*="m-"] .side .about-toggle {
+		display: none !important;
+	}
+
+	body[class*="m-"] .pill.lang {
+		height: 28px;
+		padding: 0 10px;
+	}
+
+	body[class*="m-"] .switch {
+		width: 42px;
+		height: 26px;
+	}
+
+	body[class*="m-"] .switch::after {
+		width: 20px;
+		height: 20px;
+	}
+
+	body[class*="m-"][data-page="home"] .content {
+		padding: 12px var(--gap) var(--gap);
+	}
+
+	body[class*="m-"] .feature {
+		padding: 10px;
+	}
+
+	body[class*="m-"] .feature h2 {
+		font-size: 13px;
+	}
+
+	/* 两列网格 */
+	body.m-grid[data-page="home"] .content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 8px;
+	}
+
+	body.m-grid .feature .deliv {
+		display: none;
+	}
+
+	body.m-grid .feature .feat-head {
+		margin: 0 0 8px;
+	}
+
+	body.m-grid .feature .media {
+		aspect-ratio: 1 / 1;
+	}
+
+	/* 大小交错：大、小小、大、小小…… */
+	body.m-mix[data-page="home"] .content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 8px;
+	}
+
+	body.m-mix .feature:nth-child(3n + 1) {
+		grid-column: 1 / -1;
+	}
+
+	body.m-mix .feature:nth-child(3n + 1) .media {
+		aspect-ratio: 4 / 3;
+	}
+
+	body.m-mix .feature:not(:nth-child(3n + 1)) .media {
+		aspect-ratio: 4 / 5;
+	}
+
+	body.m-mix .feature:not(:nth-child(3n + 1)) .deliv {
+		display: none;
+	}
+
+	/* 横向滑动：一张张卡片左右滑，停在每一张上 */
+	body.m-swipe[data-page="home"] .content {
+		display: flex;
+		flex-direction: row;
+		gap: 10px;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		padding: 16px var(--gap) 20px;
+		scrollbar-width: none;
+	}
+
+	body.m-swipe[data-page="home"] .content::-webkit-scrollbar {
+		display: none;
+	}
+
+	body.m-swipe .feature {
+		flex: 0 0 82vw;
+		scroll-snap-align: center;
+		display: flex;
+		flex-direction: column;
+	}
+
+	body.m-swipe[data-page="home"] .content {
+		height: calc(100svh - 50px);
+		align-items: stretch;
+	}
+
+	body.m-swipe .feature .media {
+		flex: 1;
+		min-height: 0;
+		aspect-ratio: auto;
+	}
+
+	body.m-swipe .feature .media img,
+	body.m-swipe .feature .media video {
+		height: 100%;
+	}
+
+	body.m-swipe .feature .deliv {
+		font-size: 10px;
+	}
+}

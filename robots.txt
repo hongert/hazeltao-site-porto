@@ -7,3 +7,6 @@ Disallow: /introb/
 Disallow: /introc/
 Disallow: /introd/
 Disallow: /introe/
+Disallow: /mgrid/
+Disallow: /mmix/
+Disallow: /mswipe/
