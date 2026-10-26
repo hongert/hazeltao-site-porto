@@ -276,7 +276,11 @@
 					<a href="${barOnly ? ALT + 'index.html' : ''}#contact">${lang === 'zh' ? '联系' : 'Contact'}</a>
 				</nav>
 			</header>
-			<a class="mnav-hero" href="${link(hero)}">${mediaTag(heroImg, false)}</a>
+			<a class="mnav-hero" href="${link(hero)}">
+				${P.map((p, i) => `<img src="hero/${p.slug}.jpg" alt="" class="${i === 0 ? 'on' : ''}"${i ? ' loading="lazy"' : ''}>`).join('')}
+				<span class="mnav-cap">${esc(P[0].title)}</span>
+				<span class="mnav-dots">${P.map((p, i) => `<i class="${i === 0 ? 'on' : ''}"></i>`).join('')}</span>
+			</a>
 			<a class="mnav-cta" href="#work">${lang === 'zh' ? '查看作品' : 'View work'} →</a>
 			<section class="mnav-work" id="work">
 				<div class="mnav-head"><span>${lang === 'zh' ? '作品' : 'Work'}</span><span>${String(P.length).padStart(2, '0')} ${lang === 'zh' ? '个项目' : 'projects'}</span></div>
@@ -300,6 +304,18 @@
 		}
 		document.body.prepend(nav);
 		watchVideos(nav);
+		// 大图幻灯片：每 2.6 秒淡入下一个项目，链接和项目名跟着换
+		const heroEl = $('.mnav-hero', nav);
+		const slides = [...heroEl.querySelectorAll('img')], dots = [...heroEl.querySelectorAll('.mnav-dots i')];
+		let cur = 0;
+		const show = (n) => {
+			cur = (n + slides.length) % slides.length;
+			slides.forEach((im, i) => im.classList.toggle('on', i === cur));
+			dots.forEach((d, i) => d.classList.toggle('on', i === cur));
+			heroEl.href = link(P[cur]);
+			$('.mnav-cap', heroEl).textContent = P[cur].title;
+		};
+		if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => show(cur + 1), 2600);
 		// About me 和 Contact 直接取自 about.html
 		fetch('about.html').then((r) => r.text()).then((h) => {
 			const main = new DOMParser().parseFromString(h, 'text/html').querySelector('main.content');
