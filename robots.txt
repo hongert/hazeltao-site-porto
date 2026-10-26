@@ -6,3 +6,4 @@ Disallow: /intro-preview-b.html
 Disallow: /introb/
 Disallow: /introc/
 Disallow: /introd/
+Disallow: /introe/
