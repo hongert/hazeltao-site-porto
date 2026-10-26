@@ -34,7 +34,8 @@
 	const src = (name) => (isVideo(name) ? 'videos/' : 'images/') + name;
 	const thumb = (name) => (isVideo(name) ? src(name) : 'thumbs/' + name + '.jpg');
 	const ratio = (name) => (SIZES[name] ? SIZES[name][0] / SIZES[name][1] : 16 / 9);
-	const link = (p) => 'project.html?p=' + p.slug;
+	const ALT = window.SITE_ALT ? 'alt/' : '';
+	const link = (p) => ALT + 'project.html?p=' + p.slug;
 	const plain = (html) => html.replace(/<[^>]+>/g, '');
 	const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 	const store = {
@@ -143,7 +144,7 @@
 				${switchHTML()}
 			</div>
 			<div class="masthead">
-				<a class="logo" href="index.html">${LOGO}</a>
+				<a class="logo" href="${ALT}index.html">${LOGO}</a>
 				<div class="name">${esc(S.fullName)}</div>
 				<div class="role">${lang === 'zh' ? '平面设计师' : 'Graphic Designer'}</div>
 			</div>
@@ -157,8 +158,21 @@
 					</a>
 				</div>`).join('')}
 			</div>`;
+		if (ALT) {
+			// 副本：左栏只放 About me（内容直接取自 about.html，只维护一份）
+			const cards = $('.cards', side);
+			cards.innerHTML = '';
+			cards.classList.add('side-about');
+			fetch('about.html').then((r) => r.text()).then((h) => {
+				const doc = new DOMParser().parseFromString(h, 'text/html');
+				const main = doc.querySelector('main.content');
+				if (!main) return;
+				if (lang === 'zh') main.querySelectorAll('[data-zh]').forEach((el) => (el.innerHTML = el.dataset.zh));
+				cards.innerHTML = main.innerHTML;
+			});
+		}
 		document.body.prepend(side);
-		startStack(side);
+		if (!ALT) startStack(side);
 		const active = $('.card.active', side);
 		if (active && getComputedStyle(side).position === 'fixed') {
 			side.scrollTop = Math.max(0, active.parentElement.offsetTop - side.clientHeight / 2);
@@ -212,7 +226,7 @@
 
 	function mobileTop() {
 		return `<div class="topline mobile-top">
-			<a class="pill" href="index.html">${icons.back} ${esc(S.name)}</a>
+			<a class="pill" href="${ALT}index.html">${icons.back} ${esc(S.name)}</a>
 			${switchHTML()}
 		</div>`;
 	}

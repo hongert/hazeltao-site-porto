@@ -786,3 +786,14 @@ body[data-page="all"] .content {
 	font-size: 12px;
 	line-height: 1.5;
 }
+
+/* ===== alt 副本：左栏只放 About me ===== */
+.side-about .two.prose-pair {
+	grid-template-columns: 1fr;
+}
+
+.side-about .cv p,
+.side-about .about-me p {
+	font-size: 12px;
+	line-height: 1.5;
+}
