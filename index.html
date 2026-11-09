@@ -68,8 +68,7 @@
 <style>
 .intro { position: fixed; inset: 0; z-index: 9999; cursor: pointer; overflow: hidden;
 	background: var(--bg, #fff); color: var(--text, #000); }
-/* 浅色模式：白底，气泡冒完直接淡出；深色模式：深灰底，黑圈扩开再淡出 */
-:root[data-theme="dark"] .intro { background: #1a1a1a; }
+/* 幕布跟网站底色一样（浅色白、深色黑），气泡冒完直接淡出，不扩圆 */
 .intro .dot { position: absolute; left: 50%; top: 50%; width: 0; height: 0; border-radius: 50%; background: var(--bg, #fff); transform: translate(-50%, -50%); z-index: 2; }
 /* 只有深色模式用到这个黑圈 */
 .intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .4s ease; text-align: center; white-space: nowrap; }
@@ -120,8 +119,8 @@
 		clearTimeout(timer);
 		document.removeEventListener('keydown', reveal);
 		el.classList.add('bursting');
-		// 浅色模式不扩圆，直接淡出
-		if (document.documentElement.dataset.theme !== 'dark') { el.style.transition = 'opacity .5s ease'; el.style.opacity = '0'; setTimeout(function () { el.remove(); }, 520); return; }
+		// 不扩圆，直接淡出
+		if (true) { el.style.transition = 'opacity .5s ease'; el.style.opacity = '0'; setTimeout(function () { el.remove(); }, 520); return; }
 		var dot = document.createElement('div'); dot.className = 'dot'; el.appendChild(dot);
 		var max = Math.hypot(innerWidth, innerHeight) + 40, t0 = performance.now(), D = 900;
 		var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
