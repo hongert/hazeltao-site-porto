@@ -50,6 +50,9 @@
 		back: '<svg viewBox="0 0 16 16"><path d="M14 8H2M7 3 2 8l5 5"/></svg>',
 	};
 
+	// 导航里的 All projects 按钮
+	const allBtn = () => `<a class="pill" href="${ALT}all.html">${lang === 'zh' ? '全部项目' : 'All projects'}</a>`;
+
 	// ---------- 黑白背景开关 ----------
 	function switchHTML() {
 		const langBtn = `<button class="pill lang" aria-label="Switch language / 切换语言"><span${lang === 'en' ? ' class="on"' : ''}>EN</span> / <span${lang === 'zh' ? ' class="on"' : ''}>CN</span></button>`;
@@ -143,7 +146,8 @@
 		const side = document.createElement('aside');
 		side.className = 'side';
 		side.innerHTML = `
-			<div class="topline end">
+			<div class="topline side-nav">
+				${allBtn()}
 				${switchHTML()}
 			</div>
 			<div class="masthead">
@@ -240,7 +244,7 @@
 
 	function mobileTop() {
 		return `<div class="topline mobile-top">
-			<a class="pill" href="${ALT}index.html">${icons.back} ${esc(S.name)}</a>
+			<span class="toggles"><a class="pill" href="${ALT}index.html">${icons.back} ${esc(S.name)}</a>${allBtn()}</span>
 			${switchHTML()}
 		</div>`;
 	}
@@ -528,6 +532,8 @@
 	if (page === 'project') renderProject();
 	if (page === 'project' && window.MOBILE_LAYOUT === 'nav') renderMobileNav(true);
 	if (page === 'all') renderAll();
+	// 底部版权：一直固定在屏幕右下角，压在内容上面
+	document.body.insertAdjacentHTML('beforeend', `<div class="site-foot">© ${new Date().getFullYear()} ${esc(S.fullName)}. All rights reserved.</div>`);
 	if (page === 'about') {
 		if (lang === 'zh') document.querySelectorAll('[data-zh]').forEach((el) => (el.innerHTML = el.dataset.zh));
 		content.insertAdjacentHTML('afterbegin', mobileTop());

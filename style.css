@@ -1141,3 +1141,29 @@ body[data-page="all"] .content {
 	.mnav-dots i { width: 4px; height: 4px; border-radius: 50%; background: #fff; opacity: .45; }
 	.mnav-dots i.on { opacity: 1; }
 }
+
+/* ===== 导航：左栏顶部（All projects + 语言 + 黑白开关）往下滚时一直停在顶上 ===== */
+.side .side-nav {
+	position: sticky;
+	top: calc(var(--gap) * -1);
+	z-index: 5;
+	margin: calc(var(--gap) * -1) calc(var(--gap) * -1) 0;
+	padding: var(--gap);
+	background: var(--bg);
+}
+
+/* ===== 底部版权：固定在屏幕右下角，压在内容上面；用“差值”混合，在黑、白、图片上都看得见 ===== */
+.site-foot {
+	position: fixed;
+	right: 10px;
+	bottom: 6px;
+	z-index: 60;
+	pointer-events: none;
+	color: #fff;
+	mix-blend-mode: difference;
+	font-family: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace;
+	font-size: 10px;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
