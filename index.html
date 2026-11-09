@@ -90,6 +90,8 @@
 	var el = document.getElementById('intro');
 	// 速度：数字越大越慢（1 = 最早的速度）
 	var SLOW = 1.1;
+	// 名字多停留的时间（毫秒），越大停越久
+	var HOLD = 1000;
 	// 怎么来到首页的：刷新是 reload，后退是 back_forward
 	var nav = '';
 	try { nav = performance.getEntriesByType('navigation')[0].type; } catch (e) {}
@@ -114,7 +116,7 @@
 		el.appendChild(b);
 	}
 	requestAnimationFrame(function () { el.classList.add('show'); });
-	timer = setTimeout(reveal, 1400 * SLOW);
+	timer = setTimeout(reveal, 1400 * SLOW + HOLD);
 
 	// 气泡冒完后，整块淡出
 	function reveal() {
