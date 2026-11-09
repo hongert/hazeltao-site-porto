@@ -69,9 +69,9 @@
 <style>
 .intro { position: fixed; inset: 0; z-index: 9999; cursor: pointer; overflow: hidden;
 	background: var(--bg, #fff); color: var(--text, #000); }
-.intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .65s ease; text-align: center; white-space: nowrap; }
+.intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .45s ease; text-align: center; white-space: nowrap; }
 .intro.show .logo { opacity: 1; }
-.intro.bursting .logo { opacity: 0; transition: opacity .5s ease; }
+.intro.bursting .logo { opacity: 0; transition: opacity .35s ease; }
 .intro .lockup { font-family: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace; font-weight: 500; text-transform: uppercase; letter-spacing: .02em; }
 .intro .lockup .ln { font-size: 15px; }
 .intro .lockup .lr { margin-top: 5px; font-size: 11px; }
@@ -89,7 +89,7 @@
 (function () {
 	var el = document.getElementById('intro');
 	// 速度：数字越大越慢（1 = 最早的速度）
-	var SLOW = 1.6;
+	var SLOW = 1.1;
 	// 怎么来到首页的：刷新是 reload，后退是 back_forward
 	var nav = '';
 	try { nav = performance.getEntriesByType('navigation')[0].type; } catch (e) {}
