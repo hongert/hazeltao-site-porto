@@ -67,11 +67,11 @@
 <!-- 开场：冰可乐气泡往上冒，再从中间一个圆扩开（浅色白圈、深色黑圈），露出网站。同一次浏览只播第一次；点击或按任意键可跳过 -->
 <style>
 .intro { position: fixed; inset: 0; z-index: 9999; cursor: pointer; overflow: hidden;
-	background: var(--card-hover, #e9e9e9); color: var(--text, #000); }
-/* 浅色模式幕布用浅灰、深色模式用深灰，让扩开的白圈看得见 */
+	background: var(--bg, #fff); color: var(--text, #000); }
+/* 浅色模式：白底，气泡冒完直接淡出；深色模式：深灰底，黑圈扩开再淡出 */
 :root[data-theme="dark"] .intro { background: #1a1a1a; }
 .intro .dot { position: absolute; left: 50%; top: 50%; width: 0; height: 0; border-radius: 50%; background: var(--bg, #fff); transform: translate(-50%, -50%); z-index: 2; }
-/* 扩开的圆跟网站底色一致：浅色模式白圈，深色模式黑圈 */
+/* 只有深色模式用到这个黑圈 */
 .intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .4s ease; text-align: center; white-space: nowrap; }
 .intro.show .logo { opacity: 1; }
 .intro.bursting .logo { opacity: 0; transition: opacity .3s ease; }
@@ -119,8 +119,10 @@
 		if (done) return; done = true;
 		clearTimeout(timer);
 		document.removeEventListener('keydown', reveal);
-		var dot = document.createElement('div'); dot.className = 'dot'; el.appendChild(dot);
 		el.classList.add('bursting');
+		// 浅色模式不扩圆，直接淡出
+		if (document.documentElement.dataset.theme !== 'dark') { el.style.transition = 'opacity .5s ease'; el.style.opacity = '0'; setTimeout(function () { el.remove(); }, 520); return; }
+		var dot = document.createElement('div'); dot.className = 'dot'; el.appendChild(dot);
 		var max = Math.hypot(innerWidth, innerHeight) + 40, t0 = performance.now(), D = 900;
 		var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
 		(function step(now) {
