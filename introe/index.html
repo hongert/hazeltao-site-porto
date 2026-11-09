@@ -69,9 +69,10 @@
 <!-- 开场幕布（方案 E：冰可乐气泡往上冒，再从中间圆形扩开）预览 -->
 <style>
 .intro { position: fixed; inset: 0; z-index: 9999; cursor: pointer; overflow: hidden;
-	background: var(--bg, #fff); color: var(--text, #000); }
-.intro .dot { position: absolute; left: 50%; top: 50%; width: 0; height: 0; border-radius: 50%; background: #000; transform: translate(-50%, -50%); z-index: 2; }
-/* 深色模式时幕布用深灰，让纯黑圆看得见 */
+	background: var(--card-hover, #e9e9e9); color: var(--text, #000); }
+/* 浅色模式幕布用浅灰、深色模式用深灰，让扩开的白圈看得见 */
+.intro .dot { position: absolute; left: 50%; top: 50%; width: 0; height: 0; border-radius: 50%; background: var(--bg, #fff); transform: translate(-50%, -50%); z-index: 2; }
+/* 扩开的圆跟网站底色一致：浅色模式白圈，深色模式黑圈 */
 :root[data-theme="dark"] .intro { background: #1a1a1a; }
 .intro.bursting .logo { opacity: 0; transition: opacity .3s ease; }
 .intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .4s ease; text-align: center; white-space: nowrap; }
@@ -122,7 +123,7 @@
 	}
 	// 从屏幕中间开一个圆洞，圆越扩越大，露出下面的网站
 	let raf;
-	// 气泡之后：中间一个纯黑实心圆扩大到铺满整屏，然后整块淡出，露出网站
+	// 气泡之后：中间一个和底色一样的实心圆（浅色白、深色黑）扩大到铺满整屏，然后整块淡出，露出网站
 	function reveal() {
 		timers.forEach(clearTimeout); cancelAnimationFrame(raf);
 		let dot = el.querySelector('.dot');

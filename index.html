@@ -63,5 +63,77 @@
 <script src="data.zh.js?v=202610252200"></script>
 <script src="sizes.js?v=202610252200"></script>
 <script src="site.js?v=202610252200"></script>
+
+<!-- 开场：冰可乐气泡往上冒，再从中间一个圆扩开（浅色白圈、深色黑圈），露出网站。同一次浏览只播第一次；点击或按任意键可跳过 -->
+<style>
+.intro { position: fixed; inset: 0; z-index: 9999; cursor: pointer; overflow: hidden;
+	background: var(--card-hover, #e9e9e9); color: var(--text, #000); }
+/* 浅色模式幕布用浅灰、深色模式用深灰，让扩开的白圈看得见 */
+:root[data-theme="dark"] .intro { background: #1a1a1a; }
+.intro .dot { position: absolute; left: 50%; top: 50%; width: 0; height: 0; border-radius: 50%; background: var(--bg, #fff); transform: translate(-50%, -50%); z-index: 2; }
+/* 扩开的圆跟网站底色一致：浅色模式白圈，深色模式黑圈 */
+.intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .4s ease; text-align: center; white-space: nowrap; }
+.intro.show .logo { opacity: 1; }
+.intro.bursting .logo { opacity: 0; transition: opacity .3s ease; }
+.intro .lockup { font-family: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace; font-weight: 500; text-transform: uppercase; letter-spacing: .02em; }
+.intro .lockup .ln { font-size: 15px; }
+.intro .lockup .lr { margin-top: 5px; font-size: 11px; }
+.intro .b { position: absolute; bottom: -40px; border-radius: 50%; border: 1.5px solid currentColor; opacity: 0;
+	animation: rise var(--d) cubic-bezier(.3,.1,.6,1) var(--delay) forwards; }
+@keyframes rise {
+	0% { transform: translate(0, 0) scale(.6); opacity: 0; }
+	12% { opacity: .9; }
+	100% { transform: translate(var(--x), calc(-100vh - 80px)) scale(1); opacity: .9; }
+}
+@media (prefers-reduced-motion: reduce) { .intro { display: none; } }
+</style>
+<div class="intro" id="intro" hidden><div class="logo lockup"><div class="ln">HONGER (HAZEL) TAO</div><div class="lr">GRAPHIC DESIGNER</div></div></div>
+<script>
+(function () {
+	var el = document.getElementById('intro');
+	// 网址后面加 ?intro 可以强制再播一次（方便自己检查）
+	var force = location.search.indexOf('intro') > -1;
+	var seen = false;
+	try { seen = sessionStorage.getItem('introSeen') === '1'; } catch (e) {}
+	if ((seen && !force) || matchMedia('(prefers-reduced-motion: reduce)').matches) { el.remove(); return; }
+	try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
+	el.hidden = false;
+
+	var timer, raf, done = false;
+	var n = innerWidth < 600 ? 22 : 38;
+	for (var i = 0; i < n; i++) {
+		var b = document.createElement('span'); b.className = 'b';
+		var size = 4 + Math.random() * 18;
+		b.style.width = b.style.height = size + 'px';
+		b.style.left = Math.random() * 100 + '%';
+		b.style.setProperty('--d', (1.1 + Math.random() * 0.9) + 's');
+		b.style.setProperty('--delay', (Math.random() * 0.7) + 's');
+		b.style.setProperty('--x', (Math.random() * 40 - 20) + 'px');
+		el.appendChild(b);
+	}
+	requestAnimationFrame(function () { el.classList.add('show'); });
+	// 气泡冒约 1.4 秒后，中间的圆（浅色白、深色黑）扩大到铺满整屏，然后整块淡出
+	timer = setTimeout(reveal, 1400);
+
+	function reveal() {
+		if (done) return; done = true;
+		clearTimeout(timer);
+		document.removeEventListener('keydown', reveal);
+		var dot = document.createElement('div'); dot.className = 'dot'; el.appendChild(dot);
+		el.classList.add('bursting');
+		var max = Math.hypot(innerWidth, innerHeight) + 40, t0 = performance.now(), D = 900;
+		var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+		(function step(now) {
+			var p = Math.min(1, (now - t0) / D);
+			dot.style.width = dot.style.height = max * ease(p) + 'px';
+			if (p < 1) { raf = requestAnimationFrame(step); return; }
+			el.style.transition = 'opacity .5s ease'; el.style.opacity = '0';
+			setTimeout(function () { el.remove(); }, 520);
+		})(t0);
+	}
+	el.onclick = reveal;
+	document.addEventListener('keydown', reveal);
+})();
+</script>
 </body>
 </html>
