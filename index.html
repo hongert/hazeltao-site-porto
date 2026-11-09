@@ -64,16 +64,14 @@
 <script src="sizes.js?v=202610252200"></script>
 <script src="site.js?v=202610252200"></script>
 
-<!-- 开场：冰可乐气泡往上冒，再从中间一个圆扩开（浅色白圈、深色黑圈），露出网站。同一次浏览只播第一次；点击或按任意键可跳过 -->
+<!-- 开场：气泡往上冒，中间是名字，然后整块淡出露出网站。幕布跟网站底色一样（浅色白、深色黑）
+     第一次打开和每次刷新都会播；从网站里其他页面点回首页、或按浏览器后退时不播；点击或按任意键可跳过 -->
 <style>
 .intro { position: fixed; inset: 0; z-index: 9999; cursor: pointer; overflow: hidden;
 	background: var(--bg, #fff); color: var(--text, #000); }
-/* 幕布跟网站底色一样（浅色白、深色黑），气泡冒完直接淡出，不扩圆 */
-.intro .dot { position: absolute; left: 50%; top: 50%; width: 0; height: 0; border-radius: 50%; background: var(--bg, #fff); transform: translate(-50%, -50%); z-index: 2; }
-/* 只有深色模式用到这个黑圈 */
-.intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .4s ease; text-align: center; white-space: nowrap; }
+.intro .logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); opacity: 0; transition: opacity .65s ease; text-align: center; white-space: nowrap; }
 .intro.show .logo { opacity: 1; }
-.intro.bursting .logo { opacity: 0; transition: opacity .3s ease; }
+.intro.bursting .logo { opacity: 0; transition: opacity .5s ease; }
 .intro .lockup { font-family: "Monument Grotesk Mono", "DM Mono", ui-monospace, monospace; font-weight: 500; text-transform: uppercase; letter-spacing: .02em; }
 .intro .lockup .ln { font-size: 15px; }
 .intro .lockup .lr { margin-top: 5px; font-size: 11px; }
@@ -90,47 +88,43 @@
 <script>
 (function () {
 	var el = document.getElementById('intro');
-	// 网址后面加 ?intro 可以强制再播一次（方便自己检查）
-	var force = location.search.indexOf('intro') > -1;
-	var seen = false;
-	try { seen = sessionStorage.getItem('introSeen') === '1'; } catch (e) {}
-	if ((seen && !force) || matchMedia('(prefers-reduced-motion: reduce)').matches) { el.remove(); return; }
-	try { sessionStorage.setItem('introSeen', '1'); } catch (e) {}
+	// 速度：数字越大越慢（1 = 最早的速度）
+	var SLOW = 1.6;
+	// 怎么来到首页的：刷新是 reload，后退是 back_forward
+	var nav = '';
+	try { nav = performance.getEntriesByType('navigation')[0].type; } catch (e) {}
+	var fromSite = false;
+	try { fromSite = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (e) {}
+	var skip = nav === 'back_forward' || (nav !== 'reload' && fromSite);
+	// 网址后面加 ?intro 可以强制播放（方便自己检查）
+	if (location.search.indexOf('intro') > -1) skip = false;
+	if (skip || matchMedia('(prefers-reduced-motion: reduce)').matches) { el.remove(); return; }
 	el.hidden = false;
 
-	var timer, raf, done = false;
+	var timer, done = false;
 	var n = innerWidth < 600 ? 22 : 38;
 	for (var i = 0; i < n; i++) {
 		var b = document.createElement('span'); b.className = 'b';
 		var size = 4 + Math.random() * 18;
 		b.style.width = b.style.height = size + 'px';
 		b.style.left = Math.random() * 100 + '%';
-		b.style.setProperty('--d', (1.1 + Math.random() * 0.9) + 's');
-		b.style.setProperty('--delay', (Math.random() * 0.7) + 's');
+		b.style.setProperty('--d', (1.1 + Math.random() * 0.9) * SLOW + 's');
+		b.style.setProperty('--delay', Math.random() * 0.7 * SLOW + 's');
 		b.style.setProperty('--x', (Math.random() * 40 - 20) + 'px');
 		el.appendChild(b);
 	}
 	requestAnimationFrame(function () { el.classList.add('show'); });
-	// 气泡冒约 1.4 秒后，中间的圆（浅色白、深色黑）扩大到铺满整屏，然后整块淡出
-	timer = setTimeout(reveal, 1400);
+	timer = setTimeout(reveal, 1400 * SLOW);
 
+	// 气泡冒完后，整块淡出
 	function reveal() {
 		if (done) return; done = true;
 		clearTimeout(timer);
 		document.removeEventListener('keydown', reveal);
 		el.classList.add('bursting');
-		// 不扩圆，直接淡出
-		if (true) { el.style.transition = 'opacity .5s ease'; el.style.opacity = '0'; setTimeout(function () { el.remove(); }, 520); return; }
-		var dot = document.createElement('div'); dot.className = 'dot'; el.appendChild(dot);
-		var max = Math.hypot(innerWidth, innerHeight) + 40, t0 = performance.now(), D = 900;
-		var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
-		(function step(now) {
-			var p = Math.min(1, (now - t0) / D);
-			dot.style.width = dot.style.height = max * ease(p) + 'px';
-			if (p < 1) { raf = requestAnimationFrame(step); return; }
-			el.style.transition = 'opacity .5s ease'; el.style.opacity = '0';
-			setTimeout(function () { el.remove(); }, 520);
-		})(t0);
+		el.style.transition = 'opacity ' + (0.5 * SLOW) + 's ease';
+		el.style.opacity = '0';
+		setTimeout(function () { el.remove(); }, 500 * SLOW + 20);
 	}
 	el.onclick = reveal;
 	document.addEventListener('keydown', reveal);
