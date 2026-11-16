@@ -1308,3 +1308,8 @@ body[data-page="about"] .cv p.lead {
 		object-fit: cover;
 	}
 }
+
+/* 项目页：不显示大 logo，改成顶部返回按钮旁边的小圆按钮（点它回首页） */
+body[data-page="project"] .side .masthead { display: none; }
+body[data-page="project"] .side-project { padding-top: 22px; }
+.pill.home-logo svg { width: 18px; height: auto; fill: currentColor; stroke: none; }
