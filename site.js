@@ -43,7 +43,9 @@
 	const plain = (html) => html.replace(/<[^>]+>/g, '');
 	const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 	// 防止孤字（widow）：把最后两个英文单词，或最后两个中文字绑在一起不换行
-	const nw = (s) => { s = String(s); const m = s.match(/\S+\s+\S+$/) || s.match(/[　-鿿＀-￯]{2}$/); if (!m || m[0].length === s.length) return esc(s); const i = s.length - m[0].length; return esc(s.slice(0, i)) + '<span class="nw">' + esc(m[0]) + '</span>'; };
+	const nw = (s) => { s = String(s); if (s.trim().split(/\s+/).length <= 2) return '<span class="nw">' + esc(s) + '</span>'; const m = s.match(/\S+\s+\S+$/) || s.match(/[　-鿿＀-￯]{2}$/); if (!m) return esc(s); const i = s.length - m[0].length; return esc(s.slice(0, i)) + '<span class="nw">' + esc(m[0]) + '</span>'; };
+	// 交付项：每一项不拆开；最后一项是单个词时，和前一项绑在一起
+	const nwTags = (tags) => { const t = tags.map(esc); if (t.length > 1 && !/\s/.test(t[t.length - 1])) { const last = t.pop(); t[t.length - 1] = t[t.length - 1] + ', ' + last; } return t.map((x) => '<span class="nw">' + x + '</span>').join(', '); };
 	const store = {
 		get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
 		set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
@@ -266,7 +268,7 @@
 	function renderHome() {
 		content.innerHTML = P.map((p) => `
 			<a class="card feature" href="${link(p)}">
-				<div class="feat-head"><h2>${nw(p.title)}</h2><span class="deliv">${nw(p.tags.join(', '))}</span></div>
+				<div class="feat-head"><h2>${nw(p.title)}</h2><span class="deliv">${nwTags(p.tags)}</span></div>
 				<div class="media">${mediaTag(p.media[0], false)}</div>
 			</a>`).join('');
 		// 首页卡片和项目页顶部用同一张（可能是视频）

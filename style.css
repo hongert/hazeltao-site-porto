@@ -1331,3 +1331,5 @@ body[data-page="project"] .side-project { padding-top: 22px; }
 /* 手机：Next project 放在最底部 */
 .p-text-mobile:not(.p-next-mobile) .next { display: none; }
 .p-next-mobile .next { padding: 18px 16px; }
+.feature .feat-head h2 { flex: 1 1 auto; min-width: 0; }
+.feature .deliv { flex: 0 1 auto; }
