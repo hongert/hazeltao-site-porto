@@ -1267,3 +1267,15 @@ body[data-page="about"] .cv p.lead {
 	line-height: 1.45;
 }
 @media (max-width: 760px) { .about-title { font-size: 30px; } }
+
+/* ===== About me：左边标题 + 引言，右边正文（不再是一整条很长的文字） ===== */
+.about-me {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+	column-gap: 48px;
+	align-items: start;
+}
+.about-body { max-width: 62ch; }
+@media (max-width: 1000px) {
+	.about-me { grid-template-columns: 1fr; }
+}
