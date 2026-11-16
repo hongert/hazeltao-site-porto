@@ -1294,3 +1294,17 @@ body[data-page="about"] .cv p.lead {
 	.p-text-mobile .p-title { padding: 18px 16px; }
 	.p-text-mobile .info { grid-template-columns: 1fr 1fr; }
 }
+
+/* 项目页第一张图 / 视频：电脑上正好铺满一屏，往下滚才出现其他图片 */
+@media (min-width: 761px) {
+	.content > .p-hero {
+		height: calc(100vh - var(--gap) * 2);
+		aspect-ratio: auto !important;
+	}
+	.content > .p-hero img,
+	.content > .p-hero video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}

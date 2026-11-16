@@ -340,6 +340,17 @@
 	}
 
 	// 项目页：大图、标题、两张文字卡、信息、其余图片
+	// 署名：'Photography Credits: A, B, C. Creative Director: D' → 每个角色一组，名字一行一个
+	function creditsHTML(c) {
+		if (!c) return '';
+		return c.split(/[.。]\s*(?=[^.。]+[:：])/).map((seg) => {
+			const m = seg.match(/^\s*([^:：]+)[:：]\s*(.+?)[.。]?\s*$/);
+			if (!m) return `<div><dt>${T('Credits')}</dt><dd>${esc(seg)}</dd></div>`;
+			const names = m[2].split(/\s*[,，、]\s*/).map(esc).join('<br>');
+			return `<div><dt>${esc(m[1].trim())}</dt><dd>${names}</dd></div>`;
+		}).join('');
+	}
+
 	function renderProject() {
 		const i = P.findIndex((p) => p.slug === current);
 		if (i < 0) {
@@ -422,7 +433,7 @@
 				<dl class="info">
 					<div><dt>${T('Deliverables')}</dt><dd>${p.services.join('<br>')}</dd></div>
 					${p.format ? `<div><dt>${T('Format')}</dt><dd>${p.format}</dd></div>` : ''}
-					${p.credits ? `<div><dt>${T('Credits')}</dt><dd>${esc(p.credits)}</dd></div>` : ''}
+					${creditsHTML(p.credits)}
 				</dl>
 				<a class="next" href="${link(next)}"><span><span class="muted">${T('Next project')}</span><br><span class="nt">${esc(next.title)}</span></span>${'<span class="pill round">' + icons.arrow + '</span>'}</a>
 			</div>`;
@@ -430,7 +441,7 @@
 		if (sideSlot) { sideSlot.className = 'side-project'; sideSlot.innerHTML = textHTML; }
 		content.innerHTML = `
 			${mobileTop()}
-			${media(p.media[0], p.grid === 2 && SIZES[p.media[0]] ? ratio(p.media[0]) : undefined)}
+			${media(p.media[0], p.grid === 2 && SIZES[p.media[0]] ? ratio(p.media[0]) : undefined).replace('class="media ', 'class="media p-hero ')}
 			<div class="p-text-mobile">${textHTML}</div>
 			${blocks.join('')}`;
 		if (p.syncVideos) content.querySelectorAll('video').forEach((v) => (v.dataset.sync = ''));
