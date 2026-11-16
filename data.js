@@ -84,9 +84,9 @@ window.PROJECTS = [
 			['Taohe_tape_mockup.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg'],
 		],
 		text: [
-			"My family dyes wool in Puyuan, China’s sweater town. As we began making our own garments, I noticed almost no one was working with yak wool—and in the U.S., most shoppers know cashmere but have barely heard of yak. TAOHE is the brand I built to fill that gap.",
-			"I wanted to show that a traditional material can be plain and still feel premium. Luxury cashmere tends to speak in thin, delicate lines; TAOHE goes the other way, with heavy letterforms that carry the warmth and weight of the wool, and type that rises and falls like the Tibetan mountains.",
-			"My first logo sketches mapped Tibet itself: ridgelines, coordinates. But this is a family business, so the name had to be ours. “Tao” is my family name; “He” (和) means togetherness, and the rising stroke in the logo is the second tone you hear when you say it. The same instinct shaped the product line: one material, done well, rather than many.",
+			"My family dyes wool in Puyuan, China’s sweater town. As we expanded into making our own ready-to-wear, I noticed almost no one was working with yak wool—and in the U.S., most shoppers know cashmere but have barely heard of yak. TAOHE is the brand I built to fill that gap.",
+			"I wanted to show that a traditional material can be pure and unadorned and still read as luxury. Researching competitors, I found that luxury cashmere tends to speak in thin, italic, delicate serifs. TAOHE goes the other way: heavy letterforms that carry the warmth and weight of yak wool, and type that rises and falls like the Tibetan mountains.",
+			"My first logo sketches mapped Tibet itself, with abstract mountains and even coordinates, but they started to look like an outdoor gear brand. This is a family business, so the name had to be ours. “Tao” is my family name; “He” (和) means togetherness, and the rising stroke in the logo is the second tone you hear when you say it in Mandarin.",
 		],
 		credits: 'Photography Credits: Kin Codel. Creative Director: Zaul Ocana',
 	},
