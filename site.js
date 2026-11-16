@@ -159,7 +159,7 @@
 		side.className = 'side';
 		side.innerHTML = `
 			<div class="topline side-nav">
-				<span class="toggles">${page !== 'home' ? backBtn() : ''}${allBtn()}</span>
+				<span class="toggles">${page !== 'home' ? backBtn() : ''}</span>
 				${switchHTML()}
 			</div>
 			<div class="masthead">
@@ -178,28 +178,22 @@
 				</div>`).join('')}
 			</div>`;
 		if (ABOUT_SIDE) {
-			// 左栏只放 About me（内容直接取自 about.html，只维护一份）
+			// 左栏：一句话介绍 + About / Work / Playground / Contact 四个入口 + 联系方式（作品优先，简历放在 About 页）
 			const cards = $('.cards', side);
-			cards.innerHTML = '';
-			cards.classList.add('side-about');
-			// 手机上：About 默认收起，点按钮展开（先看到项目）
-			if (ALT) {
-				document.body.classList.add('about-side');
-				cards.insertAdjacentHTML('beforebegin', `<button class="about-toggle" aria-expanded="false">${T('About me')} <span>+</span></button>`);
-				const btn = $('.about-toggle', side);
-				btn.onclick = () => {
-					const open = side.classList.toggle('about-open');
-					btn.setAttribute('aria-expanded', open);
-					$('span', btn).textContent = open ? '−' : '+';
-				};
-			}
-			fetch('about.html?v=' + VER).then((r) => r.text()).then((h) => {
-				const doc = new DOMParser().parseFromString(h, 'text/html');
-				const main = doc.querySelector('main.content');
-				if (!main) return;
-				if (lang === 'zh') main.querySelectorAll('[data-zh]').forEach((el) => (el.innerHTML = el.dataset.zh));
-				cards.innerHTML = main.innerHTML;
-			});
+			cards.className = 'side-nav-list';
+			const zh = lang === 'zh';
+			const item = (label, href, note, on) => `<a href="${href}"${on ? ' class="on"' : ''}><span>${label}</span><span>${note}</span></a>`;
+			cards.innerHTML = `
+				<p class="side-intro">${zh
+					? '平面设计师，专注编辑设计、品牌识别与孔版印刷（Risograph）。<br>艺术中心设计学院平面设计 MFA 在读。'
+					: 'Graphic designer working across editorial design,<br>branding &amp; identity, and Risograph.<br>MFA Graphic Design, ArtCenter College of Design.'}</p>
+				<nav class="side-links">
+					${item(zh ? '关于' : 'About', 'about.html', '→', page === 'about')}
+					${item(zh ? '作品' : 'Work', ALT + 'all.html', String(P.length).padStart(2, '0'), false)}
+					${item('Playground', 'playground.html', '→', false)}
+					${item(zh ? '联系' : 'Contact', 'mailto:' + S.email, '→', false)}
+				</nav>
+				<p class="side-contact">${esc(S.email)}<br><a href="https://www.instagram.com/${S.instagram}/" target="_blank" rel="noopener">@${esc(S.instagram)}</a><br>${zh ? '加州洛杉矶' : 'Los Angeles, CA'}</p>`;
 		}
 		document.body.prepend(side);
 		if (!ABOUT_SIDE) startStack(side);

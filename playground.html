@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Playground — Hazel Tao</title>
+<meta name="description" content="Paintings by Honger (Hazel) Tao, hung in a line-drawn room you can turn around in.">
+<link rel="icon" href="favicon.svg?v=3" type="image/svg+xml">
+<link rel="icon" href="favicon-192.png?v=3" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
+<script>
+	// 黑/白背景和网站其他页面一样：晚上 7 点到凌晨 5 点黑色，手动切换在这一段时间内有效
+	(function () {
+		var h = new Date().getHours(), t = h >= 19 || h < 5 ? 'dark' : 'light';
+		try { var o = JSON.parse(localStorage.getItem('themeOverride')); if (o && o.until > Date.now()) t = o.theme; } catch (e) {}
+		document.documentElement.dataset.theme = t;
+		try { if (localStorage.getItem('lang') === 'zh') document.documentElement.lang = 'zh-Hans'; } catch (e) {}
+	})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&display=swap">
+<style>
+:root { --bg: #fff; --fg: #111; --muted: #8a8a8a; --line: rgba(17,17,17,.6); --soft: rgba(17,17,17,.28); }
+:root[data-theme="dark"] { --bg: #000; --fg: #f2f2f2; --line: rgba(242,242,242,.6); --soft: rgba(242,242,242,.28); }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); color: var(--fg);
+	font-family: "DM Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: .02em; transition: background .4s, color .4s; }
+button { font: inherit; color: inherit; cursor: pointer; }
+.bar { position: fixed; top: 10px; left: 10px; right: 10px; z-index: 20; display: flex; justify-content: space-between; gap: 6px; pointer-events: none; }
+.bar > * { pointer-events: auto; }
+.pill { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; color: inherit; font-size: 12px; }
+.pill svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.4; }
+.pill { height: 34px; padding: 0 14px; border: 0; border-radius: 999px; background: color-mix(in srgb, var(--fg) 7%, var(--bg)); text-transform: uppercase; }
+.hint { position: fixed; left: 12px; bottom: 10px; z-index: 20; color: var(--muted); font-size: 11px; text-transform: uppercase; pointer-events: none; }
+.foot { position: fixed; right: 10px; bottom: 6px; z-index: 20; font-size: 10px; text-transform: uppercase; color: #fff; mix-blend-mode: difference; pointer-events: none; }
+
+.view { position: absolute; inset: 0; overflow: hidden; touch-action: none; cursor: grab; user-select: none; }
+.view:active { cursor: grabbing; }
+.persp { position: absolute; inset: 0; perspective: 720px; perspective-origin: 50% 48%; }
+.room, .g { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; }
+.g { left: 0; top: 0; }
+.f { position: absolute; transform-style: preserve-3d; }
+.wall { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); border-left: 1px solid var(--line); }
+/* 家具的每个面：底色挡住后面的线，只留边线 */
+.s { position: absolute; border: 1px solid var(--line); background: var(--bg); transition: background .4s, border-color .4s; }
+.s.open { background: transparent; }
+.flat { position: absolute; border: 1px solid var(--soft); }
+.sv { position: absolute; overflow: visible; }
+.sv svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.sv svg * { fill: none; stroke: var(--line); stroke-width: 1.1; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.sv svg .soft { stroke: var(--soft); }
+.sv svg .solid { fill: var(--bg); }
+.sv svg .dot { fill: var(--fg); stroke: none; }
+
+/* 画：线框 + 留白 + 两根挂绳 + 钉子 + 标签 */
+.art { position: absolute; margin: 0; padding: 12px; border: 1px solid var(--fg); background: var(--bg); cursor: zoom-in; transition: background .4s, border-color .4s; }
+.art img { display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.art.hang::before, .art.hang::after { content: ""; position: absolute; bottom: 100%; width: 50%; height: var(--wire, 70px); pointer-events: none; }
+.art.hang::before { left: 0; background: linear-gradient(to top right, transparent calc(50% - .5px), var(--line) calc(50% - .5px), var(--line) calc(50% + .5px), transparent calc(50% + .5px)); }
+.art.hang::after { right: 0; background: linear-gradient(to top left, transparent calc(50% - .5px), var(--line) calc(50% - .5px), var(--line) calc(50% + .5px), transparent calc(50% + .5px)); }
+.art .nail { position: absolute; left: 50%; bottom: calc(100% + var(--wire, 70px) - 3px); width: 6px; height: 6px; margin-left: -3px; border-radius: 50%; background: var(--fg); }
+.art:not(.hang) .nail { display: none; }
+.art .lab { position: absolute; left: -1px; top: calc(100% + 10px); white-space: nowrap; font-size: 11px; text-transform: uppercase; line-height: 1.4; }
+.art .lab span { color: var(--muted); margin-right: 8px; }
+.screen-txt { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 13px; text-transform: uppercase; }
+
+.lb { position: fixed; inset: 0; z-index: 50; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 14px; background: color-mix(in srgb, var(--bg) 94%, transparent); cursor: zoom-out; padding: 60px 20px 40px; }
+.lb.on { display: flex; }
+.lb img { max-width: 100%; max-height: calc(100% - 40px); object-fit: contain; border: 1px solid var(--fg); padding: 14px; background: var(--bg); }
+.lb p { margin: 0; text-transform: uppercase; }
+@media (max-width: 700px) { .hint { bottom: 24px; } }
+</style>
+</head>
+<body>
+<div class="bar"><a class="pill" href="index.html" id="home"><svg viewBox="0 0 16 16"><path d="M14 8H2M7 3 2 8l5 5"/></svg> Hazel Tao</a><button class="pill" id="theme">Light / Dark</button></div>
+<section class="view" id="view"><div class="persp"><div class="room" id="room"></div></div></section>
+<div class="hint" id="hint"></div>
+<div class="foot">© 2026 Honger (Hazel) Tao. All rights reserved.</div>
+<div class="lb" id="lb"><img alt=""><p></p></div>
+
+<script>
+const P = [
+	{ f: 'black-soya-bean.jpg', t: 'Black Soya Bean', w: 1600, h: 1293 },
+	{ f: 'cheongsam-store-wuzhen.jpg', t: 'A Cheongsam Store in Wuzhen', w: 959, h: 1280 },
+	{ f: 'colorful-trees.jpg', t: 'Colorful Trees', w: 1280, h: 959 },
+	{ f: 'dress-pearl-necklace.jpg', t: 'Dress with Pearl Necklace', w: 1132, h: 1458 },
+	{ f: 'bubble-tea-sunflowers.jpg', t: 'Enjoy Bubble Tea in a Winter Full of Sunflowers', w: 1600, h: 1353 },
+	{ f: 'self-portrait.jpg', t: 'Self-portrait', w: 1020, h: 1280 },
+	{ f: 'still-life-chinese-ceramics.jpg', t: 'Still Life of Chinese Ceramics, Vegetables & Fruits', w: 905, h: 1135 },
+	{ f: 'still-life-sheep-skull.jpg', t: 'Still Life of a Sheep Skull', w: 1600, h: 1201 },
+	{ f: 'george-washington-bridge.jpg', t: 'George Washington Bridge', w: 517, h: 768 },
+	{ f: 'diamonds.jpg', t: 'Diamonds', w: 1170, h: 874 },
+];
+const $ = (s) => document.querySelector(s);
+const n2 = (i) => String(i + 1).padStart(2, '0');
+const root = document.documentElement;
+const zh = root.lang === 'zh-Hans';
+$('#hint').textContent = zh ? '左右拖动或滚动转身 · 上下拖动抬头低头 · 点画看大图' : 'Drag or scroll to look around · Click a painting to view it';
+$('#theme').onclick = () => {
+	const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+	root.dataset.theme = next;
+	// 和网站其他页面共用同一个设置：到下一个早上 5 点 / 晚上 7 点前有效
+	const n = new Date(), h = n.getHours();
+	if (h >= 19) n.setDate(n.getDate() + 1);
+	n.setHours(h >= 5 && h < 19 ? 19 : 5, 0, 0, 0);
+	try { localStorage.setItem('themeOverride', JSON.stringify({ theme: next, until: n.getTime() })); } catch (e) {}
+};
+
+// ---------- 房间尺寸（约 1 米 = 210 像素） ----------
+const S = 2100; // 房间边长
+const H = 660; // 层高
+const FY = H / 2; // 地面的 y（CSS 里 y 向下）
+const room = $('#room');
+const billboards = []; // 永远正对你的平面（植物、花瓶）
+
+// 3D 小工具：一个面 / 一个线框盒子 / 一个组（可旋转）
+function face(parent, w, h, tf, cls = 's') {
+	const d = document.createElement('div');
+	d.className = cls;
+	Object.assign(d.style, { width: w + 'px', height: h + 'px', left: -w / 2 + 'px', top: -h / 2 + 'px', transform: tf });
+	parent.appendChild(d);
+	return d;
+}
+// 盒子：中心 (x, y, z)，尺寸 w(左右) h(上下) d(前后)
+function box(parent, x, y, z, w, h, d, opts = {}) {
+	// 底面默认不画：底面贴着桌面 / 地面 / 隔板，两个面重合会闪出奇怪的虚线
+	const skip = (opts.skip || '') + (opts.bottom ? '' : 'u');
+	const T = (s) => `translate3d(${x}px,${y}px,${z}px) ${s}`;
+	if (!skip.includes('f')) face(parent, w, h, T(`translateZ(${d / 2}px)`));
+	if (!skip.includes('b')) face(parent, w, h, T(`translateZ(${-d / 2}px) rotateY(180deg)`));
+	if (!skip.includes('l')) face(parent, d, h, T(`translateX(${-w / 2}px) rotateY(-90deg)`));
+	if (!skip.includes('r')) face(parent, d, h, T(`translateX(${w / 2}px) rotateY(90deg)`));
+	if (!skip.includes('t')) face(parent, w, d, T(`translateY(${-h / 2}px) rotateX(90deg)`));
+	if (!skip.includes('u')) face(parent, w, d, T(`translateY(${h / 2}px) rotateX(-90deg)`));
+}
+function group(parent, tf) {
+	const g = document.createElement('div');
+	g.className = 'g';
+	g.style.transform = tf;
+	parent.appendChild(g);
+	return g;
+}
+// 一幅画
+function art(i, maxW, maxH, hang = true, wire = 70) {
+	const p = P[i], pad = 12;
+	let h = maxH, w = h * p.w / p.h;
+	if (w > maxW) { w = maxW; h = w * p.h / p.w; }
+	const el = document.createElement('figure');
+	el.className = 'art' + (hang ? ' hang' : '');
+	el.style.width = w + pad * 2 + 'px';
+	el.style.height = h + pad * 2 + 'px';
+	el.style.setProperty('--wire', wire + 'px');
+	el.innerHTML = `<img src="images/playground/${p.f}" alt="${p.t}" draggable="false"><i class="nail"></i><div class="lab"><span>${n2(i)}</span>${p.t}</div>`;
+	el.dataset.i = i;
+	el._w = w + pad * 2;
+	el._h = h + pad * 2;
+	return el;
+}
+
+// ---------- 四面墙 + 地面 + 天花板 ----------
+// 墙 0 = 正前方（沙发），1 = 左（画墙），2 = 背后（画墙 + 画架），3 = 右（电脑桌）
+const walls = [];
+for (let w = 0; w < 4; w++) {
+	const el = face(room, S, H, `rotateY(${w * 90}deg) translateZ(${-S / 2}px)`, 'f wall');
+	walls.push(el);
+}
+// 地毯、天花板上的吊灯线
+face(room, 1000, 700, `translate3d(0,${FY}px,${-120}px) rotateX(90deg)`, 'flat');
+face(room, 940, 640, `translate3d(0,${FY}px,${-120}px) rotateX(90deg)`, 'flat');
+
+// 墙上挂画：wall 是墙，list 是 [画的编号, 中心 x（墙上，从左量）, 中心 y（从墙顶量）, 最大宽, 最大高]
+function hangOn(wall, list) {
+	for (const [i, cx, cy, mw, mh] of list) {
+		const a = art(i, mw, mh, true, 64);
+		a.style.left = cx - a._w / 2 + 'px';
+		a.style.top = cy - a._h / 2 + 'px';
+		walls[wall].appendChild(a);
+	}
+}
+hangOn(0, [[0, S / 2 - 470, 250, 300, 230], [1, S / 2, 240, 220, 260], [2, S / 2 + 470, 250, 300, 230]]);
+hangOn(1, [[3, S * 0.25, 255, 280, 300], [4, S * 0.5, 255, 400, 300], [5, S * 0.75, 255, 280, 300]]);
+hangOn(2, [[6, S * 0.2, 290, 300, 320], [7, S * 0.43, 290, 400, 300]]);
+hangOn(3, [[8, S * 0.38, 200, 200, 230]]);
+
+// ---------- 沙发（贴着正前方的墙） ----------
+(function () {
+	const g = group(room, `translate3d(0,0,${-S / 2 + 140}px)`);
+	const W = 520, D = 200, legH = 18;
+	const baseH = 60, baseY = FY - legH - baseH / 2;
+	box(g, 0, baseY, 0, W, baseH, D); // 底座
+	box(g, 0, baseY - baseH / 2 - 16, 25, W - 92, 32, D - 52); // 坐垫（左右、前后都留出空隙，不和扶手、靠背穿插）
+	box(g, 0, baseY - baseH / 2 - 60, -D / 2 + 22, W - 80, 120, 44); // 靠背
+	for (const s of [-1, 1]) box(g, s * (W / 2 - 22), baseY - baseH / 2 - 34, 0, 44, 68, D); // 扶手
+	for (const sx of [-1, 1]) for (const sz of [-1, 1]) box(g, sx * (W / 2 - 16), FY - legH / 2, sz * (D / 2 - 16), 10, legH, 10, { skip: 'tu' });
+	// 两个抱枕
+	box(g, -150, baseY - baseH / 2 - 32 - 40, -30, 100, 80, 24); // 抱枕放在坐垫上面，不穿进去
+	box(g, 150, baseY - baseH / 2 - 32 - 40, -30, 100, 80, 24);
+	// 旁边的小边几 + 落地灯
+	box(g, W / 2 + 110, FY - 70, 0, 110, 140, 110);
+	box(g, -W / 2 - 450, FY - 3, 0, 60, 6, 60); // 灯座
+	box(g, -W / 2 - 450, FY - 180, 0, 6, 350, 6, { skip: 'tu' }); // 灯杆
+	box(g, -W / 2 - 450, FY - 380, 0, 90, 70, 90, { skip: 'tu' }); // 灯罩
+})();
+
+// ---------- 电脑桌、显示器、键盘、椅子（贴着右边的墙） ----------
+(function () {
+	const g = group(room, `translate3d(${S / 2 - 150}px,0,0) rotateY(-90deg)`); // 面朝房间中间
+	const W = 440, D = 200, topY = FY - 160;
+	box(g, 0, topY, 0, W, 12, D); // 桌面
+	for (const sx of [-1, 1]) for (const sz of [-1, 1]) box(g, sx * (W / 2 - 14), (topY + FY) / 2 + 3, sz * (D / 2 - 14), 10, FY - topY - 6, 10, { skip: 'tu' });
+	box(g, 0, topY - 6 - 3, -40, 70, 6, 50); // 显示器底座
+	box(g, 0, topY - 6 - 40, -50, 10, 70, 10, { skip: 'tu' }); // 支架
+	const scr = (box(g, 0, topY - 6 - 75 - 70, -40, 260, 150, 12), null);
+	// 屏幕上一行字
+	const t = face(g, 230, 120, `translate3d(0px,${topY - 151}px,${-33}px)`, 'f');
+	t.innerHTML = '<div class="screen-txt">HELLO :)</div>';
+	box(g, 0, topY - 6 - 3, 40, 180, 6, 56); // 键盘
+	box(g, 130, topY - 6 - 3, 44, 30, 6, 44); // 鼠标
+	box(g, -175, topY - 6 - 25, -40, 34, 50, 34); // 笔筒
+	for (const [px, rz] of [[-182, -8], [-170, 6], [-176, 0]]) { const pen = group(g, `translate3d(${px}px,${topY - 6 - 62}px,-40px) rotateZ(${rz}deg)`); box(pen, 0, 0, 0, 3, 40, 3, { skip: 'tu' }); }
+	cross(g, -110, topY - 6 - 30, -60, 50, 60, plant(50, 60, [[14, -40, 6, 8], [16, 0, 6, 10], [14, 40, 6, 8], [12, -75, 5, 4], [12, 75, 5, 4]], 0.4), -90); // 小多肉
+	// 台灯
+	box(g, 170, topY - 6 - 3, -50, 50, 6, 40);
+	const arm = group(g, `translate3d(170px,${topY - 70}px,-50px) rotateZ(14deg)`); box(arm, 0, 0, 0, 5, 120, 5, { skip: 'tu' });
+	const arm2 = group(g, `translate3d(150px,${topY - 150}px,-50px) rotateZ(-60deg)`); box(arm2, 0, 0, 0, 5, 80, 5, { skip: 'tu' });
+	const head = group(g, `translate3d(118px,${topY - 160}px,-50px) rotateZ(-30deg)`); box(head, 0, 0, 0, 50, 26, 34, { skip: 'u' });
+	// 椅子
+	const c = group(g, `translate3d(0px,0,${D / 2 + 110}px)`);
+	const seatY = FY - 95;
+	box(c, 0, seatY, 0, 120, 14, 120);
+	box(c, 0, seatY - 80, 56, 120, 140, 12); // 椅背
+	for (const sx of [-1, 1]) for (const sz of [-1, 1]) box(c, sx * 52, (seatY + FY) / 2 + 4, sz * 52, 8, FY - seatY - 8, 8, { skip: 'tu' });
+})();
+
+// ---------- 画架（背后左边的角落，朝向房间中间），上面放一幅画 ----------
+(function () {
+	const g = group(room, `translate3d(${-S / 2 + 420}px,0,${S / 2 - 420}px) rotateY(135deg)`);
+	const legH = 560, top = FY - legH;
+	for (const s of [-1, 1]) {
+		const leg = group(g, `translate3d(${s * 70}px,${FY - legH / 2}px,0) rotateZ(${-s * 7}deg)`);
+		box(leg, 0, 0, 0, 10, legH, 10, { skip: 'tu' });
+	}
+	const back = group(g, `translate3d(0,${FY - legH / 2 + 10}px,-70px) rotateX(-16deg)`);
+	box(back, 0, 0, 0, 10, legH - 20, 10, { skip: 'tu' });
+	box(g, 0, FY - 190, 14, 200, 10, 34); // 托板
+	box(g, 0, top + 40, 6, 120, 10, 14); // 顶部夹子
+	const a = art(9, 300, 240, false);
+	const holder = group(g, `translate3d(0,${FY - 195 - a._h / 2}px,24px) rotateX(-6deg)`);
+	a.style.left = -a._w / 2 + 'px';
+	a.style.top = -a._h / 2 + 'px';
+	holder.appendChild(a);
+	// 旁边一张小凳子，上面一盒颜料
+	const st = group(g, `translate3d(230px,0,40px) rotateY(-20deg)`);
+	box(st, 0, FY - 110, 0, 110, 12, 110);
+	for (const sx of [-1, 1]) for (const sz of [-1, 1]) box(st, sx * 46, FY - 52, sz * 46, 8, 104, 8, { skip: 'tu' });
+	box(st, 0, FY - 132, 0, 70, 30, 50);
+})();
+
+
+// ================= 生活细节 =================
+// 一块画着线条的平面（SVG），用来画植物、窗外、窗帘、猫、挂钟
+function sv(parent, w, h, tf, inner, vb) {
+	const d = document.createElement('div');
+	d.className = 'f sv';
+	Object.assign(d.style, { width: w + 'px', height: h + 'px', left: -w / 2 + 'px', top: -h / 2 + 'px', transform: tf });
+	d.innerHTML = `<svg viewBox="${vb || `0 0 ${w} ${h}`}" preserveAspectRatio="none">${inner}</svg>`;
+	parent.appendChild(d);
+	return d;
+}
+// 植物、花瓶：一块永远转过来正对你的平面（rot 是它所在那组家具转过的角度）
+function cross(parent, x, y, z, w, h, inner, rot = 0) {
+	const el = sv(parent, w, h, `translate3d(${x}px,${y}px,${z}px)`, inner);
+	billboards.push({ el, x, y, z, rot });
+}
+// 一片叶子：从 (x,y) 出发，长 len，角度 a（度，0 = 向上），宽 wd
+function leaf(x, y, len, a, wd) {
+	const r = (a * Math.PI) / 180, ex = x + Math.sin(r) * len, ey = y - Math.cos(r) * len;
+	const nx = Math.cos(r) * wd, ny = Math.sin(r) * wd;
+	const mx = (x + ex) / 2, my = (y + ey) / 2;
+	return `<path class="solid" d="M${x},${y} Q${mx + nx},${my + ny} ${ex},${ey} Q${mx - nx},${my - ny} ${x},${y}Z"/><path d="M${x},${y} L${ex},${ey}"/>`;
+}
+// 一盆植物（w×h 的画布，盆在底部）
+function plant(w, h, leaves, potH = 0.28) {
+	const pw = w * 0.42, ph = h * potH, px = (w - pw) / 2, py = h - ph;
+	let g = '';
+	const base = py + 2;
+	for (const [len, a, wd, stem] of leaves) {
+		const r = (a * Math.PI) / 180;
+		const sx = w / 2 + Math.sin(r) * stem, sy = base - Math.cos(r) * stem;
+		g += `<path d="M${w / 2},${base} Q${w / 2 + Math.sin(r) * stem * 0.3},${base - stem * 0.6} ${sx},${sy}"/>`;
+		g += leaf(sx, sy, len, a, wd);
+	}
+	g += `<path class="solid" d="M${px},${py} L${px + pw},${py} L${px + pw * 0.88},${h} L${px + pw * 0.12},${h} Z"/><path d="M${px - 3},${py} L${px + pw + 3},${py}"/>`;
+	return g;
+}
+
+// ---------- 窗户（背后的墙，画架后面）：窗框、十字窗棂、窗台、窗外的风景、窗帘 ----------
+(function () {
+	const wall = walls[2];
+	const WW = 520, WH = 400, cx = S * 0.74, top = 120;
+	const win = document.createElement('div');
+	win.className = 'sv';
+	Object.assign(win.style, { left: cx - WW / 2 + 'px', top: top + 'px', width: WW + 'px', height: WH + 'px' });
+	// 窗外：远处的楼、一棵树、太阳、两只鸟、几条云
+	const view = `
+		<path class="soft" d="M0,300 L60,300 L60,230 L110,230 L110,270 L150,270 L150,190 L200,190 L200,300 L260,300 L260,250 L300,250 L300,210 L340,210 L340,300 L400,300 L400,240 L450,240 L450,300 L520,300"/>
+		<path class="soft" d="M170,215 L180,215 M170,235 L180,235 M310,230 L320,230 M75,250 L85,250"/>
+		<circle class="soft" cx="410" cy="95" r="30"/>
+		<path class="soft" d="M60,90 Q90,70 120,90 Q150,72 175,92 M300,60 Q320,48 345,62"/>
+		<path class="soft" d="M215,140 q8,-8 16,0 q8,-8 16,0 M255,115 q6,-6 12,0 q6,-6 12,0"/>
+		<path class="soft" d="M470,400 L470,320 M470,330 Q430,300 445,260 Q470,230 495,260 Q510,300 470,330"/>`;
+	win.innerHTML = `<svg viewBox="0 0 ${WW} ${WH}" preserveAspectRatio="none">${view}
+		<rect x="0" y="0" width="${WW}" height="${WH}"/><rect x="10" y="10" width="${WW - 20}" height="${WH - 20}"/>
+		<path d="M${WW / 2},10 L${WW / 2},${WH - 10} M10,${WH / 2} L${WW - 10},${WH / 2}"/></svg>`;
+	wall.appendChild(win);
+	// 窗帘杆 + 两片窗帘（波浪线）
+	const rod = document.createElement('div');
+	rod.className = 'sv';
+	Object.assign(rod.style, { left: cx - WW / 2 - 140 + 'px', top: top - 40 + 'px', width: WW + 280 + 'px', height: WH + 120 + 'px', transform: 'translateZ(6px)' });
+	const curtain = (x0) => {
+		let p = `<path class="solid" d="M${x0},14 `;
+		for (let k = 0; k <= 6; k++) p += `L${x0 + k * 20},14 `;
+		p += `L${x0 + 120},${WH + 110} `;
+		for (let k = 6; k >= 0; k--) p += `Q${x0 + k * 20 + 10},${WH + 118} ${x0 + k * 20},${WH + 110} `;
+		p += 'Z"/>';
+		for (let k = 1; k < 6; k++) p += `<path class="soft" d="M${x0 + k * 20},18 Q${x0 + k * 20 + 6},${WH / 2} ${x0 + k * 20},${WH + 106}"/>`;
+		return p;
+	};
+	rod.innerHTML = `<svg viewBox="0 0 ${WW + 280} ${WH + 120}" preserveAspectRatio="none">
+		<path d="M0,12 L${WW + 280},12"/><circle cx="4" cy="12" r="4"/><circle cx="${WW + 276}" cy="12" r="4"/>
+		${curtain(10)}${curtain(WW + 280 - 130)}</svg>`;
+	wall.appendChild(rod);
+	// 窗台（立体）和窗台上一小盆植物
+	const wx = -(cx - S / 2); // 墙 2 是转过 180 度的，左右相反
+	box(room, wx, -H / 2 + top + WH + 7, S / 2 - 16, WW + 40, 14, 32);
+	cross(room, wx + 170, -H / 2 + top + WH - 30, S / 2 - 18, 70, 72, plant(70, 72, [[26, -35, 8, 14], [30, 0, 9, 18], [26, 35, 8, 14], [20, -70, 6, 8], [20, 70, 6, 8]], 0.38));
+	// 窗边的开关
+	const sw = document.createElement('div');
+	sw.className = 's';
+	Object.assign(sw.style, { left: cx + WW / 2 + 170 + 'px', top: '330px', width: '24px', height: '36px', transform: 'translateZ(2px)' });
+	wall.appendChild(sw);
+})();
+
+// ---------- 书架（右边墙，电脑桌旁边）----------
+(function () {
+	const g = group(room, `translate3d(${S / 2 - 46}px,0,640px) rotateY(-90deg)`);
+	const W = 320, Hh = 560, D = 80, top = FY - Hh;
+	box(g, 0, FY - Hh / 2, 0, W, Hh, D, { skip: 'f' });
+	const shelves = 5, gap = Hh / shelves;
+	let seed = 7;
+	const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
+	for (let k = 1; k < shelves; k++) box(g, 0, top + k * gap, 0, W - 4, 8, D - 4, { skip: 'u' });
+	for (let k = 0; k < shelves; k++) {
+		const floorY = top + (k + 1) * gap - (k === shelves - 1 ? 0 : 4);
+		let x = -W / 2 + 12;
+		const end = W / 2 - 12;
+		const kind = k % 3;
+		while (x < end - 20) {
+			if (kind === 1 && x > 40) { // 这一层右边横放一摞书
+				for (let j = 0; j < 4; j++) box(g, x + 45, floorY - 6 - j * 12, 6, 90 - j * 6, 12, 56 - j * 2);
+				break;
+			}
+			const bw = 14 + rnd() * 16, bh = gap * (0.55 + rnd() * 0.32);
+			if (x + bw > end) break;
+			box(g, x + bw / 2, floorY - bh / 2, 8, bw, bh, 54);
+			x += bw + 1;
+			if (rnd() < 0.12) x += 14;
+		}
+	}
+	// 书架顶上：一盆垂下来的植物 + 一个小相框
+	let vines = '';
+	for (const [x1, y1, x2, y2] of [[50, 40, 20, 170], [62, 40, 70, 210], [78, 40, 110, 150]]) {
+		vines += `<path d="M${x1},${y1} Q${(x1 + x2) / 2 + 14},${(y1 + y2) / 2} ${x2},${y2}"/>`;
+		for (let t = 0.2; t < 1; t += 0.18) {
+			const lx = x1 + (x2 - x1) * t + 4, ly = y1 + (y2 - y1) * t;
+			vines += leaf(lx, ly, 13, t * 100 % 2 > 1 ? 120 : 240, 5);
+		}
+	}
+	vines += `<path class="solid" d="M44,10 L90,10 L86,42 L48,42 Z"/>` + leaf(60, 12, 18, -30, 6) + leaf(72, 12, 20, 20, 6);
+	sv(g, 130, 220, `translate3d(${-W / 2 + 70}px,${top - 42 + 110}px,${D / 2 - 10}px)`, vines);
+	box(g, W / 2 - 60, top - 30, 0, 60, 60, 8); // 小相框
+	box(g, W / 2 - 60, top - 30, 4.5, 40, 40, 1, { skip: 'blrtu' });
+})();
+
+// ---------- 墙角的大盆栽（沙发墙和电脑桌墙的角落） ----------
+cross(room, S / 2 - 180, FY - 170, -S / 2 + 180, 240, 340, plant(240, 340, [
+	[90, -55, 26, 70], [110, -25, 30, 110], [120, 5, 32, 150], [105, 32, 28, 120], [90, 60, 24, 80], [70, -85, 20, 40], [70, 88, 20, 40],
+], 0.26));
+
+// ---------- 咖啡桌（地毯上）+ 杯子 + 一摞书 + 小花瓶 ----------
+(function () {
+	const g = group(room, `translate3d(0,0,-520px)`);
+	const W = 320, D = 160, topY = FY - 70;
+	box(g, 0, topY, 0, W, 10, D);
+	for (const sx of [-1, 1]) for (const sz of [-1, 1]) box(g, sx * (W / 2 - 16), (topY + FY) / 2 + 3, sz * (D / 2 - 16), 8, FY - topY - 6, 8, { skip: 'tu' });
+	box(g, -80, topY - 5 - 9, 10, 100, 18, 70); // 书
+	box(g, -76, topY - 5 - 26, 6, 86, 16, 60);
+	box(g, 60, topY - 5 - 18, 20, 30, 36, 30); // 杯子
+	sv(g, 20, 30, `translate3d(60px,${topY - 70}px,20px)`, `<path class="soft" d="M6,30 Q0,20 6,12 Q12,4 6,0 M14,30 Q8,20 14,12 Q20,4 14,0"/>`); // 热气
+	cross(g, 120, topY - 5 - 45, -20, 70, 90, `<path class="solid" d="M26,90 L44,90 L42,60 L28,60 Z"/><circle class="solid" cx="24" cy="30" r="9"/><circle class="solid" cx="46" cy="22" r="9"/><circle class="solid" cx="35" cy="12" r="8"/><path d="M32,60 L24,39 M36,60 L46,31 M35,60 L35,20"/>`);
+})();
+
+// ---------- 吊灯（咖啡桌上方） ----------
+box(room, 0, -H / 2 + 45, -520, 2, 90, 2, { skip: 'tu' });
+box(room, 0, -H / 2 + 112, -520, 100, 44, 100, { skip: 'u' });
+
+// ---------- 沙发上睡觉的猫 ----------
+(function () {
+	const g = group(room, `translate3d(0,0,${-S / 2 + 140}px)`);
+	const seatTop = FY - 18 - 60 - 32;
+	const cat = `<path class="solid" d="M20,78 Q10,40 50,32 L58,10 L70,28 Q90,24 100,30 L112,12 L116,36 Q140,46 150,70 Q154,80 140,80 L28,80 Q20,80 20,78 Z"/>
+		<path d="M150,70 Q170,74 168,56 Q166,44 156,48"/><path d="M78,52 q6,4 12,0 M100,52 q6,4 12,0"/><path d="M93,60 l2,2 l2,-2"/>
+		<path d="M66,62 L50,60 M66,66 L50,68 M122,62 L138,60 M122,66 L138,68"/>`;
+	sv(g, 170, 82, `translate3d(30px,${seatTop - 41}px,40px)`, cat, '0 0 170 82');
+})();
+
+// ---------- 挂钟（电脑桌上方，显示你的时间） ----------
+(function () {
+	const wall = walls[3];
+	const c = document.createElement('div');
+	c.className = 'sv';
+	Object.assign(c.style, { left: S / 2 + 230 - 55 + 'px', top: '70px', width: '110px', height: '110px', transform: 'translateZ(3px)' });
+	let ticks = '';
+	for (let k = 0; k < 12; k++) {
+		const a = (k * Math.PI) / 6, r1 = k % 3 ? 46 : 42;
+		ticks += `<path d="M${55 + Math.sin(a) * r1},${55 - Math.cos(a) * r1} L${55 + Math.sin(a) * 50},${55 - Math.cos(a) * 50}"/>`;
+	}
+	c.innerHTML = `<svg viewBox="0 0 110 110"><circle class="solid" cx="55" cy="55" r="54"/>${ticks}
+		<path id="hh" d="M55,55 L55,30"/><path id="mh" d="M55,55 L55,16"/><path id="sh" class="soft" d="M55,62 L55,12"/><circle class="dot" cx="55" cy="55" r="2.5"/></svg>`;
+	wall.appendChild(c);
+	const hh = c.querySelector('#hh'), mh = c.querySelector('#mh'), sh = c.querySelector('#sh');
+	(function tickClock() {
+		const d = new Date(new Date().toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+		const s = d.getSeconds(), m = d.getMinutes() + s / 60, h = (d.getHours() % 12) + m / 60;
+		hh.setAttribute('transform', `rotate(${h * 30} 55 55)`);
+		mh.setAttribute('transform', `rotate(${m * 6} 55 55)`);
+		sh.setAttribute('transform', `rotate(${s * 6} 55 55)`);
+		setTimeout(tickClock, 1000);
+	})();
+})();
+
+
+// ---------- 左边墙下的矮柜：唱片机、几本书、小花瓶 ----------
+(function () {
+	const g = group(room, `translate3d(${-S / 2 + 66}px,0,40px) rotateY(90deg)`);
+	const W = 820, Hh = 115, D = 120, topY = FY - Hh;
+	box(g, 0, FY - Hh / 2 - 10, 0, W, Hh - 20, D);
+	for (const sx of [-1, 1]) for (const sz of [-1, 1]) box(g, sx * (W / 2 - 20), FY - 5, sz * (D / 2 - 20), 8, 10, 8, { skip: 'tu' });
+	// 柜门的分割线和把手
+	sv(g, W, Hh - 20, `translate3d(0,${FY - Hh / 2 - 10}px,${D / 2 + 0.5}px)`, `<path class="soft" d="M${W / 3},6 L${W / 3},${Hh - 26} M${(W * 2) / 3},6 L${(W * 2) / 3},${Hh - 26}"/><path d="M${W / 3 - 14},${(Hh - 20) / 2 - 12} l0,24 M${W / 3 + 14},${(Hh - 20) / 2 - 12} l0,24 M${(W * 2) / 3 + 14},${(Hh - 20) / 2 - 12} l0,24"/>`);
+	// 唱片机
+	box(g, -220, topY - 10 - 20, 0, 190, 40, 100);
+	sv(g, 90, 90, `translate3d(-235px,${topY - 50.5}px,0) rotateX(90deg)`, `<circle cx="45" cy="45" r="40"/><circle class="soft" cx="45" cy="45" r="28"/><circle class="soft" cx="45" cy="45" r="14"/><circle class="dot" cx="45" cy="45" r="2.5"/>`);
+	const tone = group(g, `translate3d(-150px,${topY - 52}px,-20px) rotateY(30deg)`); box(tone, 0, 0, 0, 6, 4, 70);
+	// 竖放的唱片 / 书
+	for (let k = 0; k < 6; k++) { const bh = 80 - (k % 3) * 10; box(g, 40 + k * 18, topY - 10 - bh / 2, 0, 12, bh, 90); }
+	// 小花瓶 + 一支花
+	cross(g, 260, topY - 10 - 50, 0, 60, 100, `<path class="solid" d="M22,100 L38,100 L41,72 Q44,58 35,52 L25,52 Q16,58 19,72 Z"/><path d="M30,52 Q27,30 36,8"/>${leaf(31, 36, 16, -60, 5)}${leaf(33, 24, 14, 55, 5)}<circle class="solid" cx="36" cy="8" r="6"/>`, 90);
+})();
+
+// ---------- 墙上的插座（沙发墙） ----------
+(function () {
+	const o = document.createElement('div');
+	o.className = 's';
+	Object.assign(o.style, { left: S / 2 + 360 + 'px', top: H - 70 + 'px', width: '30px', height: '40px', transform: 'translateZ(2px)' });
+	walls[0].appendChild(o);
+})();
+
+// ---------- 点画看大图 ----------
+let moved = 0;
+const lb = $('#lb');
+document.addEventListener('click', (e) => {
+	const a = e.target.closest('.art');
+	if (!a || moved > 6) return;
+	const p = P[+a.dataset.i];
+	$('img', lb);
+	lb.querySelector('img').src = 'images/playground/' + p.f;
+	lb.querySelector('p').textContent = n2(+a.dataset.i) + '  ' + p.t;
+	lb.classList.add('on');
+});
+lb.onclick = () => lb.classList.remove('on');
+
+// ---------- 转身：拖动 / 滚轮 / 方向键 ----------
+const view = $('#view');
+let yaw = 0, pitch = -4, ty = 0, tp = -4, last = null;
+const PERSP = 720;
+function frame() {
+	yaw += (ty - yaw) * 0.09;
+	pitch += (tp - pitch) * 0.09;
+	room.style.transform = `translateZ(${PERSP}px) rotateX(${pitch}deg) rotateY(${yaw}deg)`;
+	for (const b of billboards) b.el.style.transform = `translate3d(${b.x}px,${b.y}px,${b.z}px) rotateY(${-yaw - b.rot}deg)`;
+	requestAnimationFrame(frame);
+}
+frame();
+view.addEventListener('wheel', (e) => { e.preventDefault(); ty += (e.deltaY + e.deltaX) * 0.08; }, { passive: false });
+view.addEventListener('pointerdown', (e) => { last = e; moved = 0; });
+addEventListener('pointermove', (e) => {
+	if (!last) return;
+	const dx = e.clientX - last.clientX, dy = e.clientY - last.clientY;
+	moved += Math.abs(dx) + Math.abs(dy);
+	last = e;
+	ty -= dx * 0.14;
+	tp = Math.max(-20, Math.min(14, tp + dy * 0.08));
+});
+addEventListener('pointerup', () => (last = null));
+addEventListener('keydown', (e) => {
+	if (e.key === 'Escape') lb.classList.remove('on');
+	if (e.key === 'ArrowLeft') ty += 20;
+	if (e.key === 'ArrowRight') ty -= 20;
+	if (e.key === 'ArrowUp') tp = Math.min(14, tp + 4);
+	if (e.key === 'ArrowDown') tp = Math.max(-20, tp - 4);
+});
+// 打开时慢慢转一点，让人知道可以转
+ty = -18; setTimeout(() => { if (!last) ty = 0; }, 900);
+</script>
+</body>
+</html>
