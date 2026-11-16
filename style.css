@@ -521,7 +521,7 @@ a.card:hover,
 
 .info {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr); /* 去掉年份后只剩两栏：交付内容、规格 / 署名 */
 	gap: 14px;
 	padding: 16px 18px;
 	font-size: 12px;

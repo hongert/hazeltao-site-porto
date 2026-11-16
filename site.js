@@ -430,7 +430,6 @@
 				</div>`
 				: `<div class="card prose"><div class="label">${T('About the project')}</div><p>${t1}</p></div>`}
 			<dl class="card info">
-				<div><dt>${T('Year')}</dt><dd>${p.year}</dd></div>
 				<div><dt>${T('Deliverables')}</dt><dd>${p.services.join('<br>')}</dd></div>
 				<div>${p.format ? `<dt>${T('Format')}</dt><dd>${p.format}</dd>` : ''}${p.credits ? `<dt>${T('Credits')}</dt><dd>${esc(p.credits)}</dd>` : ''}</div>
 			</dl>

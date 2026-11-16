@@ -27,6 +27,18 @@ window.ZH = {
 
 	// 分类标签和交付内容里的词
 	terms: {
+		'Branding Design': '品牌设计',
+		'Identity Design': '视觉识别设计',
+		'Merchandise': '周边产品',
+		'Exhibit Design': '展陈设计',
+		'Stationery': '文具设计',
+		'Brand Application': '品牌应用',
+		'Book Design': '书籍设计',
+		'Calendar Design': '日历设计',
+		'Album Design': '专辑设计',
+		'Catalog Design': '画册设计',
+		'Print Design': '印刷品设计',
+		'Booklet Design': '小册子设计',
 		'Identity': '视觉识别',
 		'Motion': '动态设计',
 		'Spatial': '空间设计',
