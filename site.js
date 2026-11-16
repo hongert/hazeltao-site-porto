@@ -188,8 +188,7 @@
 					${item(zh ? '关于' : 'About', 'about.html', '→', page === 'about')}
 					${item(zh ? '作品' : 'Work', ALT + 'all.html', '→', false)}
 					${item('Playground', 'playground.html', '→', false)}
-					<div class="side-contact-row"><span>${zh ? '联系' : 'Contact'}</span>
-						<span class="side-contact"><a href="mailto:${S.email}">${esc(S.email)}</a><br><a href="https://www.instagram.com/${S.instagram}/" target="_blank" rel="noopener">@${esc(S.instagram)}</a><br>${zh ? '加州洛杉矶' : 'Los Angeles, CA'}</span></div>
+					${item(zh ? '联系' : 'Contact', 'about.html#contact', '→', false)}
 				</nav>`;
 		}
 		document.body.prepend(side);
