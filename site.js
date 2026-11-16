@@ -182,13 +182,16 @@
 			const cards = $('.cards', side);
 			cards.className = 'side-nav-list';
 			const zh = lang === 'zh';
+			// 点 Contact 时打开 about.html#contact：右边只显示联系方式
+			const contactView = page === 'about' && location.hash === '#contact';
+			if (contactView) document.body.classList.add('contact-view');
 			const item = (label, href, note, on) => `<a href="${href}"${on ? ' class="on"' : ''}><span>${label}</span><span>${note}</span></a>`;
 			cards.innerHTML = `
 				<nav class="side-links">
-					${item(zh ? '关于' : 'About', 'about.html', '→', page === 'about')}
+					${item(zh ? '关于' : 'About', 'about.html', '→', page === 'about' && !contactView)}
 					${item(zh ? '作品' : 'Work', ALT + 'all.html', '→', false)}
 					${item('Playground', 'playground.html', '→', false)}
-					${item(zh ? '联系' : 'Contact', 'about.html#contact', '→', false)}
+					${item(zh ? '联系' : 'Contact', 'about.html#contact', '→', contactView)}
 				</nav>`;
 		}
 		document.body.prepend(side);
@@ -538,6 +541,7 @@
 	if (page === 'all') renderAll();
 	// 底部版权：一直固定在屏幕右下角，压在内容上面
 	document.body.insertAdjacentHTML('beforeend', `<div class="site-foot">© ${new Date().getFullYear()} ${esc(S.fullName)}. All rights reserved.</div>`);
+	if (page === 'about') addEventListener('hashchange', () => location.reload());
 	if (page === 'about') {
 		if (lang === 'zh') document.querySelectorAll('[data-zh]').forEach((el) => (el.innerHTML = el.dataset.zh));
 		content.insertAdjacentHTML('afterbegin', mobileTop());

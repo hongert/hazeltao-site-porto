@@ -1223,3 +1223,8 @@ body[data-page="about"] .content > .mobile-top { column-span: all; }
 @media (max-width: 760px) {
 	body[data-page="about"] .content { columns: 1; }
 }
+
+/* ===== 点左栏 Contact：右边只显示联系方式 ===== */
+body.contact-view .content { columns: 1; }
+body.contact-view .content > *:not(#contact):not(.mobile-top) { display: none; }
+body.contact-view #contact p { font-size: 22px; line-height: 1.5; }
