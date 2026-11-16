@@ -84,8 +84,9 @@ window.PROJECTS = [
 			['Taohe_tape_mockup.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg'],
 		],
 		text: [
-			'TAOHE is a brand proposal built from the ground up, rooted in the heritage of my family’s business. Recognizing a significant gap in the U.S. market for premium yak wool, I developed TAOHE to bridge the divide between traditional Tibetan materials and contemporary retail. The project began with deep strategic research—including competitive auditing, brand positioning, and persona development—resulting in a business model centered on 100% yak wool apparel that prioritizes both quality and heritage.',
-			'The name TAOHE is a reflection of this personal connection: "Tao" represents my family name, while "He" (和) signifies togetherness in Mandarin. Visually, the brand intentionally breaks away from the delicate, thin-line aesthetics common in luxury cashmere. Instead, the logo and typography embrace a sense of boldness and weight, designed to evoke the warmth and heavy weight of the wool itself. The visual language is defined by juxtaposition, with type treatments inspired by the rugged, natural "ups and downs" of the Tibetan mountain ranges.',
+			"My family dyes wool in Puyuan, China’s sweater town. As we began making our own garments, I noticed almost no one was working with yak wool—and in the U.S., most shoppers know cashmere but have barely heard of yak. TAOHE is the brand I built to fill that gap.",
+			"I wanted to show that a traditional material can be plain and still feel premium. Luxury cashmere tends to speak in thin, delicate lines; TAOHE goes the other way, with heavy letterforms that carry the warmth and weight of the wool, and type that rises and falls like the Tibetan mountains.",
+			"My first logo sketches mapped Tibet itself: ridgelines, coordinates. But this is a family business, so the name had to be ours. “Tao” is my family name; “He” (和) means togetherness, and the rising stroke in the logo is the second tone you hear when you say it. The same instinct shaped the product line: one material, done well, rather than many.",
 		],
 		credits: 'Photography Credits: Kin Codel. Creative Director: Zaul Ocana',
 	},
