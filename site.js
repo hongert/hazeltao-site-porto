@@ -42,6 +42,8 @@
 	const link = (p) => ALT + 'project.html?p=' + p.slug;
 	const plain = (html) => html.replace(/<[^>]+>/g, '');
 	const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+	// 防止孤字（widow）：把最后两个英文单词，或最后两个中文字绑在一起不换行
+	const nw = (s) => { s = String(s); const m = s.match(/\S+\s+\S+$/) || s.match(/[　-鿿＀-￯]{2}$/); if (!m || m[0].length === s.length) return esc(s); const i = s.length - m[0].length; return esc(s.slice(0, i)) + '<span class="nw">' + esc(m[0]) + '</span>'; };
 	const store = {
 		get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
 		set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} },
@@ -264,7 +266,7 @@
 	function renderHome() {
 		content.innerHTML = P.map((p) => `
 			<a class="card feature" href="${link(p)}">
-				<div class="feat-head"><h2>${esc(p.title)}</h2><span class="deliv">${p.tags.map(esc).join(', ')}</span></div>
+				<div class="feat-head"><h2>${nw(p.title)}</h2><span class="deliv">${nw(p.tags.join(', '))}</span></div>
 				<div class="media">${mediaTag(p.media[0], false)}</div>
 			</a>`).join('');
 		// 首页卡片和项目页顶部用同一张（可能是视频）
@@ -303,7 +305,7 @@
 				<a class="mnav-item" href="${link(p)}">
 					<div class="mnav-txt">
 						<div class="num">${String(i + 1).padStart(2, '0')}</div>
-						<div class="t">${esc(p.title)}</div>
+						<div class="t">${nw(p.title)}</div>
 						<div class="s">${esc(p.subtitle)}</div>
 					</div>
 					<div class="mnav-thumb"><img src="${thumb(p.thumb || p.cover)}" alt="" loading="lazy"></div>
@@ -432,7 +434,7 @@
 		const textHTML = `
 			<div class="p-text">
 				<div class="p-first">
-					<div class="p-title"><h1>${esc(p.title)}</h1><p>${esc(p.subtitle)}</p></div>
+					<div class="p-title"><h1>${nw(p.title)}</h1><p>${nw(p.subtitle)}</p></div>
 					<div class="prose"><div class="label">${T('About the project')}</div>${p.text.map((t) => `<p>${t}</p>`).join('')}</div>
 				</div>
 				<dl class="info">

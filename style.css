@@ -1323,3 +1323,7 @@ body[data-page="project"] .side-project { padding-top: 22px; }
 /* All projects 页左上角：logo + 名字，旁边是搜索框 */
 .all-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
 @media (max-width: 760px) { .all-left .home-name { display: none; } }
+
+/* 防孤字 */
+.nw { white-space: nowrap; }
+.feat-head h2, .feat-head .deliv, .p-title h1, .p-title p, .prose p { text-wrap: pretty; }
