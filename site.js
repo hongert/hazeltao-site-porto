@@ -453,7 +453,8 @@
 			${mobileTop()}
 			${media(p.media[0], p.grid === 2 && SIZES[p.media[0]] ? ratio(p.media[0]) : undefined).replace('class="media ', 'class="media p-hero ')}
 			<div class="p-text-mobile">${textHTML}</div>
-			${blocks.join('')}`;
+			${blocks.join('')}
+			<div class="p-text-mobile p-next-mobile"><div class="p-text">${(textHTML.match(/<a class="next"[\s\S]*?<\/a>/) || [''])[0]}</div></div>`;
 		if (p.syncVideos) content.querySelectorAll('video').forEach((v) => (v.dataset.sync = ''));
 		watchVideos(content);
 		content.querySelectorAll('.zoomable').forEach((el) => {

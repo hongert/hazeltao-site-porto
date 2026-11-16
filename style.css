@@ -1327,3 +1327,7 @@ body[data-page="project"] .side-project { padding-top: 22px; }
 /* 防孤字 */
 .nw { white-space: nowrap; }
 .feat-head h2, .feat-head .deliv, .p-title h1, .p-title p, .prose p { text-wrap: pretty; }
+
+/* 手机：Next project 放在最底部 */
+.p-text-mobile:not(.p-next-mobile) .next { display: none; }
+.p-next-mobile .next { padding: 18px 16px; }
