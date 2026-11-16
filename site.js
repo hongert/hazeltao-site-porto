@@ -464,10 +464,12 @@
 			const cols = Array.from({ length: n }, () => ({ h: 0, html: '' }));
 			list.forEach((p) => {
 				const col = cols.reduce((a, b) => (b.h < a.h - 0.01 ? b : a));
-				col.h += 1 / ratio(p.cover) + 0.2;
+				// 封面和首页卡片用同一张（可能是视频，比如 Arboretum 的动态）
+				const cover = p.media[0];
+				col.h += 1 / ratio(cover) + 0.2;
 				col.html += `
 					<a class="tile" href="${link(p)}">
-						<div class="media">${mediaTag(p.cover, true)}</div>
+						<div class="media">${mediaTag(cover, true)}</div>
 						<span class="t">${esc(p.title)}</span>
 						<span class="s">${esc(p.subtitle)}</span>
 					</a>`;
@@ -475,6 +477,7 @@
 			content.innerHTML = list.length
 				? `<div class="masonry">${cols.map((c) => `<div class="col">${c.html}</div>`).join('')}</div>`
 				: `<div class="empty">${T('Nothing matches that yet.')}</div>`;
+			watchVideos(content);
 		};
 		input.addEventListener('input', draw);
 		let wasMobile = innerWidth <= 760;
