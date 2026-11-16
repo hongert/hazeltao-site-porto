@@ -44,6 +44,9 @@
 	const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 	// 防止孤字（widow）：把最后两个英文单词，或最后两个中文字绑在一起不换行
 	const nw = (s) => { s = String(s); if (s.trim().split(/\s+/).length <= 2) return '<span class="nw">' + esc(s) + '</span>'; const m = s.match(/(?:^|\s)((?:in|of|the|a|an|to|for|and|on|at|&)\s+\S+\s+\S+)$/i) || s.match(/\S+\s+\S+$/) || s.match(/[　-鿿＀-￯]{2}$/); if (!m) return esc(s); const k = m[1] || m[0]; const i = s.length - k.length; return esc(s.slice(0, i)) + '<span class="nw">' + esc(k) + '</span>'; };
+	// 手机首页：指定标题的换行位置（只在标题文字一致时生效）
+	const M_BREAKS = { 'sweetness-in-four-seasons': ['Sweetness in', 'Four Seasons'], 'serenseek': ['‘Serenseek’', '寻真'], 'wuzhen-theater-festival': ['Wuzhen Theater', 'Festival'] };
+	const homeTitle = (p) => { const b = M_BREAKS[p.slug]; if (b && b.join(' ') === String(p.title).trim()) return b.map((x) => '<span class="nw">' + esc(x) + '</span>').join(' <br class="m-br">'); return nw(p.title); };
 	// 交付项：每一项不拆开；最后一项是单个词时，和前一项绑在一起
 	const nwTags = (tags) => { const t = tags.map(esc); if (t.length > 1 && !/\s/.test(t[t.length - 1])) { const last = t.pop(); t[t.length - 1] = t[t.length - 1] + ', ' + last; } return t.map((x) => '<span class="nw">' + x + '</span>').join(', '); };
 	const store = {
@@ -268,7 +271,7 @@
 	function renderHome() {
 		content.innerHTML = P.map((p) => `
 			<a class="card feature" href="${link(p)}">
-				<div class="feat-head"><h2>${nw(p.title)}</h2><span class="deliv">${nwTags(p.tags)}</span></div>
+				<div class="feat-head"><h2>${homeTitle(p)}</h2><span class="deliv">${nwTags(p.tags)}</span></div>
 				<div class="media">${mediaTag(p.media[0], false)}</div>
 			</a>`).join('');
 		// 首页卡片和项目页顶部用同一张（可能是视频）

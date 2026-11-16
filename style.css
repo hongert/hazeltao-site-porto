@@ -1333,3 +1333,5 @@ body[data-page="project"] .side-project { padding-top: 22px; }
 .p-next-mobile .next { padding: 18px 16px; }
 .feature .feat-head h2 { flex: 1 1 auto; min-width: 0; }
 .feature .deliv { flex: 0 1 auto; }
+.m-br { display: none; }
+@media (max-width: 760px) { .m-br { display: inline; } }
