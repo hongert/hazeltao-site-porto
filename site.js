@@ -357,7 +357,7 @@
 		// extraRows 里的图片单独排在最后，不参与上面的自动排版
 		const extra = (p.extraRows || []).flat().flatMap((r) => (typeof r === 'string' ? [r] : [r.big, ...r.stack]));
 		const rest = p.media.slice(1).filter((m) => !extra.includes(m));
-		const extraText = p.text.slice(2);
+		const extraText = []; // 文字全部放在左栏，右边只放图片
 		const blocks = [];
 		let count = 0;
 		// grid: 2 的项目：文字下面的图片/视频一律两列并排
@@ -414,23 +414,25 @@
 		}
 		extraText.forEach((t) => blocks.push(`<div class="card prose"><p>${t}</p></div>`));
 
-		const [t1, t2] = p.text;
+		// 项目文字：电脑上放在左栏，右边只放图片；手机上左栏隐藏，文字放在第一张图下面
+		const textHTML = `
+			<div class="p-text">
+				<div class="p-title"><h1>${esc(p.title)}</h1><p>${esc(p.subtitle)}</p></div>
+				<div class="prose"><div class="label">${T('About the project')}</div>${p.text.map((t) => `<p>${t}</p>`).join('')}</div>
+				<dl class="info">
+					<div><dt>${T('Deliverables')}</dt><dd>${p.services.join('<br>')}</dd></div>
+					${p.format ? `<div><dt>${T('Format')}</dt><dd>${p.format}</dd></div>` : ''}
+					${p.credits ? `<div><dt>${T('Credits')}</dt><dd>${esc(p.credits)}</dd></div>` : ''}
+				</dl>
+				<a class="next" href="${link(next)}"><span><span class="muted">${T('Next project')}</span><br><span class="nt">${esc(next.title)}</span></span>${'<span class="pill round">' + icons.arrow + '</span>'}</a>
+			</div>`;
+		const sideSlot = $('.side .side-nav-list');
+		if (sideSlot) { sideSlot.className = 'side-project'; sideSlot.innerHTML = textHTML; }
 		content.innerHTML = `
 			${mobileTop()}
 			${media(p.media[0], p.grid === 2 && SIZES[p.media[0]] ? ratio(p.media[0]) : undefined)}
-			<div class="card p-title"><h1>${esc(p.title)}</h1><p>${esc(p.subtitle)}</p></div>
-			${t2
-				? `<div class="two prose-pair">
-					<div class="card prose"><div class="label">${T('About the project')}</div><p>${t1}</p></div>
-					<div class="card prose"><div class="label">&nbsp;</div><p>${t2}</p></div>
-				</div>`
-				: `<div class="card prose"><div class="label">${T('About the project')}</div><p>${t1}</p></div>`}
-			<dl class="card info">
-				<div><dt>${T('Deliverables')}</dt><dd>${p.services.join('<br>')}</dd></div>
-				<div>${p.format ? `<dt>${T('Format')}</dt><dd>${p.format}</dd>` : ''}${p.credits ? `<dt>${T('Credits')}</dt><dd>${esc(p.credits)}</dd>` : ''}</div>
-			</dl>
-			${blocks.join('')}
-			<a class="card next" href="${link(next)}"><span><span class="muted">${T('Next project')}</span><br><span class="nt">${esc(next.title)}</span></span>${'<span class="pill round">' + icons.arrow + '</span>'}</a>`;
+			<div class="p-text-mobile">${textHTML}</div>
+			${blocks.join('')}`;
 		if (p.syncVideos) content.querySelectorAll('video').forEach((v) => (v.dataset.sync = ''));
 		watchVideos(content);
 		content.querySelectorAll('.zoomable').forEach((el) => {

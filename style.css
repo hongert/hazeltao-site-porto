@@ -1279,3 +1279,18 @@ body[data-page="about"] .cv p.lead {
 @media (max-width: 1000px) {
 	.about-me { grid-template-columns: 1fr; }
 }
+
+/* ===== 项目页：文字在左栏，右边只放图片 ===== */
+.side-project .p-title { padding: 0 6px 18px; }
+.side-project .p-title h1 { font-size: 26px; }
+.side-project .prose { padding: 18px 6px; border-top: 1px solid var(--card-hover); }
+.side-project .prose p { line-height: 1.65; }
+.side-project .info { grid-template-columns: 1fr; gap: 12px; padding: 18px 6px; border-top: 1px solid var(--card-hover); }
+.side-project .next { padding: 18px 6px; border-top: 1px solid var(--card-hover); border-bottom: 1px solid var(--card-hover); font-size: 15px; }
+.p-text-mobile { display: none; }
+@media (max-width: 760px) {
+	.p-text-mobile { display: block; }
+	.p-text-mobile .p-text > * { background: var(--card); border-radius: var(--radius); margin-bottom: var(--gap); }
+	.p-text-mobile .p-title { padding: 18px 16px; }
+	.p-text-mobile .info { grid-template-columns: 1fr 1fr; }
+}

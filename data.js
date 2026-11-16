@@ -52,7 +52,9 @@ window.PROJECTS = [
 			['Arboretum_BrandBible_40-41.jpg'],
 		],
 		text: [
-			'Proposal for the <a href="https://arboretum.org/">LA Arboretum &amp; Botanical Garden</a>. Stretched typography mimics the rhythm and motion of plant growth. Zoomed-in, close-up imagery creates a more immersive experience-almost letting you smell the freshness right in front of you. Marchandise mockups and spatial for a conceptual collaboration between the LA Arboretum &amp; Botanical Garden and Jennifer Steinkamp.',
+			"A rebrand proposal for the <a href=\"https://arboretum.org/\">LA Arboretum &amp; Botanic Garden</a>, aimed at connecting it with a new audience of Millennials and Gen Z across LA County. But a rebrand doesn’t have to erase what came before: the peacock in the logo and the garden’s existing colors stay, reworked rather than replaced.",
+			"The letterforms stretch in different proportions, the way plants grow at different speeds: some fast, some slow. I paired them with macro photography, close enough to almost smell the leaves, to make the garden feel alive for that younger audience.",
+			"I first planned a pop-up with weekly workshops. Then I looked at the Arboretum’s calendar and found it already full of fun activities, like movie nights and watercolor classes. The garden wasn’t short on things to do; most people my age just didn’t know about them. So the project became about visibility: merchandise, a website, and a conceptual collaboration with Jennifer Steinkamp, an LA artist and UCLA professor whose immersive projections of trees, flowers, and fruit sit right between nature and spectacle—the kind of experience that draws people in right now.",
 		],
 		credits: 'Photography Credits: Yizhang Ding, @Bleachfeel, Jennifer Steinkamp',
 	},
