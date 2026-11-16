@@ -65,6 +65,9 @@
 		else location.href = ALT + 'index.html';
 	});
 
+	// 小 logo 按钮 + 名字和职位（项目页、All projects 页左上角）
+	const homeId = () => `<a class="home-id" href="${ALT}index.html"><span class="pill round home-logo">${LOGO}</span><span class="home-name">${esc(S.fullName)}<br><span>${lang === 'zh' ? '平面设计师' : 'Graphic Designer'}</span></span></a>`;
+
 	// ---------- 黑白背景开关 ----------
 	function switchHTML() {
 		const langBtn = `<button class="pill lang" aria-label="Switch language / 切换语言"><span${lang === 'en' ? ' class="on"' : ''}>EN</span> / <span${lang === 'zh' ? ' class="on"' : ''}>CN</span></button>`;
@@ -159,7 +162,7 @@
 		side.className = 'side';
 		side.innerHTML = `
 			<div class="topline side-nav">
-				<span class="toggles">${page !== 'home' ? backBtn() : ''}${page === 'project' ? `<a class="home-id" href="${ALT}index.html"><span class="pill round home-logo">${LOGO}</span><span class="home-name">${esc(S.fullName)}<br><span>${lang === 'zh' ? '平面设计师' : 'Graphic Designer'}</span></span></a>` : ''}</span>
+				<span class="toggles">${page !== 'home' ? backBtn() : ''}${page === 'project' ? homeId() : ''}</span>
 				${switchHTML()}
 			</div>
 			<div class="masthead">
@@ -428,17 +431,30 @@
 		// 项目文字：电脑上放在左栏，右边只放图片；手机上左栏隐藏，文字放在第一张图下面
 		const textHTML = `
 			<div class="p-text">
-				<div class="p-title"><h1>${esc(p.title)}</h1><p>${esc(p.subtitle)}</p></div>
-				<div class="prose"><div class="label">${T('About the project')}</div>${p.text.map((t) => `<p>${t}</p>`).join('')}</div>
+				<div class="p-first">
+					<div class="p-title"><h1>${esc(p.title)}</h1><p>${esc(p.subtitle)}</p></div>
+					<div class="prose"><div class="label">${T('About the project')}</div>${p.text.map((t) => `<p>${t}</p>`).join('')}</div>
+				</div>
 				<dl class="info">
-					<div><dt>${T('Deliverables')}</dt><dd>${p.services.join('<br>')}</dd></div>
+					<div><dt>${T('Deliverables')}</dt><dd>${p.tags.map(esc).join('<br>')}</dd></div>
 					${p.format ? `<div><dt>${T('Format')}</dt><dd>${p.format}</dd></div>` : ''}
 					${creditsHTML(p.credits)}
 				</dl>
 				<a class="next" href="${link(next)}"><span><span class="muted">${T('Next project')}</span><br><span class="nt">${esc(next.title)}</span></span>${'<span class="pill round">' + icons.arrow + '</span>'}</a>
 			</div>`;
 		const sideSlot = $('.side .side-nav-list');
-		if (sideSlot) { sideSlot.className = 'side-project'; sideSlot.innerHTML = textHTML; }
+		if (sideSlot) {
+			sideSlot.className = 'side-project';
+			sideSlot.innerHTML = textHTML;
+			const fit = () => {
+				const first = $('.p-first', sideSlot), hero = $('.content > .p-hero');
+				if (!first || !hero) return;
+				const h = hero.getBoundingClientRect().bottom + window.scrollY - (first.getBoundingClientRect().top + sideSlot.closest('.side').scrollTop);
+				first.style.setProperty('--first-h', Math.max(0, h) + 'px');
+			};
+			requestAnimationFrame(fit);
+			addEventListener('resize', fit);
+		}
 		content.innerHTML = `
 			${mobileTop()}
 			${media(p.media[0], p.grid === 2 && SIZES[p.media[0]] ? ratio(p.media[0]) : undefined).replace('class="media ', 'class="media p-hero ')}
@@ -455,7 +471,7 @@
 	function renderAll() {
 		document.body.insertAdjacentHTML('afterbegin', `
 			<div class="all-top">
-				<label class="search"><input type="search" placeholder="${T('I want to see...')}" aria-label="Search projects">${icons.arrow}</label>
+				<div class="all-left">${homeId()}<label class="search"><input type="search" placeholder="${T('I want to see...')}" aria-label="Search projects">${icons.arrow}</label></div>
 				<div class="topline">
 					${switchHTML()}
 					<a class="pill round" href="index.html" aria-label="Close">${icons.close}</a>

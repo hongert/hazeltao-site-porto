@@ -1319,3 +1319,17 @@ body[data-page="project"] .side-project { padding-top: 22px; }
 .home-name { font-family: var(--font-logo); font-weight: 500; font-size: 10px; line-height: 1.35; letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap; }
 .home-name span { font-size: 9px; color: var(--muted); }
 .home-id:hover .home-logo { background: var(--card-hover); }
+
+/* All projects 页左上角：logo + 名字，旁边是搜索框 */
+.all-left { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+@media (max-width: 760px) { .all-left .home-name { display: none; } }
+
+/* 项目页左栏：标题在上、介绍文字贴着屏幕底部，和右边铺满一屏的第一张图对齐；往下滚才是交付内容和署名 */
+@media (min-width: 761px) {
+	.side-project .p-first {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		min-height: var(--first-h, calc(100vh - 56px));
+	}
+}
