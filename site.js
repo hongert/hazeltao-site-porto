@@ -446,14 +446,6 @@
 		if (sideSlot) {
 			sideSlot.className = 'side-project';
 			sideSlot.innerHTML = textHTML;
-			const fit = () => {
-				const first = $('.p-first', sideSlot), hero = $('.content > .p-hero');
-				if (!first || !hero) return;
-				const h = hero.getBoundingClientRect().bottom + window.scrollY - (first.getBoundingClientRect().top + sideSlot.closest('.side').scrollTop);
-				first.style.setProperty('--first-h', Math.max(0, h) + 'px');
-			};
-			requestAnimationFrame(fit);
-			addEventListener('resize', fit);
 		}
 		content.innerHTML = `
 			${mobileTop()}
