@@ -53,6 +53,16 @@
 	// 导航里的 All projects 按钮
 	const allBtn = () => `<a class="pill" href="${ALT}all.html">${lang === 'zh' ? '全部项目' : 'All projects'}</a>`;
 
+	// 返回上一页的小箭头：从本站别的页面来的就后退，否则回首页
+	const backBtn = () => `<button class="pill round back-btn" aria-label="${lang === 'zh' ? '返回' : 'Back'}">${icons.back}</button>`;
+	document.addEventListener('click', (e) => {
+		if (!e.target.closest('.back-btn')) return;
+		let same = false;
+		try { same = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (err) {}
+		if (same && history.length > 1) history.back();
+		else location.href = ALT + 'index.html';
+	});
+
 	// ---------- 黑白背景开关 ----------
 	function switchHTML() {
 		const langBtn = `<button class="pill lang" aria-label="Switch language / 切换语言"><span${lang === 'en' ? ' class="on"' : ''}>EN</span> / <span${lang === 'zh' ? ' class="on"' : ''}>CN</span></button>`;
@@ -147,7 +157,7 @@
 		side.className = 'side';
 		side.innerHTML = `
 			<div class="topline side-nav">
-				${allBtn()}
+				<span class="toggles">${page !== 'home' ? backBtn() : ''}${allBtn()}</span>
 				${switchHTML()}
 			</div>
 			<div class="masthead">
@@ -244,7 +254,7 @@
 
 	function mobileTop() {
 		return `<div class="topline mobile-top">
-			<span class="toggles"><a class="pill" href="${ALT}index.html">${icons.back} ${esc(S.name)}</a>${allBtn()}</span>
+			<span class="toggles">${backBtn()}<a class="pill" href="${ALT}index.html">${esc(S.name)}</a>${allBtn()}</span>
 			${switchHTML()}
 		</div>`;
 	}
