@@ -1313,3 +1313,9 @@ body[data-page="about"] .cv p.lead {
 body[data-page="project"] .side .masthead { display: none; }
 body[data-page="project"] .side-project { padding-top: 22px; }
 .pill.home-logo svg { width: 18px; height: auto; fill: currentColor; stroke: none; }
+
+/* 项目页顶部：小 logo 按钮 + 右边小字名字和职位 */
+.home-id { display: inline-flex; align-items: center; gap: 8px; }
+.home-name { font-family: var(--font-logo); font-weight: 500; font-size: 10px; line-height: 1.35; letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap; }
+.home-name span { font-size: 9px; color: var(--muted); }
+.home-id:hover .home-logo { background: var(--card-hover); }

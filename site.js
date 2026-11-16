@@ -159,7 +159,7 @@
 		side.className = 'side';
 		side.innerHTML = `
 			<div class="topline side-nav">
-				<span class="toggles">${page !== 'home' ? backBtn() : ''}${page === 'project' ? `<a class="pill round home-logo" href="${ALT}index.html" aria-label="${esc(S.fullName)}">${LOGO}</a>` : ''}</span>
+				<span class="toggles">${page !== 'home' ? backBtn() : ''}${page === 'project' ? `<a class="home-id" href="${ALT}index.html"><span class="pill round home-logo">${LOGO}</span><span class="home-name">${esc(S.fullName)}<br><span>${lang === 'zh' ? '平面设计师' : 'Graphic Designer'}</span></span></a>` : ''}</span>
 				${switchHTML()}
 			</div>
 			<div class="masthead">
