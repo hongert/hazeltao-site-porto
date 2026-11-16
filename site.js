@@ -43,7 +43,7 @@
 	const plain = (html) => html.replace(/<[^>]+>/g, '');
 	const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
 	// 防止孤字（widow）：把最后两个英文单词，或最后两个中文字绑在一起不换行
-	const nw = (s) => { s = String(s); if (s.trim().split(/\s+/).length <= 2) return '<span class="nw">' + esc(s) + '</span>'; const m = s.match(/\S+\s+\S+$/) || s.match(/[　-鿿＀-￯]{2}$/); if (!m) return esc(s); const i = s.length - m[0].length; return esc(s.slice(0, i)) + '<span class="nw">' + esc(m[0]) + '</span>'; };
+	const nw = (s) => { s = String(s); if (s.trim().split(/\s+/).length <= 2) return '<span class="nw">' + esc(s) + '</span>'; const m = s.match(/(?:^|\s)((?:in|of|the|a|an|to|for|and|on|at|&)\s+\S+\s+\S+)$/i) || s.match(/\S+\s+\S+$/) || s.match(/[　-鿿＀-￯]{2}$/); if (!m) return esc(s); const k = m[1] || m[0]; const i = s.length - k.length; return esc(s.slice(0, i)) + '<span class="nw">' + esc(k) + '</span>'; };
 	// 交付项：每一项不拆开；最后一项是单个词时，和前一项绑在一起
 	const nwTags = (tags) => { const t = tags.map(esc); if (t.length > 1 && !/\s/.test(t[t.length - 1])) { const last = t.pop(); t[t.length - 1] = t[t.length - 1] + ', ' + last; } return t.map((x) => '<span class="nw">' + x + '</span>').join(', '); };
 	const store = {
