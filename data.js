@@ -120,8 +120,9 @@ window.PROJECTS = [
 			['HeldStill_FlipThrough-copy-5.mp4', 'HeldStill_FlipThrough-copy-6.mp4'],
 		],
 		text: [
-			'Held Still: When Time Becomes Visible is a curated exhibition featuring the works of eight artists: Sarah Ball, Eska Marsh, Irving Penn, Paula Siebra, Nicolas Party, Lucas Blalock, Rachel Ruysch, and Michaël Borremans. The collection is united by the enduring genre of still life. My interest in this medium stems from its inherent tension; while these compositions appear frozen to the viewer, they represent a past reality that was once alive. Whether featuring elegant flowers, distorted pears, or a posed model, the objects within these frames were all once part of a living world.',
-			'In an era defined by a relentless pace and constant blur, this exhibition serves as a deliberate intervention against the momentum of modern life. It is a quiet invitation to break from daily habits and enter a curated space where the inanimate is finally given the floor to speak. To visually represent this theme, I developed a "super symbol" based on the frame. This motif adapts across various dimensions, including posters, banners, tickets, and merchandise, creating a cohesive visual identity for the show.',
+			"Years ago, I painted a still life of flowers and fruit, and I started with the hydrangea, because it would wilt first. The finished canvas showed everything at its best, but each object was caught at a different moment and stitched together. That is what draws me to still life: it looks frozen, yet time was passing the whole time it was painted. Held Still: When Time Becomes Visible gathers eight artists working in the genre, from Rachel Ruysch in the 17th century to Lucas Blalock today.",
+			"The identity is built on the frame as a consistent super symbol. It always appears as a pair of diagonal corners that mimic the edges of a canvas and hold each work. The super symbol scales up across posters, banners, tickets and merchandise.",
+			"The exhibition catalog is a long, narrow book of more than 200 pages, a push back against the big square gallery book. My first layouts set the text in static blocks; feedback pushed me to arrange it more organically, the way objects sit in a still life.",
 		],
 	},
 	{
