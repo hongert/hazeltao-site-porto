@@ -26,6 +26,8 @@
 	};
 	const P = window.PROJECTS.map(localize);
 	const SIZES = window.SIZES || {};
+	// 当前版本号（取自 site.js?v=...），读 about.html 时带上，避免浏览器用旧缓存
+	const VER = (() => { try { return new URL(document.currentScript.src).searchParams.get('v') || ''; } catch (e) { return ''; } })();
 	const page = document.body.dataset.page; // home | project | all | about
 
 	// ---------- 小工具 ----------
@@ -191,7 +193,7 @@
 					$('span', btn).textContent = open ? '−' : '+';
 				};
 			}
-			fetch('about.html').then((r) => r.text()).then((h) => {
+			fetch('about.html?v=' + VER).then((r) => r.text()).then((h) => {
 				const doc = new DOMParser().parseFromString(h, 'text/html');
 				const main = doc.querySelector('main.content');
 				if (!main) return;
@@ -331,7 +333,7 @@
 		};
 		if (!matchMedia('(prefers-reduced-motion: reduce)').matches) setInterval(() => show(cur + 1), 2600);
 		// About me 和 Contact 直接取自 about.html
-		fetch('about.html').then((r) => r.text()).then((h) => {
+		fetch('about.html?v=' + VER).then((r) => r.text()).then((h) => {
 			const main = new DOMParser().parseFromString(h, 'text/html').querySelector('main.content');
 			if (!main) return;
 			if (lang === 'zh') main.querySelectorAll('[data-zh]').forEach((el) => (el.innerHTML = el.dataset.zh));
