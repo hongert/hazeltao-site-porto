@@ -1170,3 +1170,6 @@ body[data-page="all"] .content {
 
 /* 导航一行放不下时换行（手机上的返回、名字、All projects、语言、黑白开关） */
 .topline { flex-wrap: wrap; }
+
+/* 简历 Experience：只有职位是正常颜色，其余（单位、日期、工作描述）都是灰色 */
+.cv p.desc { color: var(--muted); }
