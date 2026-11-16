@@ -184,16 +184,13 @@
 			const zh = lang === 'zh';
 			const item = (label, href, note, on) => `<a href="${href}"${on ? ' class="on"' : ''}><span>${label}</span><span>${note}</span></a>`;
 			cards.innerHTML = `
-				<p class="side-intro">${zh
-					? '平面设计师，专注编辑设计、品牌识别与孔版印刷（Risograph）。<br>艺术中心设计学院平面设计 MFA 在读。'
-					: 'Graphic designer working across editorial design,<br>branding &amp; identity, and Risograph.<br>MFA Graphic Design, ArtCenter College of Design.'}</p>
 				<nav class="side-links">
 					${item(zh ? '关于' : 'About', 'about.html', '→', page === 'about')}
-					${item(zh ? '作品' : 'Work', ALT + 'all.html', String(P.length).padStart(2, '0'), false)}
+					${item(zh ? '作品' : 'Work', ALT + 'all.html', '→', false)}
 					${item('Playground', 'playground.html', '→', false)}
-					${item(zh ? '联系' : 'Contact', 'mailto:' + S.email, '→', false)}
-				</nav>
-				<p class="side-contact">${esc(S.email)}<br><a href="https://www.instagram.com/${S.instagram}/" target="_blank" rel="noopener">@${esc(S.instagram)}</a><br>${zh ? '加州洛杉矶' : 'Los Angeles, CA'}</p>`;
+					<div class="side-contact-row"><span>${zh ? '联系' : 'Contact'}</span>
+						<span class="side-contact"><a href="mailto:${S.email}">${esc(S.email)}</a><br><a href="https://www.instagram.com/${S.instagram}/" target="_blank" rel="noopener">@${esc(S.instagram)}</a><br>${zh ? '加州洛杉矶' : 'Los Angeles, CA'}</span></div>
+				</nav>`;
 		}
 		document.body.prepend(side);
 		if (!ABOUT_SIDE) startStack(side);

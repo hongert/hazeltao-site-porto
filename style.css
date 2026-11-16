@@ -1178,18 +1178,14 @@ body[data-page="all"] .content {
 .cv p.desc { color: var(--muted); }
 
 
-/* ===== 左栏：一句话介绍 + About / Work / Playground / Contact ===== */
-.side-intro {
-	margin: 4px 6px 40px;
-	text-align: center;
-	color: var(--muted);
-	font-size: 13px;
-	line-height: 1.6;
-}
-.side-links a {
+/* ===== 左栏：About / Work / Playground / Contact ===== */
+.side-links { margin-top: 8px; }
+.side-links > a,
+.side-contact-row {
 	display: flex;
 	justify-content: space-between;
 	align-items: baseline;
+	gap: 12px;
 	padding: 14px 6px;
 	border-bottom: 1px solid var(--card-hover);
 	font-size: 15px;
@@ -1197,17 +1193,33 @@ body[data-page="all"] .content {
 	text-transform: uppercase;
 	transition: color 0.15s;
 }
-.side-links a:first-child { border-top: 1px solid var(--card-hover); }
-.side-links a span:last-child { color: var(--muted); font-size: 11px; }
-.side-links a:hover, .side-links a.on { color: var(--muted); }
+.side-links > :first-child { border-top: 1px solid var(--card-hover); }
+.side-links > a > span:last-child { color: var(--muted); font-size: 11px; }
+.side-links > a:hover, .side-links > a.on { color: var(--muted); }
+/* Contact 这一行右边直接写邮箱、Instagram、城市 */
 .side-contact {
-	margin: 40px 6px 0;
+	text-align: right;
+	text-transform: none;
+	letter-spacing: 0;
 	color: var(--muted);
 	font-size: 11px;
 	line-height: 1.7;
 }
 .side-contact a { color: inherit; }
+.side-contact a:hover { color: var(--text); }
+
+/* ===== About 页：两栏排列（About me 横跨两栏，其余卡片在两栏里依次排下去） ===== */
+body[data-page="about"] .content {
+	display: block;
+	columns: 2;
+	column-gap: var(--gap);
+}
+body[data-page="about"] .content > * {
+	break-inside: avoid;
+	margin-bottom: var(--gap);
+}
+body[data-page="about"] .content > .about-me,
+body[data-page="about"] .content > .mobile-top { column-span: all; }
 @media (max-width: 760px) {
-	.side-intro { margin-bottom: 24px; }
-	.side-contact { margin: 24px 6px 16px; }
+	body[data-page="about"] .content { columns: 1; }
 }
