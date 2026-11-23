@@ -351,7 +351,9 @@ window.PROJECTS = [
 			['1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_11.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_12.jpg'],
 		],
 		text: [
-			'“Find Your Voice” is an editorial-length typographic design created for my “Typography II” project, titled “Interconnection.” The goal of this project was to establish an organized structure for both written and visual content while allowing room for theme and variation to keep the reader continuously engaged.',
+			"“My mom told me I was born to applaud.” That first line of a speech by Nirvana’s drummer, Dave Grohl, pulled me in right away. I had never followed Nirvana, and grunge was about as far from my usual taste as music could get, which made it the right challenge. The speech tells how the band came together and found its own voice, and the booklet takes its title from that.",
+			"My one rule was no rules, no limitations. I studied David Carson, who showed that design doesn’t have to be clean or neat: it can be loud and break the grid. Type is cut up, collaged and layered to carry the grit of grunge.",
+			"I kept the palette mostly to black and red, with a touch of blue. These are loud colors, and the limit gave me more freedom with images and type. Each page is square, so holding the booklet feels like holding a vinyl record.",
 		],
 	},
 	{
