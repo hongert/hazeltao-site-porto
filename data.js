@@ -317,7 +317,9 @@ window.PROJECTS = [
 		thumb: 'Huaying_calendar_unfolded.png',
 		media: ['Huaying_main.png', 'FINALp2-03.png', 'FINALp2-04.png'],
 		text: [
-			'<i>Huaying’s Recipe</i> is a project that deeply personal tribute to my grandmother and the cherished memories of cooking with her throughout my childhood. Inspired by the calendar she kept on her living room wall, I created a functional and decorative gift that reflects both my love for her and my growth as a designer. Each month features a dish from her recipes, thoughtfully paired with seasonal ingredients or traditional celebrations. The calendar is accordion-bound to enhance display and accessibility, with each month spanning two pages: one showcasing a stylized serving dish illustration, and the other presenting the month’s dates and festivals.',
+			"A red-and-green paper calendar hung on my grandmother’s kitchen wall. She tore off a page every day but never threw it away: she folded each one into a little box that we used as bone dishes at dinner. Huaying always said she wanted to teach me every one of her best dishes, but we never had the chance to. <i>Huaying’s Recipe</i> turns that calendar into the recipes she meant to pass down.",
+			"Each month holds one of her signature dishes, ordered by season and festival. When the weather turns cold, she starts making drunken chicken, which has to rest at room temperature and would spoil in the heat.",
+			"I chose Risograph before I started designing. Simple, abstract shapes and warm ink colors bring back her kitchen and the red apron she always wore. The calendar unfolds like an accordion into one long strip, so she can hang it on her wall just like her old one.",
 		],
 	},
 	{
