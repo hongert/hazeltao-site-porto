@@ -1375,3 +1375,7 @@ body[data-page="home"], body[data-page="about"], body[data-page="all"] { --side:
 .nm-swap { position: relative; display: inline-block; vertical-align: top; white-space: nowrap; }
 .nm-swap > span { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity 0.35s ease; }
 .nm-swap > span.on { position: relative; opacity: 1; }
+
+/* About me：右边正文和下面右栏卡片的文字左边对齐（两栏等宽，栏距 = 卡片间距 + 两边内边距） */
+body[data-page="about"] .about-me { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: calc(var(--gap) + 36px); }
+body[data-page="about"] .about-body { max-width: none; }
