@@ -1375,4 +1375,3 @@ body[data-page="home"], body[data-page="about"], body[data-page="all"] { --side:
 .nm-swap { position: relative; display: inline-block; vertical-align: top; white-space: nowrap; }
 .nm-swap > span { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity 0.35s ease; }
 .nm-swap > span.on { position: relative; opacity: 1; }
-.nm-swap.ready { transition: width 0.35s ease; }
