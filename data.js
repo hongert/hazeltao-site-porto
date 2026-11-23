@@ -88,8 +88,8 @@ window.PROJECTS = [
 		thumb: 'Taohe_logo_motion_frame.jpg',
 		media: [
 			'Taohe_logo_motion_FIN.mp4',
-			'Taohe_ins_mockup_v2.mp4', 'Taohe_social_3.jpg', 'Taohe_Instagram_Mockup.jpg', 'Taohe_product_web-copy.jpg',
-			'Taohe_Stationary_Mockup.jpg', 'Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg', 'Taohe_DSCF0263.jpg',
+			'Taohe_mobile_site.mp4', 'Taohe_social_3.jpg', 'Taohe_Instagram_Mockup.jpg', 'Taohe_product_web-copy.jpg',
+			'Taohe_Stationary_Mockup.jpg', 'Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg', 'Taohe_PostCard_Mockup.jpg', 'Taohe_DSCF0263.jpg',
 			'Taohe_package.jpg', 'Taohe_tape_mockup.jpg', 'taohe_boxes.jpg',
 			'Taohe_StoreFront_week12.jpg', 'Taohe_StoreFront_3.jpg', 'TaoheHM_wrapping.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg', 'Taohe_DSCF0250.jpg', 'Taohe_DSCF0267.jpg',
 			'Taohe_DSCF0187.jpg', 'Taohe_DSCF0008.jpg', 'Taohe_DSCF0083.jpg', 'Taohe_DSCF0132.jpg', 'Taohe_DSCF0221.jpg',
@@ -97,13 +97,14 @@ window.PROJECTS = [
 		// 按交付内容分组；顶部的 logo 动态属于品牌设计
 		sections: [
 			{ tag: 'Digital Design', rows: [
-				['Taohe_ins_mockup_v2.mp4'],
+				['Taohe_mobile_site.mp4'],
 				['Taohe_social_3.jpg', 'Taohe_Instagram_Mockup.jpg'],
 				{ solo: 'Taohe_product_web-copy.jpg', width: '66%', align: 'right' },
 			] },
 			{ tag: 'Stationery', rows: [
 				['Taohe_Stationary_Mockup.jpg'],
 				['Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg'],
+				['Taohe_PostCard_Mockup.jpg'],
 				{ solo: 'Taohe_DSCF0263.jpg', width: '60%', align: 'right' },
 			] },
 			{ tag: 'Packaging', rows: [

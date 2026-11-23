@@ -33,7 +33,8 @@
 	// ---------- 小工具 ----------
 	const $ = (sel, root = document) => root.querySelector(sel);
 	const isVideo = (name) => /\.mp4$/i.test(name);
-	const src = (name) => (isVideo(name) ? 'videos/' : 'images/') + name;
+	// 图片和视频地址带上版本号：替换同名文件后，访客不会看到浏览器缓存里的旧图
+	const src = (name) => (isVideo(name) ? 'videos/' : 'images/') + name + (VER ? '?v=' + VER : '');
 	const thumb = (name) => (isVideo(name) ? src(name) : 'thumbs/' + name + '.jpg');
 	const ratio = (name) => (SIZES[name] ? SIZES[name][0] / SIZES[name][1] : 16 / 9);
 	const ALT = window.SITE_ALT ? (typeof window.SITE_ALT === 'string' ? window.SITE_ALT : 'alt/') : '';
