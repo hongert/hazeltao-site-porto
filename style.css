@@ -1364,3 +1364,8 @@ body[data-page="home"] { --side: 25%; }
 /* 完整显示的大图：主体留白，四周是模糊放大的同一张图 */
 .hero-slide.fit img, .hero-slide.fit video { position: relative; object-fit: contain; }
 .hero-bg { position: absolute; inset: -40px; background-size: cover; background-position: center; filter: blur(30px) brightness(0.85); }
+
+/* 英文版正文改用中文版的字体 MiSans（标题、副标题、导航等仍用等宽字体） */
+:root { --font-body: "MiSans", "PingFang SC", "Helvetica Neue", Arial, sans-serif; }
+.prose p, .about-body p, .cv p.desc { font-family: var(--font-body); font-weight: 400; letter-spacing: 0; }
+:root:lang(zh-Hans) .prose p, :root:lang(zh-Hans) .about-body p, :root:lang(zh-Hans) .cv p.desc { font-weight: 500; }
