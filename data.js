@@ -135,7 +135,7 @@ window.PROJECTS = [
 	{
 		slug: 'held-still',
 		title: 'Held Still',
-		subtitle: 'Exhibition Identity',
+		subtitle: 'Exhibition Design',
 		year: 2026,
 		tags: ['Exhibit Design', 'Book Design'],
 		services: ['Exhibition Identity', 'Poster', 'Merchandise', 'Motion'],
