@@ -446,6 +446,11 @@
 		const allRows = (p.rows || []).concat(p.extraRows || []);
 		if (allRows.length) {
 			allRows.forEach((r) => {
+				// { solo, width, align }：单张图，缩小到指定宽度，靠左或靠右，留出空白
+				if (r.solo) {
+					blocks.push(`<div class="solo-off" style="width:${r.width || '66%'};margin-${r.align === 'right' ? 'left' : 'right'}:auto">${media(r.solo, ratio(r.solo))}</div>`);
+					return;
+				}
 				// { big, stack: [b, c] }：左边一张大图，右边上下叠两张小图
 				if (!Array.isArray(r)) {
 					const big = media(r.big, ratio(r.big));

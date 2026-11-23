@@ -257,8 +257,6 @@ window.PROJECTS = [
 		format: '22×11”',
 		cover: 'Interconnection.png',
 		thumb: 'Interconnection.png',
-		grid: 2,
-		gridRatio: 2,
 		media: [
 			'Interconnection.png',
 			'1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_3.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_4.jpg',
@@ -266,6 +264,16 @@ window.PROJECTS = [
 			'1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_7.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_8.jpg',
 			'1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_9.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_10.jpg',
 			'1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_11.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_12.jpg',
+		],
+		// 图片节奏：通栏 / 两张并排 / 三分之二宽靠右，大小交替
+		rows: [
+			['1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_3.jpg'],
+			['1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_4.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_5.jpg'],
+			['1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_6.jpg'],
+			['1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_7.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_8.jpg'],
+			{ solo: '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_9.jpg', width: '66%', align: 'right' },
+			['1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_10.jpg'],
+			['1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_11.jpg', '1771977244038-086e7f39-f791-4595-a5f4-bbad5819a0a6_12.jpg'],
 		],
 		text: [
 			'“Find Your Voice” is an editorial-length typographic design created for my “Typography II” project, titled “Interconnection.” The goal of this project was to establish an organized structure for both written and visual content while allowing room for theme and variation to keep the reader continuously engaged.',
