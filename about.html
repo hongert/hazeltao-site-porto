@@ -19,7 +19,7 @@
 		// 记住访客选的语言（EN / CN）
 		try { if (localStorage.getItem('lang') === 'zh') document.documentElement.lang = 'zh-Hans'; } catch (e) {}
 	</script>
-	<link rel="stylesheet" href="style.css?v=202611230218">
+	<link rel="stylesheet" href="style.css?v=202611230229">
 	<script>
 		// 黑/白背景跟着访客本地时间：晚上 7 点到凌晨 5 点是黑色，其余时间白色
 		// 手动点开关只在当前这一段时间内有效，到下一个 7 点 / 5 点就恢复自动
@@ -52,6 +52,7 @@
 <div class="card prose cv about-me">
 	<div class="about-head">
 		<div class="label" data-zh="关于我">About me</div>
+		<div class="about-name about-title" aria-label="Honger (Hazel) Tao"><span class="nm-swap"><span class="on">Honger</span><span>Hazel</span></span> Tao</div>
 		<h1 class="about-title" data-zh="平面设计师">Graphic Designer</h1>
 		<p class="lead" data-zh="“那是咖啡吗？”&lt;br&gt;“不是，其实是可乐。”">“Is that coffee?”<br>“Nope, it’s actually Coke.”</p>
 	</div>
@@ -116,9 +117,9 @@
 
 </main>
 
-<script src="data.js?v=202611230218"></script>
-<script src="data.zh.js?v=202611230218"></script>
-<script src="sizes.js?v=202611230218"></script>
-<script src="site.js?v=202611230218"></script>
+<script src="data.js?v=202611230229"></script>
+<script src="data.zh.js?v=202611230229"></script>
+<script src="sizes.js?v=202611230229"></script>
+<script src="site.js?v=202611230229"></script>
 </body>
 </html>

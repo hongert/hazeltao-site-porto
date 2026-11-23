@@ -1337,7 +1337,7 @@ body[data-page="project"] .side-project { padding-top: 22px; }
 @media (max-width: 760px) { .m-br { display: inline; } }
 
 /* ===== 首页（参考 Porto Rocha）：左栏 25%，右边先是整屏大图轮播，下面是小卡片 ===== */
-body[data-page="home"] { --side: 25%; }
+body[data-page="home"], body[data-page="about"], body[data-page="all"] { --side: 25%; }
 .hero-slides { position: relative; width: 100%; height: calc(100vh - var(--gap) * 2); border-radius: var(--radius); overflow: hidden; background: var(--card); flex: none; }
 .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; color: #fff; }
 .hero-slide.on { opacity: 1; z-index: 1; }
@@ -1367,5 +1367,12 @@ body[data-page="home"] { --side: 25%; }
 
 /* 英文版正文改用中文版的字体 MiSans（标题、副标题、导航等仍用等宽字体） */
 :root { --font-body: "MiSans", "PingFang SC", "Helvetica Neue", Arial, sans-serif; }
-.prose p, .about-body p, .cv p.desc { font-family: var(--font-body); font-weight: 400; letter-spacing: 0; }
-:root:lang(zh-Hans) .prose p, :root:lang(zh-Hans) .about-body p, :root:lang(zh-Hans) .cv p.desc { font-weight: 500; }
+.prose p:not(.lead), .about-body p, .cv p.desc { font-family: var(--font-body); font-weight: 400; letter-spacing: 0; }
+:root:lang(zh-Hans) .prose p:not(.lead), :root:lang(zh-Hans) .about-body p, :root:lang(zh-Hans) .cv p.desc { font-weight: 500; }
+
+/* About 页名字：HONGER ⇄ HAZEL */
+.about-name { margin-bottom: 4px; }
+.nm-swap { position: relative; display: inline-block; vertical-align: top; white-space: nowrap; }
+.nm-swap > span { position: absolute; left: 0; top: 0; opacity: 0; transition: opacity 0.35s ease; }
+.nm-swap > span.on { position: relative; opacity: 1; }
+.nm-swap.ready { transition: width 0.35s ease; }

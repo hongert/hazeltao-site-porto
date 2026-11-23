@@ -620,5 +620,20 @@
 	if (page === 'about') {
 		if (lang === 'zh') document.querySelectorAll('[data-zh]').forEach((el) => (el.innerHTML = el.dataset.zh));
 		content.insertAdjacentHTML('afterbegin', mobileTop());
+		// 名字：HONGER 和 HAZEL 轮流淡入淡出（参考 2x4.org 顶部），TAO 跟着平滑移动
+		const sw = $('.nm-swap');
+		if (sw && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+			const ws = [...sw.children];
+			let k = 0;
+			const fit = () => (sw.style.width = ws[k].offsetWidth + 'px');
+			fit();
+			setTimeout(() => sw.classList.add('ready'), 50);
+			setInterval(() => {
+				ws[k].classList.remove('on');
+				k = (k + 1) % ws.length;
+				ws[k].classList.add('on');
+				fit();
+			}, 2600);
+		}
 	}
 })();
