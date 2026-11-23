@@ -270,7 +270,13 @@
 	// 首页：每个项目一张卡片
 	function renderHome() {
 		// 顶部：整屏大图轮播，随机顺序，淡入淡出（电脑上）
-		const order = P.map((p) => p).sort(() => Math.random() - 0.5);
+		// 固定的节奏：浅 深 浅 浅 深 浅 深（相近的放在一起，深色穿插在浅色里）；每次从随机的一张开始
+		const SEQ = ['huayings-recipe', 'wuzhen-theater-festival', 'arboretum', 'held-still', 'taohe', 'edge-of-visibility', 'find-your-voice', 'serenseek'];
+		const seq = SEQ.map((k) => P.find((p) => p.slug === k)).filter(Boolean).concat(P.filter((p) => !SEQ.includes(p.slug)));
+		const st0 = Math.floor(Math.random() * seq.length);
+		const order = seq.slice(st0).concat(seq.slice(0, st0));
+		// 画面比屏幕宽很多、裁切会显得局促的图：完整显示，四周用同一张图的模糊放大版铺满
+		const FIT = ['arboretum', 'wuzhen-theater-festival'];
 		// 裁切时保留画面重心：横向位置 / 纵向位置（没写的默认居中）
 		const POS = { 'wuzhen-theater-festival': '0% 50%' };
 		const pos = (p) => (POS[p.slug] ? ` style="object-position:${POS[p.slug]}"` : '');
@@ -279,7 +285,7 @@
 			: `<img src="${src(name)}" alt="" loading="${first ? 'eager' : 'lazy'}"${st}>`;
 		const hero = `
 			<div class="hero-slides">
-				${order.map((p, i) => `<a class="hero-slide${i === 0 ? ' on' : ''}" href="${link(p)}">${heroMedia(p.media[0], i === 0, pos(p))}<span class="hero-cap"><span class="hc-t">${esc(p.title)}</span><span class="hc-d">${esc(p.tags.join(', '))}</span></span></a>`).join('')}
+				${order.map((p, i) => `<a class="hero-slide${i === 0 ? ' on' : ''}${FIT.includes(p.slug) ? ' fit' : ''}" href="${link(p)}">${FIT.includes(p.slug) ? `<span class="hero-bg" style="background-image:url('${isVideo(p.media[0]) ? 'thumbs/' + p.media[0] + '.jpg' : thumb(p.media[0])}')"></span>` : ''}${heroMedia(p.media[0], i === 0, FIT.includes(p.slug) ? '' : pos(p))}<span class="hero-cap"><span class="hc-t">${esc(p.title)}</span><span class="hc-d">${esc(p.tags.join(', '))}</span></span></a>`).join('')}
 			</div>`;
 		content.innerHTML = hero + `<div class="home-grid">${P.map((p) => `
 			<a class="card feature" href="${link(p)}">

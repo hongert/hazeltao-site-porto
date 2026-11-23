@@ -218,7 +218,7 @@ window.PROJECTS = [
 		],
 	},
 	{
-		slug: 'wuzhen-theater-festival',
+		slug: 'wuzhen-theater-festival', hidden: true, // 暂时不在网站上显示
 		title: 'Wuzhen Theater Festival',
 		subtitle: 'Branding / Visual Identity',
 		year: 2024,
