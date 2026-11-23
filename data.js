@@ -27,7 +27,7 @@ window.PROJECTS = [
 		title: 'Arboretum',
 		subtitle: 'Rebrand Proposal',
 		year: 2025,
-		tags: ['Branding Design', 'Identity Design', 'Merchandise', 'Exhibit Design'],
+		tags: ['Branding Design', 'Identity Design', 'Merchandise', 'Exhibit Design', 'Editorial Design'],
 		services: ['Rebrand Proposal', 'Motion', 'Merchandise', 'Spatial', 'Website'],
 		format: '',
 		cover: 'GS3_FA25_HazelTao_Website4_v2.jpg',
@@ -47,10 +47,6 @@ window.PROJECTS = [
 		sections: [
 			{ tag: 'Branding Design', rows: [
 				['Screenshot-2026-02-13-at-11.32.12AM.png', 'Screenshot-2026-02-13-at-11.32.01AM.png'],
-				['Arboretum_BrandBible_20-21.jpg', 'Arboretum_BrandBible_26-27.jpg'],
-				['Arboretum_BrandBible_24-25.jpg'],
-				['Arboretum_BrandBible_32-33.jpg', 'Arboretum_BrandBible_50-51.jpg'],
-				['Arboretum_BrandBible_40-41.jpg'],
 			] },
 			{ tag: 'Identity Design', rows: [
 				['Arboretum-Instagram-Mockup.png', 'GS3_FA25_HazelTao_Website6.jpg'],
@@ -64,6 +60,13 @@ window.PROJECTS = [
 				['J-A-Long-LED-Motion.mp4'],
 				{ big: 'GS3_FA25_-HazelTao_Promo3.mp4', stack: ['GS3_FA25_HazelTao_Website3.jpg', 'GS3_FA25_HazelTao_Website2.jpg'] },
 				['GS3_FA25_HazelTao_Website4_v2.jpg', 'GS3_FA25_-HazelTao_Spatial1.jpg'],
+			] },
+			// Brand Bible 内页
+			{ tag: 'Editorial Design', rows: [
+				['Arboretum_BrandBible_20-21.jpg', 'Arboretum_BrandBible_26-27.jpg'],
+				['Arboretum_BrandBible_24-25.jpg'],
+				['Arboretum_BrandBible_32-33.jpg', 'Arboretum_BrandBible_50-51.jpg'],
+				['Arboretum_BrandBible_40-41.jpg'],
 			] },
 		],
 		text: [
