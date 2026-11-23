@@ -88,24 +88,23 @@ window.PROJECTS = [
 		thumb: 'Taohe_logo_motion_frame.jpg',
 		media: [
 			'Taohe_logo_motion_FIN.mp4',
-			'Taohe_mobile_site.mp4', 'Taohe_social_3.jpg', 'Taohe_Instagram_Mockup.jpg', 'Taohe_product_web-copy.jpg',
-			'Taohe_Stationary_Mockup.jpg', 'Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg', 'Taohe_PostCard_Mockup.jpg', 'Taohe_DSCF0263.jpg',
+			'Taohe_mobile_site.mp4', 'Taohe_social_3.jpg', 'Taohe_Instagram_Story.jpg', 'Taohe_product_web-copy.jpg',
+			'Taohe_Stationary_Mockup.jpg', 'Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg', 'Taohe_PostCard_Mockup.jpg',
 			'Taohe_package.jpg', 'Taohe_tape_mockup.jpg', 'taohe_boxes.jpg',
 			'Taohe_StoreFront_week12.jpg', 'Taohe_StoreFront_3.jpg', 'TaoheHM_wrapping.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg', 'Taohe_DSCF0250.jpg', 'Taohe_DSCF0267.jpg',
-			'Taohe_DSCF0187.jpg', 'Taohe_DSCF0008.jpg', 'Taohe_DSCF0083.jpg', 'Taohe_DSCF0132.jpg', 'Taohe_DSCF0221.jpg',
+			'Taohe_DSCF0187.jpg', 'Taohe_DSCF0008.jpg', 'Taohe_DSCF0083.jpg', 'Taohe_DSCF0132.jpg', 'Taohe_DSCF0263.jpg', 'Taohe_DSCF0221.jpg',
 		],
 		// 按交付内容分组；顶部的 logo 动态属于品牌设计
 		sections: [
 			{ tag: 'Digital Design', rows: [
 				['Taohe_mobile_site.mp4'],
-				['Taohe_social_3.jpg', 'Taohe_Instagram_Mockup.jpg'],
-				{ solo: 'Taohe_product_web-copy.jpg', width: '66%', align: 'right' },
+				['Taohe_social_3.jpg', 'Taohe_Instagram_Story.jpg'],
+				['Taohe_product_web-copy.jpg'],
 			] },
 			{ tag: 'Stationery', rows: [
 				['Taohe_Stationary_Mockup.jpg'],
 				['Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg'],
 				['Taohe_PostCard_Mockup.jpg'],
-				{ solo: 'Taohe_DSCF0263.jpg', width: '60%', align: 'right' },
 			] },
 			{ tag: 'Packaging', rows: [
 				['Taohe_package.jpg', 'Taohe_tape_mockup.jpg'],
@@ -120,7 +119,7 @@ window.PROJECTS = [
 			] },
 			{ tag: 'Product Photography', rows: [
 				{ big: 'Taohe_DSCF0187.jpg', stack: ['Taohe_DSCF0008.jpg', 'Taohe_DSCF0083.jpg'] },
-				['Taohe_DSCF0132.jpg', 'Taohe_DSCF0221.jpg'],
+				['Taohe_DSCF0132.jpg', 'Taohe_DSCF0263.jpg', 'Taohe_DSCF0221.jpg'],
 			] },
 		],
 		text: [
@@ -154,12 +153,12 @@ window.PROJECTS = [
 			{ tag: 'Exhibit Design', rows: [
 				['HeldStill_BigFlag.jpg'],
 				['Heldstill_display3.JPG', 'HeldStill_Ticket.jpg'],
-				{ solo: 'HeldStill_IDCard.jpg', width: '60%', align: 'right' },
+				['HeldStill_IDCard.jpg'],
 			] },
 			{ tag: 'Book Design', rows: [
 				['Heldstill_display_3.jpg'],
 				['Heldstill_display_5.jpg', 'Heldstill_display_4.jpg'],
-				{ solo: 'Heldstill_display_6.jpg', width: '66%', align: 'left' },
+				['Heldstill_display_6.jpg'],
 				['HeldStill_FlipThrough-copy.mp4', 'HeldStill_FlipThrough-copy-2.mp4'],
 				['HeldStill_FlipThrough-copy-3.mp4', 'HeldStill_FlipThrough-copy-4.mp4'],
 				['HeldStill_FlipThrough-copy-5.mp4', 'HeldStill_FlipThrough-copy-6.mp4'],
@@ -267,12 +266,12 @@ window.PROJECTS = [
 		heroTag: 'Environmental',
 		sections: [
 			{ tag: 'Environmental', rows: [
-				{ big: 'Serenseek_scene8.png', stack: ['Serenseek_scene5_v2.png', 'Serenseek_scene9.png'], bigRight: true },
-				{ solo: 'Serenseek_scene10.png', width: '50%', align: 'left' },
+				['Serenseek_scene5_v2.png'],
+				['Serenseek_scene8.png', 'Serenseek_scene10.png', 'Serenseek_scene9.png'],
 			] },
 			{ tag: 'Branding Design', rows: [
 				['Serenseek_flatlay.png'],
-				{ solo: 'Serenseek_scene11.jpg', width: '66%', align: 'right' },
+				['Serenseek_scene11.jpg'],
 			] },
 			{ tag: 'Packaging', rows: [
 				['Serenseek_scene1.png', 'Serenseek_cup_hand.png'],
