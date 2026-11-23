@@ -1387,7 +1387,6 @@ body[data-page="about"] .about-body { max-width: none; }
 
 /* 详情页按交付内容分组：每组之间多留一点空；左栏交付内容随滚动高亮 */
 .p-sec { display: flex; flex-direction: column; gap: var(--gap); }
-.p-sec + .p-sec { margin-top: calc(var(--gap) * 6); }
 .info.spy .dl-tag { color: var(--muted); cursor: pointer; transition: color 0.3s; }
 .info.spy .dl-tag.on { color: var(--text); }
 .info.spy .dl-tag:hover { color: var(--text); }
