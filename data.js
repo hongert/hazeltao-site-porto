@@ -128,7 +128,7 @@ window.PROJECTS = [
 		text: [
 			"My family dyes wool in Puyuan, China’s sweater town. As we expanded into making our own ready-to-wear, I noticed almost no one was working with yak wool—and in the U.S., most shoppers know cashmere but have barely heard of yak. TAOHE is the brand I built to fill that gap.",
 			"I wanted to show that a traditional material can be pure and unadorned and still read as luxury. Researching competitors, I found that luxury cashmere tends to speak in thin, italic, delicate serifs. TAOHE goes the other way: heavy letterforms that carry the warmth and weight of yak wool, and type that rises and falls like the Tibetan mountains.",
-			"My first logo sketches mapped Tibet itself, with abstract mountains and even coordinates, but they started to look like an outdoor gear brand. This is a family business, so the name had to be ours. “Tao” is my family name; “He” (和) means togetherness, and the rising stroke in the logo is the second tone you hear when you say it in Mandarin.",
+			"My first logo sketches mapped Tibet itself, with abstract mountains and even coordinates, but they started to look like an outdoor gear brand. This is a family business, so the name had to be ours. “Tao” (陶) is my family name; “He” (和) means togetherness, and the rising stroke in the logo is the second tone you hear when you say it in Mandarin.",
 		],
 		credits: 'Photography Credits: Kin Codel, Honger (Hazel) Tao. Creative Director: Zaul Ocana',
 	},
@@ -176,7 +176,7 @@ window.PROJECTS = [
 	{
 		slug: 'edge-of-visibility',
 		title: 'Edge of Visibility',
-		subtitle: 'Manifesto Proposal',
+		subtitle: 'Exhibit Design',
 		year: 2025,
 		tags: ['Identity Design', 'Exhibit Design'],
 		services: ['Installation', 'Poster Series', 'Typography', 'Motion'],
