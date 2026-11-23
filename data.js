@@ -89,7 +89,7 @@ window.PROJECTS = [
 		thumb: 'Taohe_logo_motion_frame.jpg',
 		media: [
 			'Taohe_logo_motion_FIN.mp4',
-			'Taohe_mobile_site.mp4', 'Taohe_social_3.jpg', 'Taohe_Instagram_Story.jpg', 'Taohe_product_web-copy.jpg',
+			'Taohe_mobile_site_v3.mp4', 'Taohe_social_3.jpg', 'Taohe_Instagram_Story.jpg', 'Taohe_product_web-copy.jpg',
 			'Taohe_Stationary_Mockup.jpg', 'Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg', 'Taohe_PostCard_Mockup.jpg',
 			'Taohe_package.jpg', 'Taohe_tape_mockup.jpg', 'taohe_boxes.jpg',
 			'Taohe_StoreFront_week12.jpg', 'Taohe_StoreFront_3.jpg', 'TaoheHM_wrapping.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg', 'Taohe_DSCF0250.jpg', 'Taohe_DSCF0267.jpg',
@@ -98,7 +98,7 @@ window.PROJECTS = [
 		// 按交付内容分组；顶部的 logo 动态属于品牌设计
 		sections: [
 			{ tag: 'Digital Design', rows: [
-				['Taohe_mobile_site.mp4'],
+				['Taohe_mobile_site_v3.mp4'],
 				['Taohe_social_3.jpg', 'Taohe_Instagram_Story.jpg'],
 				['Taohe_product_web-copy.jpg'],
 			] },
