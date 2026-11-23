@@ -127,7 +127,7 @@ window.PROJECTS = [
 			"I wanted to show that a traditional material can be pure and unadorned and still read as luxury. Researching competitors, I found that luxury cashmere tends to speak in thin, italic, delicate serifs. TAOHE goes the other way: heavy letterforms that carry the warmth and weight of yak wool, and type that rises and falls like the Tibetan mountains.",
 			"My first logo sketches mapped Tibet itself, with abstract mountains and even coordinates, but they started to look like an outdoor gear brand. This is a family business, so the name had to be ours. “Tao” is my family name; “He” (和) means togetherness, and the rising stroke in the logo is the second tone you hear when you say it in Mandarin.",
 		],
-		credits: 'Photography Credits: Kin Codel. Creative Director: Zaul Ocana',
+		credits: 'Photography Credits: Kin Codel, Honger (Hazel) Tao. Creative Director: Zaul Ocana',
 	},
 	{
 		slug: 'held-still',
