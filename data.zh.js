@@ -96,6 +96,7 @@ window.ZH = {
 		'held-still': {
 			title: '保持静止',
 			subtitle: '展览视觉设计',
+			credits: '图片来源：Sarah Ball、Eska Marsh、Irving Penn、Paula Siebra、Nicolas Party、Lucas Blalock、Rachel Ruysch、Michael Borremans',
 			text: [
 				"几年前，我画过一幅花与水果的静物，最先画的是绣球花，因为它枯萎得最快。完成的画面里，一切都是最好的样子，但每个物件其实来自不同的时刻，被拼接在了一起。这正是静物吸引我的地方：它看起来是静止的，但在被画的整个过程中，时间一直在流逝。《Held Still: When Time Becomes Visible》汇集了八位从事静物创作的艺术家，从 17 世纪的 Rachel Ruysch 到当代的 Lucas Blalock。",
 				"视觉识别以画框为核心，作为贯穿始终的超级符号。它总是以一对斜角的形式出现，模仿画布的边缘，框住每一件作品。这个超级符号在海报、横幅、门票和周边上被放大使用。",

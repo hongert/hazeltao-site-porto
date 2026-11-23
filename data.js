@@ -142,6 +142,7 @@ window.PROJECTS = [
 		format: '',
 		cover: 'Heldstill_display3.JPG',
 		syncVideos: true,
+		credits: 'Image Credits: Sarah Ball, Eska Marsh, Irving Penn, Paula Siebra, Nicolas Party, Lucas Blalock, Rachel Ruysch, Michael Borremans',
 		thumb: 'HeldStill_Flag.jpg',
 		media: [
 			'HeldStill_Flag.jpg', 'HeldStill_BigFlag.jpg', 'Heldstill_display3.JPG', 'HeldStill_Ticket.jpg',
