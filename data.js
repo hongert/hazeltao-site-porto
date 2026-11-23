@@ -285,7 +285,9 @@ window.PROJECTS = [
 			] },
 		],
 		text: [
-			'<i>‘Serenseek’</i> is a branding project centered around the concept of seeking truth and inner peace. The teahouse offers a tranquil escape from the chaos of city life, inviting visitors to reconnect with themselves and embrace a simpler, more mindful way of living. From the visual identity to the spatial atmosphere, every design element aims to transport guests into a serene, calming environment that nurtures introspection and authenticity.',
+			"My father loves tea, but whenever he visits me in the U.S., the only place he can enjoy it is my living room. There is a coffee shop on every corner, yet almost nowhere to sit down and taste tea properly. Serenseek is the teahouse I wish he had.",
+			"The name joins serene and seek. Its Chinese name, 寻真, means “seeking truth”: finding your true self, and a promise that the tea itself is genuine. The color palette comes straight from the leaves: white tea, green tea, black tea.",
+			"I imagined Serenseek in New York City, for people in their late twenties to forties who grab coffee on the go and could reach for tea the same way. I debated how traditional the identity should feel, then chose abstract gradient shapes over classic tea motifs, so the brand reads as contemporary while staying calm. In a city as chaotic as New York, it is a place to slow down and rest.",
 		],
 	},
 	{
