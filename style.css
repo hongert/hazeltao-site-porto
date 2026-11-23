@@ -1382,3 +1382,5 @@ body[data-page="about"] .about-body { max-width: none; }
 
 /* 单张缩小、靠一边的图（详情页节奏） */
 @media (max-width: 760px) { .solo-off { width: 100% !important; } }
+/* About me 右边正文的第一行和左边名字顶端对齐（不再和 ABOUT ME 小标签一样高） */
+@media (min-width: 1001px) { body[data-page="about"] .about-body { margin-top: 32px; } }
