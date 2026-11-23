@@ -323,11 +323,13 @@
 		};
 		// 开场动画还在播时先不轮播，等幕布拉开后再开始
 		let timer = null;
-		const begin = () => { if (document.getElementById('intro')) return setTimeout(begin, 300); timer = setInterval(() => show(cur + 1), 4500); };
+		const loop = () => { timer = setInterval(() => show(cur + 1), 5000); };
+		// 幕布拉开后第一张多停一会（7 秒）再开始换
+		const begin = () => { if (document.getElementById('intro')) return setTimeout(begin, 200); timer = setTimeout(() => { show(cur + 1); loop(); }, 7000); };
 		begin();
 		document.addEventListener('visibilitychange', () => {
-			clearInterval(timer);
-			if (!document.hidden) timer = setInterval(() => show(cur + 1), 4500);
+			clearInterval(timer); clearTimeout(timer);
+			if (!document.hidden) loop();
 		});
 	}
 
