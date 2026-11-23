@@ -31,7 +31,6 @@ window.PROJECTS = [
 		services: ['Rebrand Proposal', 'Motion', 'Merchandise', 'Spatial', 'Website'],
 		format: '',
 		cover: 'GS3_FA25_HazelTao_Website4_v2.jpg',
-		grid: 2,
 		thumb: 'Screenshot-2026-02-13-at-11.32.01AM.png',
 		media: [
 			'Arboretum-Motion-Long-Final.mp4', 'GS3_FA25_-HazelTao_Promo3.mp4', 'J-A-Long-LED-Motion.mp4',
@@ -44,12 +43,28 @@ window.PROJECTS = [
 			'Arboretum_BrandBible_20-21.jpg', 'Arboretum_BrandBible_26-27.jpg', 'Arboretum_BrandBible_24-25.jpg',
 			'Arboretum_BrandBible_32-33.jpg', 'Arboretum_BrandBible_50-51.jpg', 'Arboretum_BrandBible_40-41.jpg',
 		],
-		// Brand Bible 跨页排在最后：并排和大图交替
-		extraRows: [
-			['Arboretum_BrandBible_20-21.jpg', 'Arboretum_BrandBible_26-27.jpg'],
-			['Arboretum_BrandBible_24-25.jpg'],
-			['Arboretum_BrandBible_32-33.jpg', 'Arboretum_BrandBible_50-51.jpg'],
-			['Arboretum_BrandBible_40-41.jpg'],
+		// 按交付内容分组排列图片（顺序和上面的 tags 一致）；第一张动态是顶部大图，属于品牌设计
+		sections: [
+			{ tag: 'Branding Design', rows: [
+				['Screenshot-2026-02-13-at-11.32.12AM.png', 'Screenshot-2026-02-13-at-11.32.01AM.png'],
+				['Arboretum_BrandBible_20-21.jpg', 'Arboretum_BrandBible_26-27.jpg'],
+				['Arboretum_BrandBible_24-25.jpg'],
+				['Arboretum_BrandBible_32-33.jpg', 'Arboretum_BrandBible_50-51.jpg'],
+				['Arboretum_BrandBible_40-41.jpg'],
+			] },
+			{ tag: 'Identity Design', rows: [
+				['Arboretum-Instagram-Mockup.png', 'GS3_FA25_HazelTao_Website6.jpg'],
+				['GS3_FA25_HazelTao_Website5.jpg', 'GS3_FA25_HazelTao_Website7.jpg'],
+			] },
+			{ tag: 'Merchandise', rows: [
+				['GS3_FA25_HazelTao_Swag2.jpg', 'GS3_FA25_HazelTao_3D-Application1.jpg'],
+				['GS3_FA25_HazelTao_swag4.jpg', 'GS3_FA25_-HazelTao_Swag1.jpg'],
+			] },
+			{ tag: 'Exhibit Design', rows: [
+				['J-A-Long-LED-Motion.mp4'],
+				{ big: 'GS3_FA25_-HazelTao_Promo3.mp4', stack: ['GS3_FA25_HazelTao_Website3.jpg', 'GS3_FA25_HazelTao_Website2.jpg'] },
+				['GS3_FA25_HazelTao_Website4_v2.jpg', 'GS3_FA25_-HazelTao_Spatial1.jpg'],
+			] },
 		],
 		text: [
 			"A rebrand proposal for the <a href=\"https://arboretum.org/\">LA Arboretum &amp; Botanic Garden</a>, aimed at connecting it with a new audience of Millennials and Gen Z across LA County. But a rebrand doesn’t have to erase what came before: the peacock in the logo and the garden’s existing colors stay, reworked rather than replaced.",
@@ -61,7 +76,7 @@ window.PROJECTS = [
 	{
 		slug: 'taohe',
 		title: 'Taohe',
-		subtitle: 'Brand Identity',
+		subtitle: 'Branding Design',
 		year: 2026,
 		tags: ['Branding Design', 'Stationery', 'Brand Application'],
 		services: ['Brand Strategy', 'Identity System', 'Packaging', 'E-commerce', 'Social'],
@@ -194,10 +209,10 @@ window.PROJECTS = [
 	{
 		slug: 'serenseek',
 		title: '‘Serenseek’ 寻真',
-		subtitle: 'Branding / Visual Identity',
+		subtitle: 'Branding Design',
 		year: 2024,
-		tags: ['Branding', 'Packaging', 'Environmental'],
-		services: ['Branding', 'Spatial', 'Packaging', 'Stationery'],
+		tags: ['Branding Design', 'Packaging', 'Environmental'],
+		services: ['Branding Design', 'Spatial', 'Packaging', 'Stationery'],
 		format: '',
 		cover: 'Serenseek_main.png',
 		thumb: 'Serenseek_main.png',
@@ -220,10 +235,10 @@ window.PROJECTS = [
 	{
 		slug: 'wuzhen-theater-festival', hidden: true, // 暂时不在网站上显示
 		title: 'Wuzhen Theater Festival',
-		subtitle: 'Branding / Visual Identity',
+		subtitle: 'Branding Design',
 		year: 2024,
 		tags: ['Branding Design', 'Identity Design', 'Catalog Design'],
-		services: ['Branding', 'Identity System'],
+		services: ['Branding Design', 'Identity System'],
 		format: '',
 		cover: 'Wuzhen_main_cropped.png',
 		thumb: 'Wuzhen_flag_display.png',
@@ -282,10 +297,10 @@ window.PROJECTS = [
 	{
 		slug: 'lume', hidden: true, // 暂时不在网站上显示
 		title: 'Lume',
-		subtitle: 'Brand Identity',
+		subtitle: 'Branding Design',
 		year: 2024,
 		tags: ['Identity Design'],
-		services: ['Branding', 'Editorial Design', 'Stationery'],
+		services: ['Branding Design', 'Editorial Design', 'Stationery'],
 		format: '',
 		cover: 'Lume-Front-Cover-Mockuo.jpg',
 		thumb: 'Lume-Busniess-Card-Mockup.jpg',

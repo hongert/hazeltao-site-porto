@@ -446,27 +446,29 @@
 			rest.length = 0;
 		}
 		// rows：自己指定每一排放哪几张；同一排的图等高、按原比例分配宽度，不裁切
+		const rowHTML = (r) => {
+			// { solo, width, align }：单张图，缩小到指定宽度，靠左或靠右，留出空白
+			if (r.solo) return `<div class="solo-off" style="width:${r.width || '66%'};margin-${r.align === 'right' ? 'left' : 'right'}:auto">${media(r.solo, ratio(r.solo))}</div>`;
+			// { big, stack: [b, c] }：左边一张大图，右边上下叠两张小图（bigRight: true 时大图在右）
+			if (!Array.isArray(r)) {
+				const big = media(r.big, ratio(r.big));
+				const stack = `<div class="stack">${media(r.stack[0])}${media(r.stack[1])}</div>`;
+				return `<div class="two grid2 reel">${r.bigRight ? stack + big : big + stack}</div>`;
+			}
+			const mat = p.mat ? ' matted' : '';
+			return r.length === 1
+				? (p.mat ? `<div class="matted">${media(r[0])}</div>` : media(r[0]))
+				: `<div class="jrow">${r.map((m) => `<div class="${mat.trim()}" style="flex:${ratio(m).toFixed(3)}">${media(m, ratio(m))}</div>`).join('')}</div>`;
+		};
+		// sections：按交付内容分组，每组一段；左栏对应的交付内容会随滚动高亮
+		if (p.sections) {
+			const enTags = (p.en || p).tags;
+			p.sections.forEach((sec) => blocks.push(`<div class="p-sec" data-i="${enTags.indexOf(sec.tag)}">${sec.rows.map(rowHTML).join('')}</div>`));
+			rest.length = 0;
+		}
 		const allRows = (p.rows || []).concat(p.extraRows || []);
 		if (allRows.length) {
-			allRows.forEach((r) => {
-				// { solo, width, align }：单张图，缩小到指定宽度，靠左或靠右，留出空白
-				if (r.solo) {
-					blocks.push(`<div class="solo-off" style="width:${r.width || '66%'};margin-${r.align === 'right' ? 'left' : 'right'}:auto">${media(r.solo, ratio(r.solo))}</div>`);
-					return;
-				}
-				// { big, stack: [b, c] }：左边一张大图，右边上下叠两张小图
-				if (!Array.isArray(r)) {
-					const big = media(r.big, ratio(r.big));
-					const stack = `<div class="stack">${media(r.stack[0])}${media(r.stack[1])}</div>`;
-					// bigRight: true 时小图在左、大图在右
-					blocks.push(`<div class="two grid2 reel">${r.bigRight ? stack + big : big + stack}</div>`);
-					return;
-				}
-				const mat = p.mat ? ' matted' : '';
-				blocks.push(r.length === 1
-					? (p.mat ? `<div class="matted">${media(r[0])}</div>` : media(r[0]))
-					: `<div class="jrow">${r.map((m) => `<div class="${mat.trim()}" style="flex:${ratio(m).toFixed(3)}">${media(m, ratio(m))}</div>`).join('')}</div>`);
-			});
+			allRows.forEach((r) => blocks.push(rowHTML(r)));
 			rest.length = 0;
 		}
 		for (let k = 0; k < rest.length; k++) {
@@ -495,7 +497,7 @@
 					<div class="prose"><div class="label">${T('About the project')}</div>${p.text.map((t) => `<p>${t}</p>`).join('')}</div>
 				</div>
 				<dl class="info">
-					<div><dt>${T('Deliverables')}</dt><dd>${p.tags.map(esc).join('<br>')}</dd></div>
+					<div><dt>${T('Deliverables')}</dt><dd>${p.tags.map((t, i) => p.sections ? `<span class="dl-tag" data-i="${i}">${esc(t)}</span>` : esc(t)).join('<br>')}</dd></div>
 					${p.format ? `<div><dt>${T('Format')}</dt><dd>${p.format}</dd></div>` : ''}
 					${creditsHTML(p.credits)}
 				</dl>
@@ -517,6 +519,32 @@
 		content.querySelectorAll('.zoomable').forEach((el) => {
 			el.addEventListener('click', () => openLightbox(p.media, +el.dataset.i));
 		});
+		if (p.sections) spySections();
+	}
+
+	// 详情页：滚动到哪一组图片，左栏对应的交付内容就高亮（其余变灰）；点交付内容跳到那一组
+	function spySections() {
+		const secs = [...content.querySelectorAll('.p-sec')];
+		const tags = [...document.querySelectorAll('.dl-tag')];
+		if (!secs.length) return;
+		document.querySelectorAll('.info').forEach((el) => el.classList.add('spy'));
+		let last = -1;
+		const update = () => {
+			let cur = secs[0];
+			secs.forEach((s) => { if (s.getBoundingClientRect().top < innerHeight * 0.55) cur = s; });
+			const i = cur.dataset.i;
+			if (i === last) return;
+			last = i;
+			tags.forEach((t) => t.classList.toggle('on', t.dataset.i === i));
+		};
+		let raf = 0;
+		addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; update(); }); }, { passive: true });
+		addEventListener('resize', update);
+		update();
+		tags.forEach((t) => t.addEventListener('click', () => {
+			const s = secs.find((x) => x.dataset.i === t.dataset.i);
+			if (s) s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+		}));
 	}
 
 	// All projects：三列瀑布流加搜索

@@ -1384,3 +1384,10 @@ body[data-page="about"] .about-body { max-width: none; }
 @media (max-width: 760px) { .solo-off { width: 100% !important; } }
 /* About me 右边正文的第一行和左边名字顶端对齐（不再和 ABOUT ME 小标签一样高） */
 @media (min-width: 1001px) { body[data-page="about"] .about-body { margin-top: 32px; } }
+
+/* 详情页按交付内容分组：每组之间多留一点空；左栏交付内容随滚动高亮 */
+.p-sec { display: flex; flex-direction: column; gap: var(--gap); }
+.p-sec + .p-sec { margin-top: calc(var(--gap) * 6); }
+.info.spy .dl-tag { color: var(--muted); cursor: pointer; transition: color 0.3s; }
+.info.spy .dl-tag.on { color: var(--text); }
+.info.spy .dl-tag:hover { color: var(--text); }

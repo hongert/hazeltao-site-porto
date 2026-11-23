@@ -115,3 +115,5 @@ window.SIZES = {
 	'taohe_boxes.jpg': [2000, 1500],
 	'taohe_social2.jpg': [2000, 1334],
 };
+
+window.SIZES['J-A-Long-LED-Motion.mp4'] = window.SIZES['J-A-Long-LED-Motion.mp4'] || [1400, 923];
