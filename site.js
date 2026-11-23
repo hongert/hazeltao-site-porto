@@ -272,7 +272,7 @@
 		// 顶部：整屏大图轮播，随机顺序，淡入淡出（电脑上）
 		const order = P.map((p) => p).sort(() => Math.random() - 0.5);
 		// 裁切时保留画面重心：横向位置 / 纵向位置（没写的默认居中）
-		const POS = { 'wuzhen-theater-festival': '12% 50%' };
+		const POS = { 'wuzhen-theater-festival': '0% 50%' };
 		const pos = (p) => (POS[p.slug] ? ` style="object-position:${POS[p.slug]}"` : '');
 		const heroMedia = (name, first, st = '') => isVideo(name)
 			? `<video src="${src(name)}" poster="thumbs/${name}.jpg" muted loop playsinline preload="${first ? 'auto' : 'metadata'}"${first ? ' autoplay' : ''}${st}></video>`
