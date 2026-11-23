@@ -200,7 +200,9 @@ window.PROJECTS = [
 			] },
 		],
 		text: [
-			'Inspired by the screening of <i>Paper and Glue</i> by JR, I explored how art can shape and influence communities. I chose Biomorphism as my focus—a movement emphasizing organic forms, natural growth patterns, and fluid, living aesthetics. I reimagined these principles into a dynamic, immersive pop-up installation that uses typography and visual language to tell a flexible, evolving, and contemporary narrative. The installation features 10 black-and-yellow posters, where typographic forms echo biomorphic shapes, creating a cohesive and adaptable visual system that engages audiences across diverse indoor and outdoor environments.',
+			"Watching JR’s documentary Paper and Glue, I realized that designers have a kind of superpower: we don’t need to be present for our work to affect people. JR’s paper portraits, pasted onto prison walls, changed how inmates saw the world outside their cells. I wanted my work to do something similar for people who pass things every day without really seeing them. That is where Edge of Visibility began.",
+			"I built the project around Biomorphism, a movement grounded in organic forms from nature, like shells, cells, and the way living things grow. Type became the image: letters stretch and compress like growing forms, and the O’s in BIOMORPHISM turn into a shell and a sea urchin.",
+			"The brief limited me to black, white, and one other color, which felt restrictive at first. I went back and forth between brown and yellow for a long time before choosing yellow: lively, untraditional, and full of life. The system travels across gallery walls, LED screens, and billboards, asking people to slow down, read, and rethink what they have missed.",
 		],
 	},
 	{
