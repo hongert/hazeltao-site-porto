@@ -1335,3 +1335,28 @@ body[data-page="project"] .side-project { padding-top: 22px; }
 .feature .deliv { flex: 0 1 auto; }
 .m-br { display: none; }
 @media (max-width: 760px) { .m-br { display: inline; } }
+
+/* ===== 首页（参考 Porto Rocha）：左栏 25%，右边先是整屏大图轮播，下面是小卡片 ===== */
+body[data-page="home"] { --side: 25%; }
+.hero-slides { position: relative; width: 100%; aspect-ratio: 16 / 10; max-height: calc(100vh - var(--gap) * 2); border-radius: var(--radius); overflow: hidden; background: var(--card); flex: none; }
+.hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.2s ease; color: #fff; }
+.hero-slide.on { opacity: 1; z-index: 1; }
+.hero-slide img, .hero-slide video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero-cap { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 60px 18px 16px; background: linear-gradient(transparent, rgba(0, 0, 0, 0.4)); text-transform: uppercase; }
+.hero-cap .hc-t { font-size: 19px; }
+.hero-cap .hc-d { font-size: 11px; opacity: 0.85; text-align: right; padding-right: 0; margin-bottom: 14px; }
+@media (min-width: 761px) {
+	.home-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--gap); }
+	.home-grid .feature { padding: 10px; display: flex; flex-direction: column; }
+	.home-grid .feature .media { margin-top: auto; }
+	.home-grid .feature .feat-head { flex-direction: column; align-items: flex-start; gap: 2px; margin: 0 0 8px; }
+	.home-grid .feature .feat-head h2 { font-size: 14px; }
+	.home-grid .feature .deliv { text-align: left; font-size: 10px; }
+	.home-grid .feature .media { aspect-ratio: 3 / 2; }
+	.home-grid .feature .media img, .home-grid .feature .media video { width: 100%; height: 100%; object-fit: cover; }
+}
+@media (min-width: 761px) and (max-width: 1100px) { .home-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) {
+	.hero-slides { display: none; }
+	.home-grid .feature { margin-bottom: var(--gap); }
+}

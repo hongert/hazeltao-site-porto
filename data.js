@@ -144,7 +144,7 @@ window.PROJECTS = [
 		],
 	},
 	{
-		slug: 'sweetness-in-four-seasons',
+		slug: 'sweetness-in-four-seasons', hidden: true, // 暂时不在网站上显示
 		title: 'Sweetness in Four Seasons',
 		subtitle: 'Risograph Design',
 		year: 2026,
@@ -177,7 +177,7 @@ window.PROJECTS = [
 		],
 	},
 	{
-		slug: 'pied-piper',
+		slug: 'pied-piper', hidden: true, // 暂时不在网站上显示
 		title: 'Pied Piper',
 		subtitle: 'Album Design',
 		year: 2024,
@@ -272,7 +272,7 @@ window.PROJECTS = [
 		],
 	},
 	{
-		slug: 'lume',
+		slug: 'lume', hidden: true, // 暂时不在网站上显示
 		title: 'Lume',
 		subtitle: 'Brand Identity',
 		year: 2024,

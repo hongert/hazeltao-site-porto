@@ -24,7 +24,7 @@
 			services: p.services.map(term),
 		};
 	};
-	const P = window.PROJECTS.map(localize);
+	const P = window.PROJECTS.filter((p) => !p.hidden).map(localize); // hidden: true 的项目不显示
 	const SIZES = window.SIZES || {};
 	// 当前版本号（取自 site.js?v=...），读 about.html 时带上，避免浏览器用旧缓存
 	const VER = (() => { try { return new URL(document.currentScript.src).searchParams.get('v') || ''; } catch (e) { return ''; } })();
@@ -269,14 +269,52 @@
 
 	// 首页：每个项目一张卡片
 	function renderHome() {
-		content.innerHTML = P.map((p) => `
+		// 顶部：整屏大图轮播，随机顺序，淡入淡出（电脑上）
+		const order = P.map((p) => p).sort(() => Math.random() - 0.5);
+		// 裁切时保留画面重心：横向位置 / 纵向位置（没写的默认居中）
+		const POS = { 'wuzhen-theater-festival': '12% 50%' };
+		const pos = (p) => (POS[p.slug] ? ` style="object-position:${POS[p.slug]}"` : '');
+		const heroMedia = (name, first, st = '') => isVideo(name)
+			? `<video src="${src(name)}" poster="thumbs/${name}.jpg" muted loop playsinline preload="${first ? 'auto' : 'metadata'}"${first ? ' autoplay' : ''}${st}></video>`
+			: `<img src="${src(name)}" alt="" loading="${first ? 'eager' : 'lazy'}"${st}>`;
+		const hero = `
+			<div class="hero-slides">
+				${order.map((p, i) => `<a class="hero-slide${i === 0 ? ' on' : ''}" href="${link(p)}">${heroMedia(p.media[0], i === 0, pos(p))}<span class="hero-cap"><span class="hc-t">${esc(p.title)}</span><span class="hc-d">${esc(p.tags.join(', '))}</span></span></a>`).join('')}
+			</div>`;
+		content.innerHTML = hero + `<div class="home-grid">${P.map((p) => `
 			<a class="card feature" href="${link(p)}">
 				<div class="feat-head"><h2>${homeTitle(p)}</h2><span class="deliv">${nwTags(p.tags)}</span></div>
-				<div class="media">${mediaTag(p.media[0], false)}</div>
-			</a>`).join('');
+				<div class="media">${mediaTag(p.media[0], false).replace(/^<(img|video)/, '<$1' + pos(p))}</div>
+			</a>`).join('')}</div>`;
 		// 首页卡片和项目页顶部用同一张（可能是视频）
-		watchVideos(content);
+		watchVideos($('.home-grid', content));
+		startHero($('.hero-slides', content));
 		if (window.MOBILE_LAYOUT === 'nav') renderMobileNav();
+	}
+
+	function startHero(box) {
+		const slides = [...box.querySelectorAll('.hero-slide')];
+		if (slides.length < 2) return;
+		let cur = 0;
+		const show = (n) => {
+			const prev = slides[cur];
+			cur = (n + slides.length) % slides.length;
+			const s = slides[cur];
+			const v = $('video', s);
+			if (v) { v.preload = 'auto'; v.currentTime = 0; v.play().catch(() => {}); }
+			s.classList.add('on');
+			prev.classList.remove('on');
+			const pv = $('video', prev);
+			if (pv) setTimeout(() => pv.pause(), 1200);
+			// 提前加载下一张
+			const nx = slides[(cur + 1) % slides.length].querySelector('img');
+			if (nx) nx.loading = 'eager';
+		};
+		let timer = setInterval(() => show(cur + 1), 4500);
+		document.addEventListener('visibilitychange', () => {
+			clearInterval(timer);
+			if (!document.hidden) timer = setInterval(() => show(cur + 1), 4500);
+		});
 	}
 
 	// 手机版（预览）：顶部导航卡片 + 大图 + 作品索引 + About me + Contact
