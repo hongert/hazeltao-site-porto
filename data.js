@@ -58,7 +58,8 @@ window.PROJECTS = [
 			] },
 			{ tag: 'Exhibit Design', rows: [
 				['J-A-Long-LED-Motion.mp4'],
-				{ big: 'GS3_FA25_-HazelTao_Promo3.mp4', stack: ['GS3_FA25_HazelTao_Website3.jpg', 'GS3_FA25_HazelTao_Website2.jpg'] },
+				['GS3_FA25_-HazelTao_Promo3.mp4', 'GS3_FA25_HazelTao_Website3.jpg'],
+				['GS3_FA25_HazelTao_Website2.jpg'],
 				['GS3_FA25_HazelTao_Website4_v2.jpg', 'GS3_FA25_-HazelTao_Spatial1.jpg'],
 			] },
 			// Brand Bible 内页
@@ -118,8 +119,10 @@ window.PROJECTS = [
 				['Taohe_DSCF0250.jpg', 'Taohe_DSCF0267.jpg'],
 			] },
 			{ tag: 'Product Photography', rows: [
-				{ big: 'Taohe_DSCF0187.jpg', stack: ['Taohe_DSCF0008.jpg', 'Taohe_DSCF0083.jpg'] },
-				['Taohe_DSCF0132.jpg', 'Taohe_DSCF0263.jpg', 'Taohe_DSCF0221.jpg'],
+				['Taohe_DSCF0187.jpg', 'Taohe_DSCF0008.jpg'],
+				['Taohe_DSCF0083.jpg'],
+				['Taohe_DSCF0132.jpg', 'Taohe_DSCF0263.jpg'],
+				['Taohe_DSCF0221.jpg'],
 			] },
 		],
 		text: [
@@ -267,7 +270,8 @@ window.PROJECTS = [
 		sections: [
 			{ tag: 'Environmental', rows: [
 				['Serenseek_scene5_v2.png'],
-				['Serenseek_scene8.png', 'Serenseek_scene10.png', 'Serenseek_scene9.png'],
+				['Serenseek_scene8.png', 'Serenseek_scene10.png'],
+				['Serenseek_scene9.png'],
 			] },
 			{ tag: 'Branding Design', rows: [
 				['Serenseek_flatlay.png'],
