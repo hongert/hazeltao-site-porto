@@ -65,16 +65,20 @@
 
 	// 返回上一页的小箭头：从本站别的页面来的就后退，否则回首页
 	const backBtn = () => `<button class="pill round back-btn" aria-label="${lang === 'zh' ? '返回' : 'Back'}">${icons.back}</button>`;
+	// 记住本标签页里在本站看过的上一页
+	let prevPage = null;
+	try { prevPage = sessionStorage.getItem('hzt-cur'); if (prevPage === location.href) prevPage = sessionStorage.getItem('hzt-prev'); else sessionStorage.setItem('hzt-prev', prevPage || ''); sessionStorage.setItem('hzt-cur', location.href); } catch (err) {}
 	document.addEventListener('click', (e) => {
 		if (!e.target.closest('.back-btn')) return;
 		let same = false;
 		try { same = !!document.referrer && new URL(document.referrer).origin === location.origin; } catch (err) {}
-		if (same && history.length > 1) history.back();
+		if ((same || prevPage) && history.length > 1) history.back();
+		else if (prevPage) location.href = prevPage;
 		else location.href = ALT + 'index.html';
 	});
 
 	// 小 logo 按钮 + 名字和职位（项目页、All projects 页左上角）
-	const homeId = () => `<a class="home-id" href="${ALT}index.html"><span class="pill round home-logo">${LOGO}</span><span class="home-name">${esc(S.fullName)}<br><span>${lang === 'zh' ? '平面设计师' : 'Graphic Designer'}</span></span></a>`;
+	const homeId = () => `<a class="home-id" href="${ALT}index.html"><span class="pill round home-logo" aria-label="${esc(S.fullName)}">${LOGO}</span></a>`;
 
 	// ---------- 黑白背景开关 ----------
 	function switchHTML() {
