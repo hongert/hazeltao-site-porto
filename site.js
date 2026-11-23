@@ -316,7 +316,10 @@
 			const nx = slides[(cur + 1) % slides.length].querySelector('img');
 			if (nx) nx.loading = 'eager';
 		};
-		let timer = setInterval(() => show(cur + 1), 4500);
+		// 开场动画还在播时先不轮播，等幕布拉开后再开始
+		let timer = null;
+		const begin = () => { if (document.getElementById('intro')) return setTimeout(begin, 300); timer = setInterval(() => show(cur + 1), 4500); };
+		begin();
 		document.addEventListener('visibilitychange', () => {
 			clearInterval(timer);
 			if (!document.hidden) timer = setInterval(() => show(cur + 1), 4500);
