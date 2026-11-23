@@ -457,7 +457,7 @@
 			}
 			const mat = p.mat ? ' matted' : '';
 			return r.length === 1
-				? (p.mat ? `<div class="matted">${media(r[0])}</div>` : media(r[0]))
+				? (p.mat ? `<div class="matted">${media(r[0])}</div>` : media(r[0], isVideo(r[0]) && SIZES[r[0]] ? ratio(r[0]) : undefined))
 				: `<div class="jrow">${r.map((m) => `<div class="${mat.trim()}" style="flex:${ratio(m).toFixed(3)}">${media(m, ratio(m))}</div>`).join('')}</div>`;
 		};
 		// sections：按交付内容分组，每组一段；左栏对应的交付内容会随滚动高亮
@@ -519,20 +519,20 @@
 		content.querySelectorAll('.zoomable').forEach((el) => {
 			el.addEventListener('click', () => openLightbox(p.media, +el.dataset.i));
 		});
-		if (p.sections) spySections();
+		if (p.sections) spySections(String(Math.max(0, (p.en || p).tags.indexOf(p.heroTag))));
 	}
 
 	// 详情页：滚动到哪一组图片，左栏对应的交付内容就高亮（其余变灰）；点交付内容跳到那一组
-	function spySections() {
+	function spySections(heroI = '0') {
 		const secs = [...content.querySelectorAll('.p-sec')];
 		const tags = [...document.querySelectorAll('.dl-tag')];
 		if (!secs.length) return;
 		document.querySelectorAll('.info').forEach((el) => el.classList.add('spy'));
 		let last = -1;
 		const update = () => {
-			let cur = secs[0];
-			secs.forEach((s) => { if (s.getBoundingClientRect().top < innerHeight * 0.55) cur = s; });
-			const i = cur.dataset.i;
+			// 还在顶部大图时，高亮顶部大图所属的那一项（heroTag，默认第一项）
+			let i = heroI;
+			secs.forEach((s) => { if (s.getBoundingClientRect().top < innerHeight * 0.55) i = s.dataset.i; });
 			if (i === last) return;
 			last = i;
 			tags.forEach((t) => t.classList.toggle('on', t.dataset.i === i));

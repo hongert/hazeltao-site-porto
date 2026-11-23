@@ -81,25 +81,46 @@ window.PROJECTS = [
 		title: 'Taohe',
 		subtitle: 'Branding Design',
 		year: 2026,
-		tags: ['Branding Design', 'Stationery', 'Brand Application'],
+		tags: ['Branding Design', 'Digital Design', 'Stationery', 'Packaging', 'Brand Application', 'Product Photography'],
 		services: ['Brand Strategy', 'Identity System', 'Packaging', 'E-commerce', 'Social'],
 		format: '',
 		cover: 'Taohe_social_3.jpg',
 		thumb: 'Taohe_logo_motion_frame.jpg',
 		media: [
-			'Taohe_logo_motion_FIN.mp4', 'taohe_social2.jpg',
-			'Taohe_social_3.jpg', 'Taohe_product_web-copy.jpg',
-			'Taohe_pencil_mockup.jpg', 'Taohe_Stationary_Mockup.jpg', 'Taohe_File_envelope.jpg',
-			'taohe_boxes.jpg', 'Taohe_tape_mockup.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg',
+			'Taohe_logo_motion_FIN.mp4',
+			'Taohe_ins_mockup.mp4', 'taohe_social2.jpg', 'Taohe_social_3.jpg', 'Taohe_socialmedia-02.jpg', 'Taohe_socialmedia-04.jpg', 'Taohe_product_web-copy.jpg',
+			'Taohe_Stationary_Mockup.jpg', 'Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg', 'Taohe_DSCF0263.jpg',
+			'Taohe_package.jpg', 'Taohe_tape_mockup.jpg', 'taohe_boxes.jpg',
+			'Taohe_StoreFront_week12.jpg', 'Taohe_StoreFront_3.jpg', 'TaoheHM_wrapping.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg', 'Taohe_DSCF0250.jpg', 'Taohe_DSCF0267.jpg',
+			'Taohe_DSCF0187.jpg', 'Taohe_DSCF0008.jpg', 'Taohe_DSCF0083.jpg', 'Taohe_DSCF0132.jpg', 'Taohe_DSCF0221.jpg',
 		],
-		// 整行和并排交替
-		rows: [
-			['taohe_social2.jpg'],
-			['Taohe_social_3.jpg', 'Taohe_product_web-copy.jpg'],
-			['Taohe_Stationary_Mockup.jpg'],
-			['Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg'],
-			['taohe_boxes.jpg'],
-			['Taohe_tape_mockup.jpg', 'taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg'],
+		// 按交付内容分组；顶部的 logo 动态属于品牌设计
+		sections: [
+			{ tag: 'Digital Design', rows: [
+				['Taohe_ins_mockup.mp4'],
+				['taohe_social2.jpg', 'Taohe_social_3.jpg'],
+				['Taohe_socialmedia-02.jpg', 'Taohe_socialmedia-04.jpg', 'Taohe_product_web-copy.jpg'],
+			] },
+			{ tag: 'Stationery', rows: [
+				['Taohe_Stationary_Mockup.jpg'],
+				['Taohe_pencil_mockup.jpg', 'Taohe_File_envelope.jpg'],
+				{ solo: 'Taohe_DSCF0263.jpg', width: '60%', align: 'right' },
+			] },
+			{ tag: 'Packaging', rows: [
+				['Taohe_package.jpg', 'Taohe_tape_mockup.jpg'],
+				['taohe_boxes.jpg'],
+			] },
+			// 和 Herman Miller 的合作：店面、室内、包装、吊牌
+			{ tag: 'Brand Application', rows: [
+				['Taohe_StoreFront_week12.jpg'],
+				['Taohe_StoreFront_3.jpg', 'TaoheHM_wrapping.jpg'],
+				['taohe-hm_envelope.jpg', 'taohe-hm_shoppingbag.jpg'],
+				['Taohe_DSCF0250.jpg', 'Taohe_DSCF0267.jpg'],
+			] },
+			{ tag: 'Product Photography', rows: [
+				{ big: 'Taohe_DSCF0187.jpg', stack: ['Taohe_DSCF0008.jpg', 'Taohe_DSCF0083.jpg'] },
+				['Taohe_DSCF0132.jpg', 'Taohe_DSCF0221.jpg'],
+			] },
 		],
 		text: [
 			"My family dyes wool in Puyuan, China’s sweater town. As we expanded into making our own ready-to-wear, I noticed almost no one was working with yak wool—and in the U.S., most shoppers know cashmere but have barely heard of yak. TAOHE is the brand I built to fill that gap.",
@@ -126,16 +147,22 @@ window.PROJECTS = [
 			'HeldStill_FlipThrough-copy.mp4', 'HeldStill_FlipThrough-copy-2.mp4', 'HeldStill_FlipThrough-copy-3.mp4',
 			'HeldStill_FlipThrough-copy-4.mp4', 'HeldStill_FlipThrough-copy-5.mp4', 'HeldStill_FlipThrough-copy-6.mp4',
 		],
-		// 大 → 小小 → 大 → 小小 → 小小，最后是视频
-		rows: [
-			['HeldStill_BigFlag.jpg'],
-			['Heldstill_display3.JPG', 'HeldStill_Ticket.jpg'],
-			['Heldstill_display_3.jpg'],
-			['HeldStill_IDCard.jpg', 'Heldstill_display_5.jpg'],
-			['Heldstill_display_4.jpg', 'Heldstill_display_6.jpg'],
-			['HeldStill_FlipThrough-copy.mp4', 'HeldStill_FlipThrough-copy-2.mp4'],
-			['HeldStill_FlipThrough-copy-3.mp4', 'HeldStill_FlipThrough-copy-4.mp4'],
-			['HeldStill_FlipThrough-copy-5.mp4', 'HeldStill_FlipThrough-copy-6.mp4'],
+		// 按交付内容分组；顶部旗帜属于展览设计
+		heroTag: 'Exhibit Design',
+		sections: [
+			{ tag: 'Exhibit Design', rows: [
+				['HeldStill_BigFlag.jpg'],
+				['Heldstill_display3.JPG', 'HeldStill_Ticket.jpg'],
+				{ solo: 'HeldStill_IDCard.jpg', width: '60%', align: 'right' },
+			] },
+			{ tag: 'Book Design', rows: [
+				['Heldstill_display_3.jpg'],
+				['Heldstill_display_5.jpg', 'Heldstill_display_4.jpg'],
+				{ solo: 'Heldstill_display_6.jpg', width: '66%', align: 'left' },
+				['HeldStill_FlipThrough-copy.mp4', 'HeldStill_FlipThrough-copy-2.mp4'],
+				['HeldStill_FlipThrough-copy-3.mp4', 'HeldStill_FlipThrough-copy-4.mp4'],
+				['HeldStill_FlipThrough-copy-5.mp4', 'HeldStill_FlipThrough-copy-6.mp4'],
+			] },
 		],
 		text: [
 			"Years ago, I painted a still life of flowers and fruit, and I started with the hydrangea, because it would wilt first. The finished canvas showed everything at its best, but each object was caught at a different moment and stitched together. That is what draws me to still life: it looks frozen, yet time was passing the whole time it was painted. Held Still: When Time Becomes Visible gathers eight artists working in the genre, from Rachel Ruysch in the 17th century to Lucas Blalock today.",
@@ -156,6 +183,17 @@ window.PROJECTS = [
 		media: [
 			'EdgeOfVisibility_Motion_03.mp4', 'EdgeOfVisibility_Mockup_13.png',
 			'EdgeOfVisibility_Mockup_14.png', 'EdgeOfVisibility_Mockup_02.png', 'EdgeOfVisibility_Mockup_01.png',
+		],
+		// 按交付内容分组；顶部手机动态属于视觉识别
+		heroTag: 'Identity Design',
+		sections: [
+			{ tag: 'Identity Design', rows: [
+				['EdgeOfVisibility_Mockup_13.png'],
+			] },
+			{ tag: 'Exhibit Design', rows: [
+				['EdgeOfVisibility_Mockup_14.png', 'EdgeOfVisibility_Mockup_02.png'],
+				['EdgeOfVisibility_Mockup_01.png'],
+			] },
 		],
 		text: [
 			'Inspired by the screening of <i>Paper and Glue</i> by JR, I explored how art can shape and influence communities. I chose Biomorphism as my focus—a movement emphasizing organic forms, natural growth patterns, and fluid, living aesthetics. I reimagined these principles into a dynamic, immersive pop-up installation that uses typography and visual language to tell a flexible, evolving, and contemporary narrative. The installation features 10 black-and-yellow posters, where typographic forms echo biomorphic shapes, creating a cohesive and adaptable visual system that engages audiences across diverse indoor and outdoor environments.',
@@ -224,12 +262,20 @@ window.PROJECTS = [
 			'Serenseek_flatlay.png', 'Serenseek_scene8.png', 'Serenseek_scene10.png',
 			'Serenseek_scene9.png', 'Serenseek_scene11.jpg',
 		],
-		// 小小 → 大 → 小大 → 小小
-		rows: [
-			['Serenseek_scene10.png', 'Serenseek_cup_hand.png'],
-			['Serenseek_scene1.png'],
-			{ big: 'Serenseek_scene8.png', stack: ['Serenseek_scene9.png', 'Serenseek_scene11.jpg'], bigRight: true },
-			['Serenseek_scene5_v2.png', 'Serenseek_flatlay.png'],
+		// 按交付内容分组；顶部招牌属于空间设计
+		heroTag: 'Environmental',
+		sections: [
+			{ tag: 'Environmental', rows: [
+				{ big: 'Serenseek_scene8.png', stack: ['Serenseek_scene5_v2.png', 'Serenseek_scene9.png'], bigRight: true },
+				{ solo: 'Serenseek_scene10.png', width: '50%', align: 'left' },
+			] },
+			{ tag: 'Branding Design', rows: [
+				['Serenseek_flatlay.png'],
+				{ solo: 'Serenseek_scene11.jpg', width: '66%', align: 'right' },
+			] },
+			{ tag: 'Packaging', rows: [
+				['Serenseek_scene1.png', 'Serenseek_cup_hand.png'],
+			] },
 		],
 		text: [
 			'<i>‘Serenseek’</i> is a branding project centered around the concept of seeking truth and inner peace. The teahouse offers a tranquil escape from the chaos of city life, inviting visitors to reconnect with themselves and embrace a simpler, more mindful way of living. From the visual identity to the spatial atmosphere, every design element aims to transport guests into a serene, calming environment that nurtures introspection and authenticity.',

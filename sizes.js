@@ -117,3 +117,19 @@ window.SIZES = {
 };
 
 window.SIZES['J-A-Long-LED-Motion.mp4'] = window.SIZES['J-A-Long-LED-Motion.mp4'] || [1400, 923];
+
+window.SIZES['Taohe_socialmedia-02.jpg'] = [1344, 2854];
+window.SIZES['Taohe_socialmedia-04.jpg'] = [1344, 2854];
+window.SIZES['Taohe_DSCF0263.jpg'] = [2048, 1903];
+window.SIZES['Taohe_package.jpg'] = [2400, 2400];
+window.SIZES['Taohe_StoreFront_week12.jpg'] = [2576, 1717];
+window.SIZES['Taohe_StoreFront_3.jpg'] = [2576, 1711];
+window.SIZES['TaoheHM_wrapping.jpg'] = [2576, 2576];
+window.SIZES['Taohe_DSCF0250.jpg'] = [2400, 1800];
+window.SIZES['Taohe_DSCF0267.jpg'] = [2400, 1748];
+window.SIZES['Taohe_DSCF0187.jpg'] = [1800, 2400];
+window.SIZES['Taohe_DSCF0008.jpg'] = [2400, 1800];
+window.SIZES['Taohe_DSCF0083.jpg'] = [2400, 1800];
+window.SIZES['Taohe_DSCF0132.jpg'] = [2400, 1800];
+window.SIZES['Taohe_DSCF0221.jpg'] = [2400, 1800];
+window.SIZES['Taohe_ins_mockup.mp4'] = [2400, 1600];

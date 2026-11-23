@@ -44,6 +44,8 @@ window.ZH = {
 		'Spatial': '空间设计',
 		'Digital': '数字设计',
 		'Packaging': '包装',
+		'Digital Design': '数字设计',
+		'Product Photography': '产品摄影',
 		'Exhibition': '展览',
 		'Typography': '字体排印',
 		'Print': '印刷',
