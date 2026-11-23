@@ -1402,3 +1402,6 @@ body[data-page="about"] .about-body { max-width: none; }
 	.home-grid .feature:last-child:nth-child(odd) { grid-column: 1 / -1; }
 	.home-grid .feature:last-child:nth-child(odd) .media { aspect-ratio: 2 / 1; }
 }
+/* 首页大图：只留项目名，往下贴近底边；不显示交付内容（避免和右下角版权抢视线） */
+.hero-cap { padding: 60px 18px 10px; }
+.hero-cap .hc-d { display: none; }
