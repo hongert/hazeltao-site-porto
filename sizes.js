@@ -133,3 +133,5 @@ window.SIZES['Taohe_DSCF0083.jpg'] = [2400, 1800];
 window.SIZES['Taohe_DSCF0132.jpg'] = [2400, 1800];
 window.SIZES['Taohe_DSCF0221.jpg'] = [2400, 1800];
 window.SIZES['Taohe_ins_mockup.mp4'] = [2400, 1600];
+window.SIZES['Taohe_Instagram_Mockup.jpg'] = [2000, 1500];
+window.SIZES['Taohe_ins_mockup_v2.mp4'] = [2400, 1600];
